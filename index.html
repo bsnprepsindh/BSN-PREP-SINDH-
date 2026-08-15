@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BSN PREP SINDH | Your BSN Success Starts Here</title>
+
+<meta name="description" content="BSN PREP SINDH - BSN Entry Test Preparation, Mock Tests, Notes, MCQs and Latest Updates.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+:root{
+    --primary:#0b7a75;
+    --primary2:#12a69d;
+    --dark:#071b2a;
+    --text:#243746;
+    --muted:#71808d;
+    --light:#f5fafb;
+    --white:#ffffff;
+    --border:#e6eeee;
+    --shadow:0 15px 45px rgba(7,27,42,.09);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background:#fff;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* TOP BAR */
+
+.topbar{
+    background:var(--dark);
+    color:#dce8ed;
+    padding:9px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+}
+
+.topbar span{
+    opacity:.9;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:78px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #edf1f2;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.logo-mark{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:19px;
+    font-weight:800;
+    box-shadow:0 8px 20px rgba(11,122,117,.25);
+}
+
+.logo-text{
+    font-family:'Poppins',sans-serif;
+    font-size:18px;
+    font-weight:800;
+    color:var(--dark);
+}
+
+.logo-text span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#42515c;
+    font-size:14px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.nav-btn{
+    background:var(--primary);
+    color:#fff!important;
+    padding:12px 20px;
+    border-radius:10px;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 85% 20%,rgba(18,166,157,.18),transparent 30%),
+    radial-gradient(circle at 10% 90%,rgba(18,166,157,.12),transparent 30%),
+    #f7fbfc;
+}
+
+.hero-grid{
+    width:88%;
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#e7f7f5;
+    color:var(--primary);
+    padding:9px 15px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    background:#15b5a8;
+    border-radius:50%;
+}
+
+.hero h1{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    font-size:clamp(42px,5vw,68px);
+    line-height:1.08;
+    letter-spacing:-2px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero-text{
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.8;
+    max-width:650px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:15px 22px;
+    border-radius:11px;
+    font-weight:700;
+    font-size:14px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+    box-shadow:0 12px 25px rgba(11,122,117,.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    background:#08645f;
+}
+
+.btn-outline{
+    background:#fff;
+    color:var(--dark);
+    border:1px solid #dce7e9;
+}
+
+.btn-outline:hover{
+    transform:translateY(-3px);
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+/* HERO VISUAL */
+
+.hero-visual{
+    position:relative;
+    height:450px;
+}
+
+.main-card{
+    position:absolute;
+    width:330px;
+    height:390px;
+    right:35px;
+    top:25px;
+    border-radius:28px;
+    padding:28px;
+    color:white;
+    background:linear-gradient(145deg,#075d59,#12a69d);
+    box-shadow:0 30px 60px rgba(7,93,89,.25);
+    overflow:hidden;
+}
+
+.main-card:before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border:35px solid rgba(255,255,255,.07);
+    border-radius:50%;
+    right:-90px;
+    top:-70px;
+}
+
+.main-card small{
+    opacity:.75;
+    font-weight:600;
+}
+
+.main-card h2{
+    font-family:'Poppins',sans-serif;
+    font-size:35px;
+    line-height:1.15;
+    margin-top:45px;
+}
+
+.main-card p{
+    margin-top:15px;
+    opacity:.8;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.card-bottom{
+    position:absolute;
+    bottom:25px;
+    left:28px;
+    right:28px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,.18);
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.float-card{
+    position:absolute;
+    background:white;
+    padding:17px 20px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    z-index:2;
+}
+
+.float-icon{
+    width:40px;
+    height:40px;
+    background:#e9f8f6;
+    color:var(--primary);
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+}
+
+.float-card strong{
+    display:block;
+    font-size:14px;
+    color:var(--dark);
+}
+
+.float-card small{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.float-one{
+    left:0;
+    top:105px;
+}
+
+.float-two{
+    right:-10px;
+    bottom:45px;
+}
+
+/* STATS */
+
+.stats{
+    width:88%;
+    max-width:1150px;
+    margin:-45px auto 0;
+    position:relative;
+    z-index:5;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:28px;
+}
+
+.stat{
+    text-align:center;
+    border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+    border:none;
+}
+
+.stat h3{
+    font-family:'Poppins',sans-serif;
+    color:var(--primary);
+    font-size:27px;
+}
+
+.stat p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* GENERAL */
+
+.section{
+    padding:100px 6%;
+}
+
+.section-header{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 55px;
+}
+
+.section-label{
+    color:var(--primary);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    font-size:38px;
+    line-height:1.2;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* SUBJECTS */
+
+.subjects{
+    background:#f7fbfc;
+}
+
+.subject-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.subject{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:28px 20px;
+    border-radius:17px;
+    transition:.3s;
+}
+
+.subject:hover{
+    transform:translateY(-7px);
+    box-shadow:var(--shadow);
+    border-color:transparent;
+}
+
+.subject-icon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    background:#eaf8f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    margin-bottom:18px;
+}
+
+.subject h3{
+    color:var(--dark);
+    font-size:16px;
+    margin-bottom:7px;
+}
+
+.subject p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature{
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:white;
+    transition:.3s;
+}
+
+.feature:hover{
+    box-shadow:var(--shadow);
+    transform:translateY(-5px);
+}
+
+.feature-icon{
+    font-size:27px;
+    margin-bottom:18px;
+}
+
+.feature h3{
+    color:var(--dark);
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:13px;
+}
+
+/* CTA */
+
+.cta{
+    width:88%;
+    max-width:1150px;
+    margin:20px auto 100px;
+    border-radius:28px;
+    padding:70px 50px;
+    text-align:center;
+    color:white;
+    background:
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.12),transparent 25%),
+    linear-gradient(135deg,#075d59,#0da49b);
+    box-shadow:0 25px 50px rgba(7,93,89,.18);
+}
+
+.cta h2{
+    font-family:'Poppins',sans-serif;
+    font-size:38px;
+    margin-bottom:13px;
+}
+
+.cta p{
+    opacity:.8;
+    max-width:650px;
+    margin:0 auto 28px;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.cta .btn{
+    background:#fff;
+    color:var(--primary);
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--dark);
+    color:white;
+    padding:60px 6% 25px;
+}
+
+.footer-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:50px;
+    padding-bottom:40px;
+}
+
+.footer-brand h2{
+    font-family:'Poppins',sans-serif;
+    margin-bottom:13px;
+}
+
+.footer-brand h2 span{
+    color:#16b3a9;
+}
+
+.footer-brand p,
+.footer-column a{
+    color:#91a5b0;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.footer-column h3{
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.footer-column a{
+    display:block;
+    margin-bottom:7px;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:22px;
+    text-align:center;
+    color:#718791;
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        gap:13px;
+    }
+
+    .nav-links a:not(.nav-btn){
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        margin-top:15px;
+        height:400px;
+    }
+
+    .main-card{
+        right:50%;
+        transform:translateX(50%);
+    }
+
+    .float-one{
+        left:5%;
+    }
+
+    .float-two{
+        right:3%;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+    }
+
+    .stat:nth-child(2){
+        border:none;
+    }
+
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .topbar{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .topbar span:last-child{
+        display:none;
+    }
+
+    .navbar{
+        height:68px;
+        padding:0 5%;
+    }
+
+    .logo-text{
+        font-size:15px;
+    }
+
+    .logo-mark{
+        width:38px;
+        height:38px;
+    }
+
+    .hero{
+        min-height:650px;
+    }
+
+    .hero-grid{
+        width:90%;
+    }
+
+    .hero h1{
+        font-size:42px;
+        letter-spacing:-1.5px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    .hero-visual{
+        transform:scale(.82);
+        margin-top:-10px;
+        margin-left:-25px;
+        margin-right:-25px;
+    }
+
+    .stats{
+        width:90%;
+        padding:20px 10px;
+        margin-top:-30px;
+    }
+
+    .stat h3{
+        font-size:22px;
+    }
+
+    .section{
+        padding:75px 5%;
+    }
+
+    .section-title{
+        font-size:29px;
+    }
+
+    .subject-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .subject{
+        padding:20px 14px;
+    }
+
+    .cta{
+        width:90%;
+        padding:50px 22px;
+        margin-bottom:70px;
+    }
+
+    .cta h2{
+        font-size:29px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <span>🎓 BSN Entry Test Preparation Platform</span>
+    <span>📍 Serving Students Across Sindh</span>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <a href="#home" class="logo">
+        <div class="logo-mark">BP</div>
+        <div class="logo-text">
+            BSN <span>PREP SINDH</span>
+        </div>
+    </a>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+
+        <a class="nav-btn"
+           href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
+           target="_blank">
+           Join Channel
+        </a>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-grid">
+
+        <div>
+
+            <div class="badge">
+                <span class="badge-dot"></span>
+                SINDH'S BSN PREPARATION PLATFORM
+            </div>
+
+            <h1>
+                Prepare Smart.<br>
+                <span>Achieve More.</span>
+            </h1>
+
+            <p class="hero-text">
+                Everything you need for your BSN entry test preparation
+                in one place — quality notes, MCQs, mock tests,
+                important updates and study resources.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#subjects" class="btn btn-primary">
+                    Explore Resources →
+                </a>
+
+                <a href="https://wa.me/923197275027"
+                   target="_blank"
+                   class="btn btn-outline">
+                    💬 WhatsApp Us
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="float-card float-one">
+                <div class="float-icon">📝</div>
+                <div>
+                    <strong>Mock Tests</strong>
+                    <small>Practice & Improve</small>
+                </div>
+            </div>
+
+            <div class="main-card">
+
+                <small>BSN PREP SINDH</small>
+
+                <h2>
+                    Your Journey<br>
+                    Starts Here.
+                </h2>
+
+                <p>
+                    Learn. Practice. Test yourself.
+                    Build confidence for your BSN entry test.
+                </p>
+
+                <div class="card-bottom">
+                    <span>📚 Study</span>
+                    <span>🎯 Prepare</span>
+                    <span>🏆 Succeed</span>
+                </div>
+
+            </div>
+
+            <div class="float-card float-two">
+                <div class="float-icon">🎯</div>
+                <div>
+                    <strong>BSN Preparation</strong>
+                    <small>Focused Learning</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+        <h3>5+</h3>
+        <p>Core Subjects</p>
+    </div>
+
+    <div class="stat">
+        <h3>1000+</h3>
+        <p>Practice MCQs</p>
+    </div>
+
+    <div class="stat">
+        <h3>24/7</h3>
+        <p>Learning Access</p>
+    </div>
+
+    <div class="stat">
+        <h3>100%</h3>
+        <p>Student Focused</p>
+    </div>
+
+</div>
+
+<!-- SUBJECTS -->
+
+<section class="section subjects" id="subjects">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Study Areas
+        </div>
+
+        <h2 class="section-title">
+            Master Your BSN Subjects
+        </h2>
+
+        <p class="section-subtitle">
+            Focus on the important subjects and build a strong
+            foundation for your BSN entry test.
+        </p>
+
+    </div>
+
+    <div class="subject-grid">
+
+        <div class="subject">
+            <div class="subject-icon">🧬</div>
+            <h3>Biology</h3>
+            <p>Concepts, important topics and practice MCQs.</p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">⚗️</div>
+            <h3>Chemistry</h3>
+            <p>Important concepts, formulas and MCQs.</p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">⚡</div>
+            <h3>Physics</h3>
+            <p>Key concepts, formulas and entry test practice.</p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🔤</div>
+            <h3>English</h3>
+            <p>Grammar, vocabulary and important questions.</p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">📖</div>
+            <h3>General Knowledge</h3>
+            <p>Useful information and important questions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Why BSN PREP SINDH
+        </div>
+
+        <h2 class="section-title">
+            Everything In One Place
+        </h2>
+
+        <p class="section-subtitle">
+            A simple and organized platform designed to make
+            your preparation easier.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <div class="feature-icon">📚</div>
+            <h3>Quality Notes</h3>
+            <p>
+                Organized preparation material to help you
+                understand important concepts quickly.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📝</div>
+            <h3>Mock Tests</h3>
+            <p>
+                Test your preparation with practice questions
+                and identify areas that need improvement.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔔</div>
+            <h3>Latest Updates</h3>
+            <p>
+                Stay informed about BSN admissions, tests,
+                schedules and important announcements.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Focused Preparation</h3>
+            <p>
+                Study important topics without wasting time
+                searching through unnecessary material.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>
+                Access your preparation resources easily
+                from your smartphone.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🚀</div>
+            <h3>Learn & Improve</h3>
+            <p>
+                Practice consistently and build confidence
+                for your BSN entry test.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta" id="contact">
+
+    <h2>Don't Miss Important Updates</h2>
+
+    <p>
+        Join the official BSN PREP SINDH WhatsApp Channel
+        and stay connected with the latest preparation material,
+        mock tests and BSN updates.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
+           target="_blank"
+           class="btn">
+            📢 Join WhatsApp Channel
+        </a>
+
+        <a href="https://wa.me/923197275027"
+           target="_blank"
+           class="btn">
+            💬 Contact +92 319 7275027
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <h2>
+                BSN <span>PREP SINDH</span>
+            </h2>
+
+            <p>
+                A dedicated preparation platform for students
+                preparing for BSN entry tests across Sindh.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#subjects">Subjects</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Connect</h3>
+
+            <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
+               target="_blank">
+               WhatsApp Channel
+            </a>
+
+            <a href="https://wa.me/923197275027"
+               target="_blank">
+               +92 319 7275027
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BSN PREP SINDH. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
