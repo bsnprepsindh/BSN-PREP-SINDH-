@@ -4,23 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BSN PREP SINDH | Your BSN Success Starts Here</title>
+<title>BSN PREP SINDH | BSN Entry Test Preparation</title>
 
-<meta name="description" content="BSN PREP SINDH - BSN Entry Test Preparation, Mock Tests, Notes, MCQs and Latest Updates.">
+<meta name="description" content="BSN PREP SINDH - BSN Entry Test Preparation, Notes, Mock Tests, MCQs and Latest Updates.">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
 
 :root{
-    --primary:#0b7a75;
-    --primary2:#12a69d;
-    --dark:#071b2a;
-    --text:#243746;
-    --muted:#71808d;
-    --light:#f5fafb;
+    --primary:#087f78;
+    --primary-dark:#05615c;
+    --accent:#12aaa0;
+    --dark:#071c2b;
+    --text:#263946;
+    --muted:#71818c;
+    --bg:#f5fafb;
     --white:#ffffff;
-    --border:#e6eeee;
-    --shadow:0 15px 45px rgba(7,27,42,.09);
+    --border:#e4eeee;
+    --shadow:0 18px 50px rgba(7,28,43,.09);
 }
 
 *{
@@ -52,12 +53,7 @@ a{
     padding:9px 6%;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    font-size:13px;
-}
-
-.topbar span{
-    opacity:.9;
+    font-size:12px;
 }
 
 /* NAVBAR */
@@ -65,14 +61,14 @@ a{
 .navbar{
     height:78px;
     background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
     padding:0 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     position:sticky;
     top:0;
     z-index:1000;
-    border-bottom:1px solid #edf1f2;
+    border-bottom:1px solid #edf2f2;
 }
 
 .logo{
@@ -82,23 +78,23 @@ a{
 }
 
 .logo-mark{
-    width:44px;
-    height:44px;
-    border-radius:12px;
-    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     color:white;
-    font-size:19px;
     font-weight:800;
-    box-shadow:0 8px 20px rgba(11,122,117,.25);
+    font-size:17px;
+    box-shadow:0 8px 22px rgba(8,127,120,.25);
 }
 
 .logo-text{
     font-family:'Poppins',sans-serif;
-    font-size:18px;
     font-weight:800;
+    font-size:18px;
     color:var(--dark);
 }
 
@@ -109,14 +105,13 @@ a{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:28px;
 }
 
 .nav-links a{
-    color:#42515c;
-    font-size:14px;
+    color:#455661;
+    font-size:13px;
     font-weight:600;
-    transition:.25s;
 }
 
 .nav-links a:hover{
@@ -126,21 +121,19 @@ a{
 .nav-btn{
     background:var(--primary);
     color:#fff!important;
-    padding:12px 20px;
+    padding:12px 19px;
     border-radius:10px;
 }
 
 /* HERO */
 
 .hero{
-    position:relative;
-    min-height:650px;
+    min-height:620px;
     display:flex;
     align-items:center;
-    overflow:hidden;
     background:
-    radial-gradient(circle at 85% 20%,rgba(18,166,157,.18),transparent 30%),
-    radial-gradient(circle at 10% 90%,rgba(18,166,157,.12),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(18,170,160,.17),transparent 30%),
+    radial-gradient(circle at 5% 90%,rgba(8,127,120,.10),transparent 30%),
     #f7fbfc;
 }
 
@@ -162,25 +155,25 @@ a{
     color:var(--primary);
     padding:9px 15px;
     border-radius:30px;
-    font-size:12px;
-    font-weight:700;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.5px;
     margin-bottom:22px;
 }
 
 .badge-dot{
     width:7px;
     height:7px;
-    background:#15b5a8;
+    background:#12aaa0;
     border-radius:50%;
 }
 
 .hero h1{
     font-family:'Poppins',sans-serif;
-    color:var(--dark);
     font-size:clamp(42px,5vw,68px);
     line-height:1.08;
     letter-spacing:-2px;
-    margin-bottom:20px;
+    color:var(--dark);
 }
 
 .hero h1 span{
@@ -189,15 +182,15 @@ a{
 
 .hero-text{
     color:var(--muted);
-    font-size:17px;
+    font-size:16px;
     line-height:1.8;
     max-width:650px;
-    margin-bottom:30px;
+    margin:22px 0 30px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:13px;
+    gap:12px;
     flex-wrap:wrap;
 }
 
@@ -205,23 +198,23 @@ a{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:9px;
-    padding:15px 22px;
+    gap:8px;
+    padding:14px 21px;
     border-radius:11px;
+    font-size:13px;
     font-weight:700;
-    font-size:14px;
     transition:.3s;
 }
 
 .btn-primary{
     background:var(--primary);
     color:#fff;
-    box-shadow:0 12px 25px rgba(11,122,117,.2);
+    box-shadow:0 12px 25px rgba(8,127,120,.20);
 }
 
 .btn-primary:hover{
+    background:var(--primary-dark);
     transform:translateY(-3px);
-    background:#08645f;
 }
 
 .btn-outline{
@@ -231,29 +224,29 @@ a{
 }
 
 .btn-outline:hover{
-    transform:translateY(-3px);
-    border-color:var(--primary);
     color:var(--primary);
+    border-color:var(--primary);
+    transform:translateY(-3px);
 }
 
-/* HERO VISUAL */
+/* HERO CARD */
 
 .hero-visual{
     position:relative;
-    height:450px;
+    height:430px;
 }
 
 .main-card{
     position:absolute;
+    right:35px;
+    top:15px;
     width:330px;
     height:390px;
-    right:35px;
-    top:25px;
     border-radius:28px;
     padding:28px;
-    color:white;
-    background:linear-gradient(145deg,#075d59,#12a69d);
-    box-shadow:0 30px 60px rgba(7,93,89,.25);
+    color:#fff;
+    background:linear-gradient(145deg,#075f5a,#12aaa0);
+    box-shadow:0 30px 60px rgba(7,95,90,.25);
     overflow:hidden;
 }
 
@@ -282,8 +275,8 @@ a{
 
 .main-card p{
     margin-top:15px;
-    opacity:.8;
-    font-size:14px;
+    opacity:.82;
+    font-size:13px;
     line-height:1.7;
 }
 
@@ -296,13 +289,13 @@ a{
     border-top:1px solid rgba(255,255,255,.18);
     display:flex;
     justify-content:space-between;
-    font-size:12px;
+    font-size:11px;
 }
 
 .float-card{
     position:absolute;
-    background:white;
-    padding:17px 20px;
+    background:#fff;
+    padding:16px 19px;
     border-radius:15px;
     box-shadow:var(--shadow);
     display:flex;
@@ -314,34 +307,33 @@ a{
 .float-icon{
     width:40px;
     height:40px;
-    background:#e9f8f6;
-    color:var(--primary);
     border-radius:11px;
+    background:#eaf8f6;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:19px;
+    font-size:18px;
 }
 
 .float-card strong{
     display:block;
-    font-size:14px;
+    font-size:13px;
     color:var(--dark);
 }
 
 .float-card small{
     color:var(--muted);
-    font-size:11px;
+    font-size:10px;
 }
 
 .float-one{
     left:0;
-    top:105px;
+    top:100px;
 }
 
 .float-two{
     right:-10px;
-    bottom:45px;
+    bottom:40px;
 }
 
 /* STATS */
@@ -349,7 +341,7 @@ a{
 .stats{
     width:88%;
     max-width:1150px;
-    margin:-45px auto 0;
+    margin:-40px auto 0;
     position:relative;
     z-index:5;
     background:#fff;
@@ -357,7 +349,7 @@ a{
     box-shadow:var(--shadow);
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    padding:28px;
+    padding:27px;
 }
 
 .stat{
@@ -366,7 +358,7 @@ a{
 }
 
 .stat:last-child{
-    border:none;
+    border-right:none;
 }
 
 .stat h3{
@@ -377,28 +369,28 @@ a{
 
 .stat p{
     color:var(--muted);
-    font-size:12px;
+    font-size:11px;
     margin-top:4px;
 }
 
-/* GENERAL */
+/* SECTION */
 
 .section{
     padding:100px 6%;
 }
 
 .section-header{
-    text-align:center;
     max-width:700px;
-    margin:0 auto 55px;
+    text-align:center;
+    margin:0 auto 50px;
 }
 
 .section-label{
     color:var(--primary);
-    text-transform:uppercase;
-    letter-spacing:2px;
     font-size:11px;
     font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
     margin-bottom:12px;
 }
 
@@ -412,14 +404,14 @@ a{
 
 .section-subtitle{
     color:var(--muted);
+    font-size:14px;
     line-height:1.7;
-    font-size:15px;
 }
 
 /* SUBJECTS */
 
 .subjects{
-    background:#f7fbfc;
+    background:var(--bg);
 }
 
 .subject-grid{
@@ -433,7 +425,7 @@ a{
 .subject{
     background:#fff;
     border:1px solid var(--border);
-    padding:28px 20px;
+    padding:27px 20px;
     border-radius:17px;
     transition:.3s;
 }
@@ -445,15 +437,15 @@ a{
 }
 
 .subject-icon{
-    width:48px;
-    height:48px;
-    border-radius:14px;
+    width:49px;
+    height:49px;
     background:#eaf8f6;
+    border-radius:14px;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:22px;
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
 .subject h3{
@@ -464,8 +456,74 @@ a{
 
 .subject p{
     color:var(--muted);
-    font-size:12px;
+    font-size:11px;
     line-height:1.6;
+}
+
+/* NOTES */
+
+.notes-section{
+    background:#fff;
+}
+
+.notes-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.note-card{
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    background:#fff;
+    transition:.3s;
+}
+
+.note-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+}
+
+.note-icon{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    background:#eaf8f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.note-card h3{
+    color:var(--dark);
+    font-size:19px;
+    margin-bottom:9px;
+}
+
+.note-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.note-btn{
+    display:inline-flex;
+    padding:11px 16px;
+    background:var(--primary);
+    color:#fff;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.note-btn:hover{
+    background:var(--primary-dark);
 }
 
 /* FEATURES */
@@ -482,30 +540,30 @@ a{
     padding:30px;
     border:1px solid var(--border);
     border-radius:18px;
-    background:white;
+    background:#fff;
     transition:.3s;
 }
 
 .feature:hover{
-    box-shadow:var(--shadow);
     transform:translateY(-5px);
+    box-shadow:var(--shadow);
 }
 
 .feature-icon{
     font-size:27px;
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
 .feature h3{
     color:var(--dark);
-    font-size:18px;
-    margin-bottom:10px;
+    font-size:17px;
+    margin-bottom:9px;
 }
 
 .feature p{
     color:var(--muted);
+    font-size:12px;
     line-height:1.7;
-    font-size:13px;
 }
 
 /* CTA */
@@ -514,33 +572,28 @@ a{
     width:88%;
     max-width:1150px;
     margin:20px auto 100px;
+    padding:70px 40px;
     border-radius:28px;
-    padding:70px 50px;
     text-align:center;
-    color:white;
+    color:#fff;
     background:
-    radial-gradient(circle at 90% 20%,rgba(255,255,255,.12),transparent 25%),
-    linear-gradient(135deg,#075d59,#0da49b);
-    box-shadow:0 25px 50px rgba(7,93,89,.18);
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.13),transparent 25%),
+    linear-gradient(135deg,#075f5a,#10a69c);
+    box-shadow:0 25px 50px rgba(7,95,90,.18);
 }
 
 .cta h2{
     font-family:'Poppins',sans-serif;
-    font-size:38px;
+    font-size:37px;
     margin-bottom:13px;
 }
 
 .cta p{
-    opacity:.8;
     max-width:650px;
-    margin:0 auto 28px;
+    margin:0 auto 27px;
+    opacity:.82;
+    font-size:13px;
     line-height:1.7;
-    font-size:14px;
-}
-
-.cta .btn{
-    background:#fff;
-    color:var(--primary);
 }
 
 /* FOOTER */
@@ -566,19 +619,19 @@ footer{
 }
 
 .footer-brand h2 span{
-    color:#16b3a9;
+    color:#14b3a9;
 }
 
 .footer-brand p,
 .footer-column a{
     color:#91a5b0;
-    font-size:13px;
+    font-size:12px;
     line-height:1.8;
 }
 
 .footer-column h3{
-    margin-bottom:15px;
     font-size:14px;
+    margin-bottom:15px;
 }
 
 .footer-column a{
@@ -587,7 +640,7 @@ footer{
 }
 
 .footer-column a:hover{
-    color:white;
+    color:#fff;
 }
 
 .footer-bottom{
@@ -595,15 +648,15 @@ footer{
     padding-top:22px;
     text-align:center;
     color:#718791;
-    font-size:11px;
+    font-size:10px;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:950px){
 
     .nav-links{
-        gap:13px;
+        gap:12px;
     }
 
     .nav-links a:not(.nav-btn){
@@ -625,8 +678,7 @@ footer{
     }
 
     .hero-visual{
-        margin-top:15px;
-        height:400px;
+        margin-top:10px;
     }
 
     .main-card{
@@ -642,25 +694,16 @@ footer{
         right:3%;
     }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-        gap:20px;
-    }
-
-    .stat:nth-child(2){
-        border:none;
-    }
-
     .subject-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .feature-grid{
+    .notes-grid{
         grid-template-columns:1fr;
     }
 
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
+    .feature-grid{
+        grid-template-columns:1fr;
     }
 }
 
@@ -668,7 +711,6 @@ footer{
 
     .topbar{
         justify-content:center;
-        text-align:center;
     }
 
     .topbar span:last-child{
@@ -680,13 +722,13 @@ footer{
         padding:0 5%;
     }
 
-    .logo-text{
-        font-size:15px;
-    }
-
     .logo-mark{
         width:38px;
         height:38px;
+    }
+
+    .logo-text{
+        font-size:15px;
     }
 
     .hero{
@@ -708,19 +750,18 @@ footer{
 
     .hero-visual{
         transform:scale(.82);
-        margin-top:-10px;
         margin-left:-25px;
         margin-right:-25px;
     }
 
     .stats{
         width:90%;
+        grid-template-columns:repeat(2,1fr);
         padding:20px 10px;
-        margin-top:-30px;
     }
 
-    .stat h3{
-        font-size:22px;
+    .stat:nth-child(2){
+        border-right:none;
     }
 
     .section{
@@ -761,24 +802,31 @@ footer{
 <body>
 
 <!-- TOP BAR -->
+
 <div class="topbar">
     <span>🎓 BSN Entry Test Preparation Platform</span>
     <span>📍 Serving Students Across Sindh</span>
 </div>
 
 <!-- NAVBAR -->
+
 <header class="navbar">
 
     <a href="#home" class="logo">
+
         <div class="logo-mark">BP</div>
+
         <div class="logo-text">
             BSN <span>PREP SINDH</span>
         </div>
+
     </a>
 
     <nav class="nav-links">
+
         <a href="#home">Home</a>
         <a href="#subjects">Subjects</a>
+        <a href="#notes">Notes</a>
         <a href="#features">Features</a>
         <a href="#contact">Contact</a>
 
@@ -787,11 +835,13 @@ footer{
            target="_blank">
            Join Channel
         </a>
+
     </nav>
 
 </header>
 
 <!-- HERO -->
+
 <section class="hero" id="home">
 
     <div class="hero-grid">
@@ -816,8 +866,8 @@ footer{
 
             <div class="hero-buttons">
 
-                <a href="#subjects" class="btn btn-primary">
-                    Explore Resources →
+                <a href="#notes" class="btn btn-primary">
+                    Explore Notes →
                 </a>
 
                 <a href="https://wa.me/923197275027"
@@ -830,16 +880,17 @@ footer{
 
         </div>
 
-        <!-- HERO VISUAL -->
-
         <div class="hero-visual">
 
             <div class="float-card float-one">
+
                 <div class="float-icon">📝</div>
+
                 <div>
                     <strong>Mock Tests</strong>
                     <small>Practice & Improve</small>
                 </div>
+
             </div>
 
             <div class="main-card">
@@ -865,11 +916,14 @@ footer{
             </div>
 
             <div class="float-card float-two">
+
                 <div class="float-icon">🎯</div>
+
                 <div>
                     <strong>BSN Preparation</strong>
                     <small>Focused Learning</small>
                 </div>
+
             </div>
 
         </div>
@@ -919,7 +973,7 @@ footer{
         </h2>
 
         <p class="section-subtitle">
-            Focus on the important subjects and build a strong
+            Focus on important subjects and build a strong
             foundation for your BSN entry test.
         </p>
 
@@ -930,7 +984,7 @@ footer{
         <div class="subject">
             <div class="subject-icon">🧬</div>
             <h3>Biology</h3>
-            <p>Concepts, important topics and practice MCQs.</p>
+            <p>Important concepts, topics and practice MCQs.</p>
         </div>
 
         <div class="subject">
@@ -942,7 +996,7 @@ footer{
         <div class="subject">
             <div class="subject-icon">⚡</div>
             <h3>Physics</h3>
-            <p>Key concepts, formulas and entry test practice.</p>
+            <p>Key concepts, formulas and test practice.</p>
         </div>
 
         <div class="subject">
@@ -955,6 +1009,96 @@ footer{
             <div class="subject-icon">📖</div>
             <h3>General Knowledge</h3>
             <p>Useful information and important questions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NOTES -->
+
+<section class="section notes-section" id="notes">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Study Material
+        </div>
+
+        <h2 class="section-title">
+            Download Your Notes
+        </h2>
+
+        <p class="section-subtitle">
+            Access our subject-wise preparation material
+            and start studying today.
+        </p>
+
+    </div>
+
+    <div class="notes-grid">
+
+        <!-- BIOLOGY -->
+
+        <div class="note-card">
+
+            <div class="note-icon">🧬</div>
+
+            <h3>Biology Notes</h3>
+
+            <p>
+                Biology preparation notes for BSN entry test.
+                Download and study important concepts.
+            </p>
+
+            <a class="note-btn"
+               href="BIOLOGY%20SIMS%20SIUT.pdf"
+               target="_blank">
+               📥 Open Biology Notes
+            </a>
+
+        </div>
+
+        <!-- CHEMISTRY -->
+
+        <div class="note-card">
+
+            <div class="note-icon">⚗️</div>
+
+            <h3>Chemistry Notes</h3>
+
+            <p>
+                Chemistry preparation notes with important
+                concepts and entry test material.
+            </p>
+
+            <a class="note-btn"
+               href="CHEMISTRY%20SIMS%20SIUT.pdf"
+               target="_blank">
+               📥 Open Chemistry Notes
+            </a>
+
+        </div>
+
+        <!-- PHYSICS -->
+
+        <div class="note-card">
+
+            <div class="note-icon">⚡</div>
+
+            <h3>Physics Notes</h3>
+
+            <p>
+                Physics preparation notes covering important
+                concepts and entry test preparation.
+            </p>
+
+            <a class="note-btn"
+               href="PHYSICS%20SIMS%20SIUT.pdf"
+               target="_blank">
+               📥 Open Physics Notes
+            </a>
+
         </div>
 
     </div>
@@ -976,8 +1120,8 @@ footer{
         </h2>
 
         <p class="section-subtitle">
-            A simple and organized platform designed to make
-            your preparation easier.
+            A simple and organized platform designed
+            to make your preparation easier.
         </p>
 
     </div>
@@ -985,72 +1129,96 @@ footer{
     <div class="feature-grid">
 
         <div class="feature">
+
             <div class="feature-icon">📚</div>
+
             <h3>Quality Notes</h3>
+
             <p>
                 Organized preparation material to help you
                 understand important concepts quickly.
             </p>
+
         </div>
 
         <div class="feature">
+
             <div class="feature-icon">📝</div>
+
             <h3>Mock Tests</h3>
+
             <p>
-                Test your preparation with practice questions
-                and identify areas that need improvement.
+                Practice questions to test your preparation
+                and identify areas for improvement.
             </p>
+
         </div>
 
         <div class="feature">
+
             <div class="feature-icon">🔔</div>
+
             <h3>Latest Updates</h3>
+
             <p>
                 Stay informed about BSN admissions, tests,
-                schedules and important announcements.
+                schedules and announcements.
             </p>
+
         </div>
 
         <div class="feature">
+
             <div class="feature-icon">🎯</div>
+
             <h3>Focused Preparation</h3>
+
             <p>
                 Study important topics without wasting time
                 searching through unnecessary material.
             </p>
+
         </div>
 
         <div class="feature">
+
             <div class="feature-icon">📱</div>
+
             <h3>Mobile Friendly</h3>
+
             <p>
                 Access your preparation resources easily
                 from your smartphone.
             </p>
+
         </div>
 
         <div class="feature">
+
             <div class="feature-icon">🚀</div>
+
             <h3>Learn & Improve</h3>
+
             <p>
                 Practice consistently and build confidence
                 for your BSN entry test.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- CTA -->
+<!-- WHATSAPP CTA -->
 
 <section class="cta" id="contact">
 
     <h2>Don't Miss Important Updates</h2>
 
     <p>
-        Join the official BSN PREP SINDH WhatsApp Channel
-        and stay connected with the latest preparation material,
+        Join the BSN PREP SINDH WhatsApp Channel and stay
+        connected with the latest preparation material,
         mock tests and BSN updates.
     </p>
 
@@ -1059,13 +1227,13 @@ footer{
         <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
            target="_blank"
            class="btn">
-            📢 Join WhatsApp Channel
+           📢 Join WhatsApp Channel
         </a>
 
         <a href="https://wa.me/923197275027"
            target="_blank"
            class="btn">
-            💬 Contact +92 319 7275027
+           💬 Contact +92 319 7275027
         </a>
 
     </div>
@@ -1097,14 +1265,14 @@ footer{
 
             <a href="#home">Home</a>
             <a href="#subjects">Subjects</a>
+            <a href="#notes">Notes</a>
             <a href="#features">Features</a>
-            <a href="#contact">Contact</a>
 
         </div>
 
         <div class="footer-column">
 
-            <h3>Connect</h3>
+            <h3>Connect With Us</h3>
 
             <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
                target="_blank">
