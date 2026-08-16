@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BSN PREP SINDH | BSN Entry Test Preparation</title>
-
-<meta name="description" content="BSN PREP SINDH - BSN Entry Test Preparation, Notes, Mock Tests, MCQs and Latest Updates.">
+<title>SIUT SIMS Notes | BSN PREP SINDH</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
-
-:root{
-    --primary:#087f78;
-    --primary-dark:#05615c;
-    --accent:#12aaa0;
-    --dark:#071c2b;
-    --text:#263946;
-    --muted:#71818c;
-    --bg:#f5fafb;
-    --white:#ffffff;
-    --border:#e4eeee;
-    --shadow:0 18px 50px rgba(7,28,43,.09);
-}
 
 *{
     margin:0;
@@ -30,701 +16,210 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    font-family:'Inter',sans-serif;
-    color:var(--text);
-    background:#fff;
-    overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5fbfb;
+    color:#17323d;
 }
 
 a{
     text-decoration:none;
 }
 
-/* TOP BAR */
-
-.topbar{
-    background:var(--dark);
-    color:#dce8ed;
-    padding:9px 6%;
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-}
-
-/* NAVBAR */
-
 .navbar{
-    height:78px;
     background:#fff;
-    padding:0 6%;
+    padding:15px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     position:sticky;
     top:0;
     z-index:1000;
-    border-bottom:1px solid #edf2f2;
+    box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
 }
 
-.logo-mark{
-    width:45px;
-    height:45px;
+.logo-box{
+    width:46px;
+    height:46px;
     border-radius:13px;
-    background:linear-gradient(135deg,var(--primary),var(--accent));
+    background:linear-gradient(135deg,#087f78,#14b7aa);
+    color:#fff;
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
-    font-weight:800;
-    font-size:17px;
-    box-shadow:0 8px 22px rgba(8,127,120,.25);
+    font-weight:900;
 }
 
 .logo-text{
-    font-family:'Poppins',sans-serif;
-    font-weight:800;
+    color:#102d38;
     font-size:18px;
-    color:var(--dark);
+    font-weight:800;
 }
 
 .logo-text span{
-    color:var(--primary);
+    color:#087f78;
 }
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:28px;
-}
-
-.nav-links a{
-    color:#455661;
+.home{
+    color:#087f78;
     font-size:13px;
-    font-weight:600;
+    font-weight:800;
 }
-
-.nav-links a:hover{
-    color:var(--primary);
-}
-
-.nav-btn{
-    background:var(--primary);
-    color:#fff!important;
-    padding:12px 19px;
-    border-radius:10px;
-}
-
-/* HERO */
 
 .hero{
-    min-height:620px;
-    display:flex;
-    align-items:center;
+    padding:85px 6% 60px;
+    text-align:center;
     background:
-    radial-gradient(circle at 85% 20%,rgba(18,170,160,.17),transparent 30%),
-    radial-gradient(circle at 5% 90%,rgba(8,127,120,.10),transparent 30%),
-    #f7fbfc;
-}
-
-.hero-grid{
-    width:88%;
-    max-width:1250px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
+    radial-gradient(circle at 50% 0%,rgba(20,183,170,.16),transparent 35%),
+    linear-gradient(135deg,#fbffff,#edf8f8);
 }
 
 .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#e7f7f5;
-    color:var(--primary);
-    padding:9px 15px;
+    display:inline-block;
+    background:#e4f7f5;
+    color:#087f78;
+    padding:9px 16px;
     border-radius:30px;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.5px;
-    margin-bottom:22px;
-}
-
-.badge-dot{
-    width:7px;
-    height:7px;
-    background:#12aaa0;
-    border-radius:50%;
-}
-
-.hero h1{
-    font-family:'Poppins',sans-serif;
-    font-size:clamp(42px,5vw,68px);
-    line-height:1.08;
-    letter-spacing:-2px;
-    color:var(--dark);
-}
-
-.hero h1 span{
-    color:var(--primary);
-}
-
-.hero-text{
-    color:var(--muted);
-    font-size:16px;
-    line-height:1.8;
-    max-width:650px;
-    margin:22px 0 30px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:14px 21px;
-    border-radius:11px;
-    font-size:13px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.btn-primary{
-    background:var(--primary);
-    color:#fff;
-    box-shadow:0 12px 25px rgba(8,127,120,.20);
-}
-
-.btn-primary:hover{
-    background:var(--primary-dark);
-    transform:translateY(-3px);
-}
-
-.btn-outline{
-    background:#fff;
-    color:var(--dark);
-    border:1px solid #dce7e9;
-}
-
-.btn-outline:hover{
-    color:var(--primary);
-    border-color:var(--primary);
-    transform:translateY(-3px);
-}
-
-/* HERO CARD */
-
-.hero-visual{
-    position:relative;
-    height:430px;
-}
-
-.main-card{
-    position:absolute;
-    right:35px;
-    top:15px;
-    width:330px;
-    height:390px;
-    border-radius:28px;
-    padding:28px;
-    color:#fff;
-    background:linear-gradient(145deg,#075f5a,#12aaa0);
-    box-shadow:0 30px 60px rgba(7,95,90,.25);
-    overflow:hidden;
-}
-
-.main-card:before{
-    content:"";
-    position:absolute;
-    width:220px;
-    height:220px;
-    border:35px solid rgba(255,255,255,.07);
-    border-radius:50%;
-    right:-90px;
-    top:-70px;
-}
-
-.main-card small{
-    opacity:.75;
-    font-weight:600;
-}
-
-.main-card h2{
-    font-family:'Poppins',sans-serif;
-    font-size:35px;
-    line-height:1.15;
-    margin-top:45px;
-}
-
-.main-card p{
-    margin-top:15px;
-    opacity:.82;
-    font-size:13px;
-    line-height:1.7;
-}
-
-.card-bottom{
-    position:absolute;
-    bottom:25px;
-    left:28px;
-    right:28px;
-    padding-top:18px;
-    border-top:1px solid rgba(255,255,255,.18);
-    display:flex;
-    justify-content:space-between;
-    font-size:11px;
-}
-
-.float-card{
-    position:absolute;
-    background:#fff;
-    padding:16px 19px;
-    border-radius:15px;
-    box-shadow:var(--shadow);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    z-index:2;
-}
-
-.float-icon{
-    width:40px;
-    height:40px;
-    border-radius:11px;
-    background:#eaf8f6;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
-}
-
-.float-card strong{
-    display:block;
-    font-size:13px;
-    color:var(--dark);
-}
-
-.float-card small{
-    color:var(--muted);
     font-size:10px;
-}
-
-.float-one{
-    left:0;
-    top:100px;
-}
-
-.float-two{
-    right:-10px;
-    bottom:40px;
-}
-
-/* STATS */
-
-.stats{
-    width:88%;
-    max-width:1150px;
-    margin:-40px auto 0;
-    position:relative;
-    z-index:5;
-    background:#fff;
-    border-radius:20px;
-    box-shadow:var(--shadow);
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    padding:27px;
-}
-
-.stat{
-    text-align:center;
-    border-right:1px solid var(--border);
-}
-
-.stat:last-child{
-    border-right:none;
-}
-
-.stat h3{
-    font-family:'Poppins',sans-serif;
-    color:var(--primary);
-    font-size:27px;
-}
-
-.stat p{
-    color:var(--muted);
-    font-size:11px;
-    margin-top:4px;
-}
-
-/* SECTION */
-
-.section{
-    padding:100px 6%;
-}
-
-.section-header{
-    max-width:700px;
-    text-align:center;
-    margin:0 auto 50px;
-}
-
-.section-label{
-    color:var(--primary);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-.section-title{
-    font-family:'Poppins',sans-serif;
-    color:var(--dark);
-    font-size:38px;
-    line-height:1.2;
-    margin-bottom:15px;
-}
-
-.section-subtitle{
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.7;
-}
-
-/* SUBJECTS */
-
-.subjects{
-    background:var(--bg);
-}
-
-.subject-grid{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:18px;
-}
-
-.subject{
-    background:#fff;
-    border:1px solid var(--border);
-    padding:27px 20px;
-    border-radius:17px;
-    transition:.3s;
-}
-
-.subject:hover{
-    transform:translateY(-7px);
-    box-shadow:var(--shadow);
-    border-color:transparent;
-}
-
-.subject-icon{
-    width:49px;
-    height:49px;
-    background:#eaf8f6;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-    margin-bottom:17px;
-}
-
-.subject h3{
-    color:var(--dark);
-    font-size:16px;
-    margin-bottom:7px;
-}
-
-.subject p{
-    color:var(--muted);
-    font-size:11px;
-    line-height:1.6;
-}
-
-/* NOTES */
-
-.notes-section{
-    background:#fff;
-}
-
-.notes-grid{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.note-card{
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:28px;
-    background:#fff;
-    transition:.3s;
-}
-
-.note-card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow);
-}
-
-.note-icon{
-    width:55px;
-    height:55px;
-    border-radius:15px;
-    background:#eaf8f6;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
+    font-weight:900;
+    letter-spacing:1.5px;
     margin-bottom:18px;
 }
 
-.note-card h3{
-    color:var(--dark);
-    font-size:19px;
-    margin-bottom:9px;
-}
-
-.note-card p{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.note-btn{
-    display:inline-flex;
-    padding:11px 16px;
-    background:var(--primary);
-    color:#fff;
-    border-radius:9px;
-    font-size:12px;
-    font-weight:700;
-}
-
-.note-btn:hover{
-    background:var(--primary-dark);
-}
-
-/* FEATURES */
-
-.feature-grid{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.feature{
-    padding:30px;
-    border:1px solid var(--border);
-    border-radius:18px;
-    background:#fff;
-    transition:.3s;
-}
-
-.feature:hover{
-    transform:translateY(-5px);
-    box-shadow:var(--shadow);
-}
-
-.feature-icon{
-    font-size:27px;
-    margin-bottom:17px;
-}
-
-.feature h3{
-    color:var(--dark);
-    font-size:17px;
-    margin-bottom:9px;
-}
-
-.feature p{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.7;
-}
-
-/* CTA */
-
-.cta{
-    width:88%;
-    max-width:1150px;
-    margin:20px auto 100px;
-    padding:70px 40px;
-    border-radius:28px;
-    text-align:center;
-    color:#fff;
-    background:
-    radial-gradient(circle at 90% 20%,rgba(255,255,255,.13),transparent 25%),
-    linear-gradient(135deg,#075f5a,#10a69c);
-    box-shadow:0 25px 50px rgba(7,95,90,.18);
-}
-
-.cta h2{
-    font-family:'Poppins',sans-serif;
-    font-size:37px;
-    margin-bottom:13px;
-}
-
-.cta p{
-    max-width:650px;
-    margin:0 auto 27px;
-    opacity:.82;
-    font-size:13px;
-    line-height:1.7;
-}
-
-/* FOOTER */
-
-footer{
-    background:var(--dark);
-    color:white;
-    padding:60px 6% 25px;
-}
-
-.footer-grid{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:50px;
-    padding-bottom:40px;
-}
-
-.footer-brand h2{
-    font-family:'Poppins',sans-serif;
-    margin-bottom:13px;
-}
-
-.footer-brand h2 span{
-    color:#14b3a9;
-}
-
-.footer-brand p,
-.footer-column a{
-    color:#91a5b0;
-    font-size:12px;
-    line-height:1.8;
-}
-
-.footer-column h3{
-    font-size:14px;
+.hero h1{
+    font-size:clamp(36px,5vw,55px);
+    color:#092631;
     margin-bottom:15px;
 }
 
-.footer-column a{
-    display:block;
-    margin-bottom:7px;
+.hero h1 span{
+    color:#087f78;
 }
 
-.footer-column a:hover{
-    color:#fff;
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#71828a;
+    font-size:14px;
+    line-height:1.8;
 }
 
-.footer-bottom{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding-top:22px;
+.notes{
+    padding:75px 6%;
+}
+
+.grid{
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #dfeded;
+    border-radius:22px;
+    padding:32px 25px;
     text-align:center;
-    color:#718791;
-    font-size:10px;
+    box-shadow:0 10px 35px rgba(7,28,43,.05);
+    transition:.3s;
 }
 
-/* MOBILE */
-
-@media(max-width:950px){
-
-    .nav-links{
-        gap:12px;
-    }
-
-    .nav-links a:not(.nav-btn){
-        display:none;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .hero-text{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .hero-visual{
-        margin-top:10px;
-    }
-
-    .main-card{
-        right:50%;
-        transform:translateX(50%);
-    }
-
-    .float-one{
-        left:5%;
-    }
-
-    .float-two{
-        right:3%;
-    }
-
-    .subject-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .notes-grid{
-        grid-template-columns:1fr;
-    }
-
-    .feature-grid{
-        grid-template-columns:1fr;
-    }
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 50px rgba(7,28,43,.11);
 }
 
-@media(max-width:600px){
+.icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 20px;
+    border-radius:20px;
+    background:#e7f7f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+}
 
-    .topbar{
-        justify-content:center;
+.card h2{
+    color:#102f3a;
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#74858c;
+    font-size:12px;
+    line-height:1.7;
+    min-height:65px;
+    margin-bottom:23px;
+}
+
+.download{
+    width:100%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px;
+    border-radius:10px;
+    background:#087f78;
+    color:#fff;
+    font-size:12px;
+    font-weight:800;
+}
+
+.download:hover{
+    background:#05635e;
+}
+
+.notice{
+    max-width:900px;
+    margin:30px auto 0;
+    background:#fff;
+    border:1px solid #dfeded;
+    border-radius:17px;
+    padding:20px;
+    text-align:center;
+    color:#71828a;
+    font-size:12px;
+    line-height:1.7;
+}
+
+footer{
+    margin-top:40px;
+    background:#071c2b;
+    color:#fff;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer p{
+    color:#91a5b0;
+    font-size:11px;
+    margin-top:8px;
+}
+
+@media(max-width:800px){
+
+    .grid{
+        grid-template-columns:1fr;
+        max-width:500px;
     }
 
-    .topbar span:last-child{
-        display:none;
-    }
+}
+
+@media(max-width:550px){
 
     .navbar{
-        height:68px;
-        padding:0 5%;
-    }
-
-    .logo-mark{
-        width:38px;
-        height:38px;
+        padding:12px 5%;
     }
 
     .logo-text{
@@ -732,89 +227,29 @@ footer{
     }
 
     .hero{
-        min-height:650px;
+        padding:65px 5% 50px;
     }
 
-    .hero-grid{
-        width:90%;
+    .notes{
+        padding:55px 5%;
     }
 
-    .hero h1{
-        font-size:42px;
-        letter-spacing:-1.5px;
-    }
-
-    .hero-text{
-        font-size:14px;
-    }
-
-    .hero-visual{
-        transform:scale(.82);
-        margin-left:-25px;
-        margin-right:-25px;
-    }
-
-    .stats{
-        width:90%;
-        grid-template-columns:repeat(2,1fr);
-        padding:20px 10px;
-    }
-
-    .stat:nth-child(2){
-        border-right:none;
-    }
-
-    .section{
-        padding:75px 5%;
-    }
-
-    .section-title{
-        font-size:29px;
-    }
-
-    .subject-grid{
-        grid-template-columns:1fr 1fr;
-        gap:12px;
-    }
-
-    .subject{
-        padding:20px 14px;
-    }
-
-    .cta{
-        width:90%;
-        padding:50px 22px;
-        margin-bottom:70px;
-    }
-
-    .cta h2{
-        font-size:29px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
 }
+
 </style>
+
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-
-<div class="topbar">
-    <span>🎓 BSN Entry Test Preparation Platform</span>
-    <span>📍 Serving Students Across Sindh</span>
-</div>
-
-<!-- NAVBAR -->
 
 <header class="navbar">
 
-    <a href="#home" class="logo">
+    <a href="index.html" class="logo">
 
-        <div class="logo-mark">BP</div>
+        <div class="logo-box">
+            BP
+        </div>
 
         <div class="logo-text">
             BSN <span>PREP SINDH</span>
@@ -822,475 +257,134 @@ footer{
 
     </a>
 
-    <nav class="nav-links">
-
-        <a href="#home">Home</a>
-        <a href="#subjects">Subjects</a>
-        <a href="#notes">Notes</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-
-        <a class="nav-btn"
-           href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
-           target="_blank">
-           Join Channel
-        </a>
-
-    </nav>
+    <a href="index.html" class="home">
+        ← Home
+    </a>
 
 </header>
 
-<!-- HERO -->
 
-<section class="hero" id="home">
+<section class="hero">
 
-    <div class="hero-grid">
-
-        <div>
-
-            <div class="badge">
-                <span class="badge-dot"></span>
-                SINDH'S BSN PREPARATION PLATFORM
-            </div>
-
-            <h1>
-                Prepare Smart.<br>
-                <span>Achieve More.</span>
-            </h1>
-
-            <p class="hero-text">
-                Everything you need for your BSN entry test preparation
-                in one place — quality notes, MCQs, mock tests,
-                important updates and study resources.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#notes" class="btn btn-primary">
-                    Explore Notes →
-                </a>
-
-                <a href="https://wa.me/923197275027"
-                   target="_blank"
-                   class="btn btn-outline">
-                    💬 WhatsApp Us
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="hero-visual">
-
-            <div class="float-card float-one">
-
-                <div class="float-icon">📝</div>
-
-                <div>
-                    <strong>Mock Tests</strong>
-                    <small>Practice & Improve</small>
-                </div>
-
-            </div>
-
-            <div class="main-card">
-
-                <small>BSN PREP SINDH</small>
-
-                <h2>
-                    Your Journey<br>
-                    Starts Here.
-                </h2>
-
-                <p>
-                    Learn. Practice. Test yourself.
-                    Build confidence for your BSN entry test.
-                </p>
-
-                <div class="card-bottom">
-                    <span>📚 Study</span>
-                    <span>🎯 Prepare</span>
-                    <span>🏆 Succeed</span>
-                </div>
-
-            </div>
-
-            <div class="float-card float-two">
-
-                <div class="float-icon">🎯</div>
-
-                <div>
-                    <strong>BSN Preparation</strong>
-                    <small>Focused Learning</small>
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="badge">
+        BSN PREP SINDH
     </div>
 
-</section>
-
-<!-- STATS -->
-
-<div class="stats">
-
-    <div class="stat">
-        <h3>5+</h3>
-        <p>Core Subjects</p>
-    </div>
-
-    <div class="stat">
-        <h3>1000+</h3>
-        <p>Practice MCQs</p>
-    </div>
-
-    <div class="stat">
-        <h3>24/7</h3>
-        <p>Learning Access</p>
-    </div>
-
-    <div class="stat">
-        <h3>100%</h3>
-        <p>Student Focused</p>
-    </div>
-
-</div>
-
-<!-- SUBJECTS -->
-
-<section class="section subjects" id="subjects">
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Study Areas
-        </div>
-
-        <h2 class="section-title">
-            Master Your BSN Subjects
-        </h2>
-
-        <p class="section-subtitle">
-            Focus on important subjects and build a strong
-            foundation for your BSN entry test.
-        </p>
-
-    </div>
-
-    <div class="subject-grid">
-
-        <div class="subject">
-            <div class="subject-icon">🧬</div>
-            <h3>Biology</h3>
-            <p>Important concepts, topics and practice MCQs.</p>
-        </div>
-
-        <div class="subject">
-            <div class="subject-icon">⚗️</div>
-            <h3>Chemistry</h3>
-            <p>Important concepts, formulas and MCQs.</p>
-        </div>
-
-        <div class="subject">
-            <div class="subject-icon">⚡</div>
-            <h3>Physics</h3>
-            <p>Key concepts, formulas and test practice.</p>
-        </div>
-
-        <div class="subject">
-            <div class="subject-icon">🔤</div>
-            <h3>English</h3>
-            <p>Grammar, vocabulary and important questions.</p>
-        </div>
-
-        <div class="subject">
-            <div class="subject-icon">📖</div>
-            <h3>General Knowledge</h3>
-            <p>Useful information and important questions.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- NOTES -->
-
-<section class="section notes-section" id="notes">
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Study Material
-        </div>
-
-        <h2 class="section-title">
-            Download Your Notes
-        </h2>
-
-        <p class="section-subtitle">
-            Access our subject-wise preparation material
-            and start studying today.
-        </p>
-
-    </div>
-
-    <div class="notes-grid">
-
-        <!-- BIOLOGY -->
-
-        <div class="note-card">
-
-            <div class="note-icon">🧬</div>
-
-            <h3>Biology Notes</h3>
-
-            <p>
-                Biology preparation notes for BSN entry test.
-                Download and study important concepts.
-            </p>
-
-            <a class="note-btn"
-               href="BIOLOGY%20SIMS%20SIUT.pdf"
-               target="_blank">
-               📥 Open Biology Notes
-            </a>
-
-        </div>
-
-        <!-- CHEMISTRY -->
-
-        <div class="note-card">
-
-            <div class="note-icon">⚗️</div>
-
-            <h3>Chemistry Notes</h3>
-
-            <p>
-                Chemistry preparation notes with important
-                concepts and entry test material.
-            </p>
-
-            <a class="note-btn"
-               href="CHEMISTRY%20SIMS%20SIUT.pdf"
-               target="_blank">
-               📥 Open Chemistry Notes
-            </a>
-
-        </div>
-
-        <!-- PHYSICS -->
-
-        <div class="note-card">
-
-            <div class="note-icon">⚡</div>
-
-            <h3>Physics Notes</h3>
-
-            <p>
-                Physics preparation notes covering important
-                concepts and entry test preparation.
-            </p>
-
-            <a class="note-btn"
-               href="PHYSICS%20SIMS%20SIUT.pdf"
-               target="_blank">
-               📥 Open Physics Notes
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FEATURES -->
-
-<section class="section" id="features">
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Why BSN PREP SINDH
-        </div>
-
-        <h2 class="section-title">
-            Everything In One Place
-        </h2>
-
-        <p class="section-subtitle">
-            A simple and organized platform designed
-            to make your preparation easier.
-        </p>
-
-    </div>
-
-    <div class="feature-grid">
-
-        <div class="feature">
-
-            <div class="feature-icon">📚</div>
-
-            <h3>Quality Notes</h3>
-
-            <p>
-                Organized preparation material to help you
-                understand important concepts quickly.
-            </p>
-
-        </div>
-
-        <div class="feature">
-
-            <div class="feature-icon">📝</div>
-
-            <h3>Mock Tests</h3>
-
-            <p>
-                Practice questions to test your preparation
-                and identify areas for improvement.
-            </p>
-
-        </div>
-
-        <div class="feature">
-
-            <div class="feature-icon">🔔</div>
-
-            <h3>Latest Updates</h3>
-
-            <p>
-                Stay informed about BSN admissions, tests,
-                schedules and announcements.
-            </p>
-
-        </div>
-
-        <div class="feature">
-
-            <div class="feature-icon">🎯</div>
-
-            <h3>Focused Preparation</h3>
-
-            <p>
-                Study important topics without wasting time
-                searching through unnecessary material.
-            </p>
-
-        </div>
-
-        <div class="feature">
-
-            <div class="feature-icon">📱</div>
-
-            <h3>Mobile Friendly</h3>
-
-            <p>
-                Access your preparation resources easily
-                from your smartphone.
-            </p>
-
-        </div>
-
-        <div class="feature">
-
-            <div class="feature-icon">🚀</div>
-
-            <h3>Learn & Improve</h3>
-
-            <p>
-                Practice consistently and build confidence
-                for your BSN entry test.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- WHATSAPP CTA -->
-
-<section class="cta" id="contact">
-
-    <h2>Don't Miss Important Updates</h2>
+    <h1>
+        SIUT SIMS <span>NOTES</span>
+    </h1>
 
     <p>
-        Join the BSN PREP SINDH WhatsApp Channel and stay
-        connected with the latest preparation material,
-        mock tests and BSN updates.
+        Select your subject and access the available
+        SIUT SIMS preparation notes.
     </p>
-
-    <div class="hero-buttons">
-
-        <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
-           target="_blank"
-           class="btn">
-           📢 Join WhatsApp Channel
-        </a>
-
-        <a href="https://wa.me/923197275027"
-           target="_blank"
-           class="btn">
-           💬 Contact +92 319 7275027
-        </a>
-
-    </div>
 
 </section>
 
-<!-- FOOTER -->
 
-<footer>
+<section class="notes">
 
-    <div class="footer-grid">
+    <div class="grid">
 
-        <div class="footer-brand">
+
+        <div class="card">
+
+            <div class="icon">
+                🧬
+            </div>
 
             <h2>
-                BSN <span>PREP SINDH</span>
+                Biology Notes
             </h2>
 
             <p>
-                A dedicated preparation platform for students
-                preparing for BSN entry tests across Sindh.
+                SIUT SIMS Biology notes for
+                BSN entry test preparation.
             </p>
 
-        </div>
-
-        <div class="footer-column">
-
-            <h3>Quick Links</h3>
-
-            <a href="#home">Home</a>
-            <a href="#subjects">Subjects</a>
-            <a href="#notes">Notes</a>
-            <a href="#features">Features</a>
-
-        </div>
-
-        <div class="footer-column">
-
-            <h3>Connect With Us</h3>
-
-            <a href="https://whatsapp.com/channel/0029Vb7g5bi1CYoMXD3AI215"
-               target="_blank">
-               WhatsApp Channel
-            </a>
-
-            <a href="https://wa.me/923197275027"
-               target="_blank">
-               +92 319 7275027
+            <a href="BIOLOGY%20SIMS%20SIUT.pdf"
+               target="_blank"
+               class="download">
+                📖 Open Biology Notes
             </a>
 
         </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h2>
+                Physics Notes
+            </h2>
+
+            <p>
+                SIUT SIMS Physics notes for
+                BSN entry test preparation.
+            </p>
+
+            <a href="PHYSICS%20SIMS%20SIUT.pdf"
+               target="_blank"
+               class="download">
+                📖 Open Physics Notes
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                ⚗️
+            </div>
+
+            <h2>
+                Chemistry Notes
+            </h2>
+
+            <p>
+                SIUT SIMS Chemistry notes for
+                BSN entry test preparation.
+            </p>
+
+            <a href="CHEMISTRY%20SIMS%20SIUT.pdf"
+               target="_blank"
+               class="download">
+                📖 Open Chemistry Notes
+            </a>
+
+        </div>
+
 
     </div>
 
-    <div class="footer-bottom">
+
+    <div class="notice">
+
+        📚 More BSN preparation resources will be
+        added to BSN PREP SINDH soon.
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h3>
+        BSN PREP SINDH
+    </h3>
+
+    <p>
+        Helping students prepare smarter for BSN entry tests.
+    </p>
+
+    <p>
         © 2026 BSN PREP SINDH. All Rights Reserved.
-    </div>
+    </p>
 
 </footer>
 
