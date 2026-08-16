@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIUT Mock Test 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #1a202c;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2b6cb0;
+            font-size: 28px;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+        }
+        .subhead {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        .section {
+            background: #f7fafc;
+            border-left: 5px solid #2b6cb0;
+            padding: 15px 20px;
+            margin: 25px 0 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-weight: 700;
+            font-size: 20px;
+            color: #2b6cb0;
+        }
+        .question {
+            background: #ffffff;
+            padding: 14px 18px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+        .question:hover {
+            border-color: #bee3f8;
+            background: #f7fafc;
+        }
+        .q-text {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .q-text sup, .q-text sub {
+            font-size: 0.7em;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            padding-left: 8px;
+        }
+        @media (max-width: 550px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            width: 17px;
+            height: 17px;
+            accent-color: #2b6cb0;
+            flex-shrink: 0;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 20px;
+            font-weight: 700;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 30px 0 20px 0;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: #1a4d7a;
+            transform: scale(1.01);
+        }
+        .result-box {
+            background: #e6fffa;
+            border: 2px solid #38a169;
+            border-radius: 14px;
+            padding: 25px;
+            margin-top: 25px;
+            display: none;
+        }
+        .result-box h2 {
+            color: #276749;
+            text-align: center;
+            font-size: 26px;
+        }
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .score-item {
+            background: white;
+            padding: 12px 8px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #c6f6d5;
+        }
+        .score-item .label {
+            font-size: 13px;
+            color: #4a5568;
+        }
+        .score-item .value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2b6cb0;
+        }
+        .community-link {
+            text-align: center;
+            margin-top: 22px;
+            padding: 18px;
+            background: #ebf8ff;
+            border-radius: 12px;
+            border: 2px dashed #2b6cb0;
+        }
+        .community-link a {
+            color: #2b6cb0;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .community-link a:hover {
+            text-decoration: underline;
+        }
+        .wrong-answer {
+            color: #e53e3e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #718096;
+            font-size: 13px;
+        }
+        .badge {
+            background: #2b6cb0;
+            color: white;
+            border-radius: 30px;
+            padding: 2px 12px;
+            font-size: 13px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="testContainer">
+    <h1>🏥 SIUT MOCK TEST 2026</h1>
+    <div class="subhead">📚 100 Questions · Biology · Physics · Chemistry · Math · English</div>
+
+    <!-- Questions will be injected here by JS -->
+    <div id="questionsWrapper"></div>
+
+    <button class="submit-btn" id="submitBtn">✅ Submit Test & See Results</button>
+
+    <!-- Result Area -->
+    <div class="result-box" id="resultBox">
+        <h2>📊 Your Results</h2>
+        <div id="scoreBreakdown" class="score-grid"></div>
+        <div style="text-align:center;font-size:22px;font-weight:700;color:#2b6cb0;margin:6px 0;">
+            Total: <span id="totalScore">0</span> / 100
+        </div>
+        <div class="community-link">
+            🔗 <strong>Join our Community:</strong><br>
+            <a href="https://chat.whatsapp.com/FG6uQk7LcnADcty8nEPcmM?s=cl&p=a&ilr=1" target="_blank">
+                📱 WhatsApp Group (Click to Join)
+            </a>
+        </div>
+        <div style="margin-top:16px;text-align:center;font-size:14px;color:#4a5568;">
+            <span id="wrongCount"></span>
+        </div>
+    </div>
+    <div class="footer">SIUT Entry Test Preparation · 2026</div>
+</div>
+
+<script>
+    // ─── FULL QUESTION DATA ────────────────────────────────────────────────
+    const sections = [
+        {
+            name: "Biology (20%)",
+            prefix: "B",
+            questions: [
+                { q: "Which organelle is known as the powerhouse of the cell?", opts: ["Nucleus", "Mitochondria", "Ribosome", "Golgi apparatus"], ans: 1 },
+                { q: "The process of replication of DNA occurs in which phase of the cell cycle?", opts: ["G1 phase", "G2 phase", "S phase", "M phase"], ans: 2 },
+                { q: "Which hormone is primarily responsible for regulating blood glucose levels?", opts: ["Thyroxine", "Adrenaline", "Insulin", "Estrogen"], ans: 2 },
+                { q: "The functional unit of the human kidney is called:", opts: ["Neuron", "Nephron", "Alveolus", "Nephridia"], ans: 1 },
+                { q: "Which blood group is considered a universal donor?", opts: ["AB positive", "O negative", "A positive", "B negative"], ans: 1 },
+                { q: "The main site of water absorption in the human digestive system is the:", opts: ["Stomach", "Small Intestine", "Large Intestine", "Esophagus"], ans: 2 },
+                { q: "Which of the following is a nitrogenous waste excreted by humans?", opts: ["Ammonia", "Urea", "Uric Acid", "Amino Acids"], ans: 1 },
+                { q: "Avery, MacLeod, and McCarty proved that the transforming principle is:", opts: ["Protein", "RNA", "DNA", "Carbohydrate"], ans: 2 },
+                { q: "The enzyme salivary amylase breaks down starch into:", opts: ["Glucose", "Maltose", "Amino acids", "Fatty acids"], ans: 1 },
+                { q: "Which cranial nerve is responsible for the sense of smell?", opts: ["Optic nerve", "Olfactory nerve", "Oculomotor nerve", "Vagus nerve"], ans: 1 },
+                { q: "Oxygenated blood enters the heart via the:", opts: ["Superior Vena Cava", "Pulmonary Artery", "Pulmonary Vein", "Inferior Vena Cava"], ans: 2 },
+                { q: "The breakdown of glucose into pyruvate is known as:", opts: ["Krebs Cycle", "Electron Transport Chain", "Glycolysis", "Fermentation"], ans: 2 },
+                { q: "Which of the following is a fat-soluble vitamin?", opts: ["Vitamin B1", "Vitamin C", "Vitamin B12", "Vitamin K"], ans: 3 },
+                { q: "In humans, the sex of the child is determined by:", opts: ["X chromosome of the mother", "Size of the ovum", "Y chromosome of the father", "Age of the parents"], ans: 2 },
+                { q: "The skeletal muscle is covered by a tissue layer called:", opts: ["Perimysium", "Epimysium", "Endomysium", "Sarcolemma"], ans: 1 },
+                { q: "Bile juice is produced by the ______ and stored in the ______.", opts: ["Gallbladder, Liver", "Liver, Gallbladder", "Pancreas, Stomach", "Liver, Pancreas"], ans: 1 },
+                { q: "Which plant tissue is responsible for the transport of water?", opts: ["Phloem", "Xylem", "Parenchyma", "Collenchyma"], ans: 1 },
+                { q: "The master gland of the endocrine system is the:", opts: ["Thyroid gland", "Pituitary gland", "Adrenal gland", "Pancreas"], ans: 1 },
+                { q: "Antibodies are produced by which type of cells?", opts: ["T-lymphocytes", "B-lymphocytes", "Erythrocytes", "Monocytes"], ans: 1 },
+                { q: "Which of the following is a viral disease?", opts: ["Cholera", "Typhoid", "Hepatitis", "Tuberculosis"], ans: 2 }
+            ]
+        },
+        {
+            name: "Physics (20%)",
+            prefix: "P",
+            questions: [
+                { q: "The dimensional formula for gravitational constant (G) is:", opts: ["[M⁻¹L³T⁻²]", "[ML²T⁻²]", "[M¹L³T⁻¹]", "[M⁻¹L²T⁻²]"], ans: 0 },
+                { q: "When the velocity of a body is doubled, its kinetic energy becomes:", opts: ["Doubled", "Half", "Four times", "Remains the same"], ans: 2 },
+                { q: "The rate of change of momentum is equal to:", opts: ["Torque", "Force", "Work", "Impulse"], ans: 1 },
+                { q: "Sound waves in air are an example of:", opts: ["Transverse waves", "Longitudinal waves", "Electromagnetic waves", "Shock waves"], ans: 1 },
+                { q: "The escape velocity from the surface of the Earth is approximately:", opts: ["7.2 km/s", "11.2 km/s", "9.8 km/s", "4.2 km/s"], ans: 1 },
+                { q: "Which of the following materials has the highest electrical conductivity?", opts: ["Copper", "Iron", "Silver", "Aluminum"], ans: 2 },
+                { q: "According to Ohm's Law, the graph between V and I is a:", opts: ["Parabola", "Hyperbola", "Straight line", "Circle"], ans: 2 },
+                { q: "The focal length of a plane mirror is:", opts: ["Zero", "Infinite", "10 cm", "Dependent on light wavelength"], ans: 1 },
+                { q: "The principle behind the working of optical fibers is:", opts: ["Total Internal Reflection", "Refraction", "Interference", "Dispersion"], ans: 0 },
+                { q: "One kilowatt-hour (kWh) is equal to:", opts: ["3.6 × 10⁵ J", "3.6 × 10⁶ J", "1.6 × 10⁻¹⁹ J", "1000 J"], ans: 1 },
+                { q: "SI unit of magnetic flux density is:", opts: ["Weber", "Tesla", "Henry", "Farad"], ans: 1 },
+                { q: "The device used to increase or decrease AC voltage is:", opts: ["Generator", "Motor", "Transformer", "Commutator"], ans: 2 },
+                { q: "According to Einstein's photoelectric equation, the maximum kinetic energy of emitted electrons depends on:", opts: ["Intensity of light", "Frequency of light", "Velocity of light", "Time duration of exposure"], ans: 1 },
+                { q: "The half-life of a radioactive element depends on:", opts: ["Temperature", "Pressure", "Amount of substance", "Nature of the element"], ans: 3 },
+                { q: "The process by which a heavy nucleus splits into two lighter nuclei is called:", opts: ["Nuclear Fusion", "Nuclear Fission", "Alpha Decay", "Beta Decay"], ans: 1 },
+                { q: "Pascal's law is applicable for:", opts: ["Solids only", "Fluids at rest", "Gases only", "Moving fluids only"], ans: 1 },
+                { q: "The internal resistance of an ideal voltmeter is:", opts: ["Zero", "Very low", "Infinite", "100 ohms"], ans: 2 },
+                { q: "The vector product of force and velocity gives:", opts: ["Work", "Power", "Torque", "Energy"], ans: 2 },
+                { q: "X-rays are electromagnetic waves of:", opts: ["High frequency and short wavelength", "Low frequency and long wavelength", "High frequency and long wavelength", "Low frequency and short wavelength"], ans: 0 },
+                { q: "The temperature at which Celsius and Fahrenheit scales read the same value is:", opts: ["40°", "-40°", "0°", "100°"], ans: 1 }
+            ]
+        },
+        {
+            name: "Chemistry (20%)",
+            prefix: "C",
+            questions: [
+                { q: "The number of moles in 44 grams of CO₂ is:", opts: ["0.5", "1", "2", "4"], ans: 1 },
+                { q: "Which of the following quantum numbers describes the orientation of an orbital?", opts: ["Principal quantum number", "Azimuthal quantum number", "Magnetic quantum number", "Spin quantum number"], ans: 2 },
+                { q: "The element with the highest electronegativity in the periodic table is:", opts: ["Oxygen", "Chlorine", "Fluorine", "Nitrogen"], ans: 2 },
+                { q: "Which type of bond is formed by the complete transfer of electrons?", opts: ["Covalent bond", "Ionic bond", "Coordinate covalent bond", "Hydrogen bond"], ans: 1 },
+                { q: "According to Boyle's law, the volume of a gas is inversely proportional to its:", opts: ["Absolute temperature", "Mass", "Pressure", "Density"], ans: 2 },
+                { q: "The pH of a neutral solution at 25°C is:", opts: ["0", "7", "14", "1"], ans: 1 },
+                { q: "A catalyst increases the rate of a chemical reaction by:", opts: ["Increasing activation energy", "Decreasing activation energy", "Increasing enthalpy", "Shifting equilibrium state"], ans: 1 },
+                { q: "The oxidation number of Sulfur in H₂SO₄ is:", opts: ["+4", "+2", "+6", "-2"], ans: 2 },
+                { q: "Which of the following is an example of an endothermic process?", opts: ["Combustion of methane", "Neutralization reaction", "Melting of ice", "Respiration"], ans: 2 },
+                { q: "The general formula for an alkyne is:", opts: ["CₙH₂ₙ₊₂", "CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙH₂ₙ₊₁"], ans: 2 },
+                { q: "Functional group present in alcohols is:", opts: ["–CHO", "–COOH", "–OH", "–CO–"], ans: 2 },
+                { q: "The main constituent of natural gas is:", opts: ["Ethane", "Methane", "Propane", "Butane"], ans: 1 },
+                { q: "Which law states that mass can neither be created nor destroyed in a chemical reaction?", opts: ["Law of Definite Proportions", "Law of Conservation of Mass", "Law of Multiple Proportions", "Avogadro's Law"], ans: 1 },
+                { q: "The hybridisation of carbon in methane (CH₄) is:", opts: ["sp", "sp²", "sp³", "dsp²"], ans: 2 },
+                { q: "Which gas is evolved when a metal reacts with dilute hydrochloric acid?", opts: ["Oxygen", "Hydrogen", "Carbon dioxide", "Nitrogen"], ans: 1 },
+                { q: "The process of losing electrons is called:", opts: ["Reduction", "Oxidation", "Hydrogenation", "Hydrolysis"], ans: 1 },
+                { q: "Which of the following is a strong electrolyte?", opts: ["CH₃COOH", "NaCl", "H₂O", "NH₄OH"], ans: 1 },
+                { q: "The structure of benzene (C₆H₆) was proposed by:", opts: ["Dalton", "Kekulé", "Lewis", "Mendeleev"], ans: 1 },
+                { q: "Temporary hardness of water is due to the presence of:", opts: ["Calcium and magnesium sulfates", "Calcium and magnesium bicarbonates", "Calcium and magnesium chlorides", "Sodium carbonate"], ans: 1 },
+                { q: "The main buffer system present in human blood is:", opts: ["H₂CO₃ / HCO₃⁻", "HCl / Cl⁻", "CH₃COOH / CH₃COO⁻", "NH₄OH / NH₄⁺"], ans: 0 }
+            ]
+        },
+        {
+            name: "Mathematics (20%)",
+            prefix: "M",
+            questions: [
+                { q: "If A and B are disjoint sets, then A ∩ B =", opts: ["A", "B", "∅ (Null set)", "U (Universal set)"], ans: 2 },
+                { q: "The roots of the quadratic equation x² – 5x + 6 = 0 are:", opts: ["1, 5", "2, 3", "-2, -3", "0, 6"], ans: 1 },
+                { q: "The common ratio of the geometric progression 2, 6, 18, 54, ... is:", opts: ["2", "3", "4", "6"], ans: 1 },
+                { q: "The value of log₁₀(1000) is:", opts: ["1", "2", "3", "4"], ans: 2 },
+                { q: "The determinant of the matrix [[3,4],[2,5]] is:", opts: ["7", "23", "15", "7"], ans: 0 },
+                { q: "If sin(θ) = 3/5, then cos(θ) in the first quadrant is:", opts: ["4/5", "5/4", "3/4", "1/5"], ans: 0 },
+                { q: "The value of tan(45°) is:", opts: ["0", "1/√2", "1", "√3"], ans: 2 },
+                { q: "The derivative of f(x) = 3x² + 5x – 2 with respect to x is:", opts: ["6x + 5", "3x + 5", "6x² + 5", "6x – 2"], ans: 0 },
+                { q: "The integral ∫(2x + 3) dx is equal to:", opts: ["x² + 3x + C", "2x² + 3x + C", "x² + C", "2x + C"], ans: 0 },
+                { q: "The distance between the points (1, 2) and (4, 6) is:", opts: ["3", "4", "5", "7"], ans: 2 },
+                { q: "The arithmetic mean of numbers 10, 20, 30, 40, 50 is:", opts: ["25", "30", "35", "40"], ans: 1 },
+                { q: "How many ways can 3 letters be arranged taken all at a time?", opts: ["3", "6", "9", "1"], ans: 1 },
+                { q: "The slope of the line y = 4x – 7 is:", opts: ["-7", "4", "7/4", "1"], ans: 1 },
+                { q: "The sum of the angles of a triangle is:", opts: ["90°", "180°", "270°", "360°"], ans: 1 },
+                { q: "If f(x) = x² – 4, then f(–3) is:", opts: ["5", "-13", "1", "-5"], ans: 0 },
+                { q: "The formula for the volume of a sphere of radius r is:", opts: ["πr²", "2πr", "4/3 πr³", "1/3 πr²h"], ans: 2 },
+                { q: "The mid-point of the line segment joining (2,8) and (6,4) is:", opts: ["(4,6)", "(8,12)", "(2,2)", "(4,4)"], ans: 0 },
+                { q: "What is the probability of rolling a 4 on a standard six-sided die?", opts: ["1/2", "1/4", "1/6", "2/3"], ans: 2 },
+                { q: "If 2ˣ = 32, then the value of x is:", opts: ["4", "5", "6", "3"], ans: 1 },
+                { q: "The value of i² (where i is an imaginary number) is:", opts: ["1", "-1", "0", "√-1"], ans: 1 }
+            ]
+        },
+        {
+            name: "English (20%)",
+            prefix: "E",
+            questions: [
+                { q: "Choose the synonym of the word 'ABANDON':", opts: ["Keep", "Desert", "Adopt", "Cherish"], ans: 1 },
+                { q: "Choose the antonym of the word 'GIANT':", opts: ["Huge", "Tiny", "Large", "Strong"], ans: 1 },
+                { q: "Identify the correct spelling:", opts: ["Accommodation", "Acomodation", "Accomodation", "Acommodation"], ans: 0 },
+                { q: "She has been working here _______ 2018.", opts: ["For", "Since", "From", "In"], ans: 1 },
+                { q: "Neither the teacher nor the students _______ present today.", opts: ["Is", "Was", "Were", "Am"], ans: 2 },
+                { q: "Identify the part of speech of the underlined word: 'He walks slowly.'", opts: ["Noun", "Adjective", "Verb", "Adverb"], ans: 3 },
+                { q: "Choose the correct passive voice: 'The cat chased the mouse.'", opts: ["The mouse was chased by the cat.", "The mouse is chased by the cat.", "The cat was chased by the mouse.", "The mouse has been chased by the cat."], ans: 0 },
+                { q: "An honest man is always trusted. (Identify the adjective):", opts: ["Honest", "Man", "Always", "Trusted"], ans: 0 },
+                { q: "Choose the correct sentence:", opts: ["He don't know the answer.", "He doesn't knows the answer.", "He doesn't know the answer.", "He not know the answer."], ans: 2 },
+                { q: "'To kick the bucket' means:", opts: ["To clean a room", "To die", "To play football", "To get angry"], ans: 1 },
+                { q: "The doctor advised him to give _______ smoking.", opts: ["In", "Off", "Up", "Away"], ans: 2 },
+                { q: "He is _______ honorable man.", opts: ["A", "An", "The", "No article"], ans: 1 },
+                { q: "Select the correctly punctuated sentence:", opts: ["Wow that is a beautiful dress.", "Wow! That is a beautiful dress.", "Wow, that, is a beautiful dress.", "Wow! that is a beautiful dress."], ans: 1 },
+                { q: "A person who writes books is called an:", opts: ["Architect", "Author", "Actor", "Artisan"], ans: 1 },
+                { q: "The plural of 'Criterion' is:", opts: ["Criterions", "Criteria", "Criterias", "Criterium"], ans: 1 },
+                { q: "If it rains, we _______ the match.", opts: ["Cancel", "Will cancel", "Cancelled", "Would cancel"], ans: 1 },
+                { q: "He is proficient _______ English.", opts: ["In", "At", "With", "On"], ans: 0 },
+                { q: "Identify the abstract noun in the sentence: 'Honesty is the best policy.'", opts: ["Honesty", "Is", "Best", "Policy"], ans: 0 },
+                { q: "The phrase 'status quo' means:", opts: ["The existing state of affairs", "A legal notice", "A sudden change", "Out of control"], ans: 0 },
+                { q: "Which sentence uses the correct order of adjectives?", opts: ["A leather brown old jacket.", "An old brown leather jacket.", "A brown old leather jacket.", "A leather old brown jacket."], ans: 1 }
+            ]
+        }
+    ];
+
+    // ─── BUILD QUESTIONS ──────────────────────────────────────────────────
+    let html = '';
+    let qIndex = 0;
+    sections.forEach(sec => {
+        html += `<div class="section">🧪 ${sec.name}</div>`;
+        sec.questions.forEach((q, idx) => {
+            const qNum = qIndex + 1;
+            html += `<div class="question" data-section="${sec.prefix}" data-q="${qIndex}">`;
+            html += `<div class="q-text">${qNum}. ${q.q}</div>`;
+            html += `<div class="options">`;
+            const letters = ['A', 'B', 'C', 'D'];
+            q.opts.forEach((opt, oi) => {
+                html += `<label>
+                    <input type="radio" name="q${qIndex}" value="${oi}">
+                    ${letters[oi]}) ${opt}
+                </label>`;
+            });
+            html += `</div></div>`;
+            qIndex++;
+        });
+    });
+    document.getElementById('questionsWrapper').innerHTML = html;
+
+    // ─── SUBMIT LOGIC ─────────────────────────────────────────────────────
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        const totalQ = 100;
+        let correct = 0;
+        const wrongList = [];
+        let qIdx = 0;
+
+        sections.forEach(sec => {
+            sec.questions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q${qIdx}"]:checked`);
+                const userAns = selected ? parseInt(selected.value) : -1;
+                if (userAns === q.ans) {
+                    correct++;
+                } else {
+                    wrongList.push(qIdx + 1);
+                }
+                qIdx++;
+            });
+        });
+
+        const total = correct;
+        const wrong = totalQ - total;
+
+        // Show result box
+        const resultBox = document.getElementById('resultBox');
+        resultBox.style.display = 'block';
+
+        // Section-wise breakdown
+        let secScores = [];
+        let start = 0;
+        sections.forEach(sec => {
+            let secCorrect = 0;
+            for (let i = 0; i < sec.questions.length; i++) {
+                const idx = start + i;
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                const userAns = selected ? parseInt(selected.value) : -1;
+                if (userAns === sec.questions[i].ans) secCorrect++;
+            }
+            secScores.push({ name: sec.name, correct: secCorrect, total: sec.questions.length });
+            start += sec.questions.length;
+        });
+
+        let scoreHtml = '';
+        secScores.forEach(s => {
+            scoreHtml += `<div class="score-item">
+                <div class="label">${s.name}</div>
+                <div class="value">${s.correct}/${s.total}</div>
+            </div>`;
+        });
+        document.getElementById('scoreBreakdown').innerHTML = scoreHtml;
+        document.getElementById('totalScore').textContent = total;
+        document.getElementById('wrongCount').textContent = `❌ Incorrect: ${wrong} out of ${totalQ}`;
+
+        // Scroll to results
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Disable submit button to prevent re-submit
+        this.disabled = true;
+        this.style.opacity = '0.6';
+        this.textContent = '✅ Test Submitted';
+    });
+</script>
+</body>
+</html>
