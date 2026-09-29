@@ -9,7 +9,20 @@
 :root{--bg:#080b14;--panel:#101522;--panel2:#141a29;--line:#252d40;--text:#f5f7ff;--muted:#8993aa;--purple:#8b5cf6;--violet:#a855f7;--blue:#3b82f6;--pink:#ec4899;--green:#22c55e;--yellow:#facc15}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:#090d17;border-right:1px solid var(--line);padding:18px 14px;overflow:auto}.brand{display:flex;align-items:center;gap:11px;padding:7px 8px 22px}.logo{width:42px;height:42px;border:2px solid #a855f7;border-radius:11px;display:grid;place-items:center;color:#c084fc;font-weight:900;font-size:16px;box-shadow:0 0 18px #7c3aed55}.brand b{font-size:15px}.brand small{display:block;color:var(--muted);margin-top:3px;font-size:10px}.ai{color:#c084fc;background:#7c3aed22;padding:2px 5px;border-radius:5px;font-size:10px;margin-left:3px}.section{margin:13px 5px 7px;color:#626d84;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.1px}.nav button{width:100%;border:0;background:transparent;color:#b8c0d1;text-align:left;padding:11px 12px;border-radius:9px;margin:2px 0}.nav button:hover,.nav button.active{background:#211943;color:#fff}.nav button.active{box-shadow:inset 3px 0 #a855f7}.nav i{font-style:normal;width:27px;display:inline-block}.subject{width:100%;display:flex;align-items:center;gap:9px;padding:9px 11px;color:#aeb7c9;font-size:13px;background:transparent;border:0;border-radius:8px;text-align:left}.subject:hover{background:#151c2c;color:#fff}.subject.tab-btn.active{background:#211943;color:#fff;box-shadow:inset 3px 0 #a855f7}.subject span{width:10px;height:10px;border-radius:3px;flex:none}.bio{background:#22c55e}.chem{background:#ec4899}.phy{background:#facc15}.eng{background:#3b82f6}.profile{position:absolute;left:14px;right:14px;bottom:14px;border-top:1px solid var(--line);padding-top:13px;color:#aeb7c9;font-size:12px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:#090d17;border-right:1px solid var(--line);padding:18px 14px;overflow:auto}.brand{display:flex;align-items:center;gap:11px;padding:7px 8px 22px}.logo{width:42px;height:42px;border:2px solid #a855f7;border-radius:11px;display:grid;place-items:center;color:#c084fc;font-weight:900;font-size:16px;box-shadow:0 0 18px #7c3aed55}.brand b{font-size:15px}.brand small{display:block;color:var(--muted);margin-top:3px;font-size:10px}.ai{color:#c084fc;background:#7c3aed22;padding:2px 5px;border-radius:5px;font-size:10px;margin-left:3px}.section{margin:13px 5px 7px;color:#626d84;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.1px}.nav button{width:100%;border:0;background:transparent;color:#b8c0d1;text-align:left;padding:11px 12px;border-radius:9px;margin:2px 0}.nav button:hover,.nav button.active{background:#211943;color:#fff}.nav button.active{box-shadow:inset 3px 0 #a855f7}.nav i{font-style:normal;width:27px;display:inline-block}.subject{width:100%;display:flex;align-items:center;gap:9px;padding:9px 11px;color:#aeb7c9;font-size:13px;background:transparent;border:0;border-radius:8px;text-align:left}.subject:hover{background:#151c2c;color:#fff}.subject.tab-btn.active{background:#211943;color:#fff;box-shadow:inset 3px 0 #a855f7}.subject span{width:10px;height:10px;border-radius:3px;flex:none}.bio{background:#22c55e}.chem{background:#ec4899}.phy{background:#facc15}.eng{background:#3b82f6}.tab-btn{cursor:pointer!important;transition:.18s ease}
+.tab-btn:active{transform:translateY(1px)}
+.mobile-menu{display:none}
+.lang-menu{position:relative}
+.lang-panel{display:none;position:absolute;right:0;top:44px;background:#101522;border:1px solid #303a52;border-radius:10px;padding:6px;min-width:145px;z-index:30;box-shadow:0 15px 40px #0008}
+.lang-panel.show{display:block}
+.lang-panel button{width:100%;text-align:left;border:0;background:transparent;color:#d8deeb;padding:9px;border-radius:7px}
+.lang-panel button:hover{background:#211943}
+body.light{--bg:#f4f6fb;--panel:#fff;--panel2:#f7f8fc;--line:#dfe4ee;--text:#182033;--muted:#657087}
+body.light .sidebar,body.light .top{background:#fff}
+body.light .card,body.light .ai-card{background:#fff}
+body.light .ai-msg,.light #aiMessages>div{background:#f4f6fb!important;color:#33405a!important}
+body.light .top button,body.light .ghost{background:#fff!important;color:#263147!important}
+.profile{position:absolute;left:14px;right:14px;bottom:14px;border-top:1px solid var(--line);padding-top:13px;color:#aeb7c9;font-size:12px}
 .main{grid-column:2;min-width:0}.top{height:66px;border-bottom:1px solid var(--line);background:#0b0f1a;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}.crumb{color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.top button{border:1px solid var(--line);background:#111727;color:#dbe1ef;border-radius:8px;padding:8px 11px}.content{max-width:1320px;margin:auto;padding:22px}
 .hero{border:1px solid #34275a;background:radial-gradient(circle at 75% 20%,#5422a633,transparent 35%),linear-gradient(135deg,#12172a,#0d1220 55%,#151026);border-radius:16px;padding:34px 36px;display:flex;justify-content:space-between;gap:25px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #a855f722;border-radius:50%;right:-100px;top:-150px}.eyebrow{color:#a78bfa;font-size:11px;font-weight:900;letter-spacing:1.6px}.hero h1{font-size:clamp(30px,4vw,51px);line-height:1.02;margin:12px 0;letter-spacing:-1.8px}.hero h1 span{background:linear-gradient(90deg,#a78bfa,#ec4899);-webkit-background-clip:text;color:transparent}.hero p{max-width:680px;color:#9ba6bb;line-height:1.7;margin:0 0 20px}.hero-actions{display:flex;gap:9px;flex-wrap:wrap}.primary{border:0!important;background:linear-gradient(90deg,#7c3aed,#a855f7)!important;color:white!important;font-weight:800;padding:11px 17px!important;border-radius:9px!important;box-shadow:0 8px 25px #7c3aed33}.ghost{border:1px solid #39435a!important;background:#121827!important}.ai-card{min-width:280px;max-width:330px;background:#0c1120dd;border:1px solid #2d3650;border-radius:12px;padding:17px;align-self:stretch}.ai-head{display:flex;justify-content:space-between;font-weight:800}.online{color:#4ade80;font-size:11px}.ai-msg{margin:16px 0;background:#151d31;border:1px solid #29344d;border-radius:11px;padding:13px;color:#bdc6d8;font-size:12px;line-height:1.55}.ai-actions{display:flex;gap:6px;flex-wrap:wrap}.ai-actions button{border:1px solid #303b55;background:#101727;color:#c9d2e4;border-radius:7px;padding:7px 9px;font-size:11px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}.card:hover{border-color:#3c4760}.subcard{height:145px;position:relative;overflow:hidden}.subcard:after{content:"";position:absolute;right:-35px;bottom:-45px;width:145px;height:145px;border-radius:50%;opacity:.14}.subcard.bio:after{background:#22c55e}.subcard.chem:after{background:#ec4899}.subcard.phy:after{background:#facc15}.subcard.eng:after{background:#3b82f6}.subicon{font-size:25px}.card h3{margin:9px 0 5px;font-size:17px}.card p{margin:0;color:#7f8ba3;font-size:11px;line-height:1.5}.explore{position:absolute;bottom:13px;color:#a78bfa;font-size:11px;font-weight:800}.lower{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:14px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.title h2{font-size:15px;margin:0}.title span{color:#7e899f;font-size:11px}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.tool{background:#0d1220;border:1px solid #20293b;border-radius:10px;padding:13px}.tool .ico{font-size:21px}.tool b{display:block;font-size:12px;margin:8px 0 4px}.tool span{font-size:10px;color:#7f8aa0;line-height:1.4}.progress{height:5px;background:#20283a;border-radius:10px;margin-top:10px;overflow:hidden}.progress i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#7c3aed,#ec4899)}.activity{display:grid;gap:9px}.row{display:flex;align-items:center;gap:10px;background:#0d1220;border:1px solid #20293b;padding:10px;border-radius:9px}.row .r-icon{width:31px;height:31px;border-radius:8px;display:grid;place-items:center;background:#1b2335}.row b{font-size:11px}.row span{display:block;color:#748097;font-size:10px;margin-top:2px}.row time{margin-left:auto;color:#626e83;font-size:9px}.footer{border-top:1px solid var(--line);margin-top:30px;padding:18px 0;color:#68748b;font-size:10px;display:flex;justify-content:space-between}
 @media(max-width:950px){.app{display:block}.sidebar{position:relative;width:100%;height:auto;display:none}.main{grid-column:auto}.grid4{grid-template-columns:repeat(2,1fr)}.lower{grid-template-columns:1fr}.hero{flex-direction:column}.ai-card{max-width:none}}
@@ -39,7 +52,16 @@ button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;d
 </aside>
 
 <main class="main">
-<header class="top"><div class="crumb">BSN PREP SINDH AI / <b style="color:#dce2ee">Dashboard</b></div><div class="top-actions"><button>☼</button><button>EN ▾</button><button>●</button></div></header>
+<header class="top"><div class="crumb">BSN PREP SINDH AI / <b style="color:#dce2ee">Dashboard</b></div><div class="top-actions">
+<button id="themeBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">☼</button>
+<div class="lang-menu">
+<button id="langBtn" title="Change language">EN ▾</button>
+<div class="lang-panel" id="langPanel">
+<button data-lang="en">English</button>
+<button data-lang="ur">اردو</button>
+<button data-lang="roman">Roman Urdu</button>
+</div></div>
+<button title="AI status" aria-label="AI status">●</button></div></header>
 <div class="content">
 <section class="hero">
   <div>
@@ -89,44 +111,118 @@ button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;d
 </div></div>
 <script>
 const API="/api/chat";
-let history=JSON.parse(localStorage.getItem("bsn_ai_history")||"[]"),busy=false;
+let history=JSON.parse(localStorage.getItem("bsn_ai_history")||"[]");
+let busy=false;
+let currentLang=localStorage.getItem("bsn_lang")||"en";
 const tabPrompts={
-biology:"I am studying Biology for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",
-chemistry:"I am studying Chemistry for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",
-physics:"I am studying Physics for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",
-english:"I am studying English for the BSN entry test. Give me important grammar/vocabulary practice with 5 MCQs."
+  biology:{en:"I am studying Biology for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Biology پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Biology parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
+  chemistry:{en:"I am studying Chemistry for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Chemistry پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Chemistry parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
+  physics:{en:"I am studying Physics for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Physics پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Physics parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
+  english:{en:"I am studying English for the BSN entry test. Give me important grammar and vocabulary practice with 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے English پڑھ رہا ہوں۔ اہم grammar اور vocabulary practice کے ساتھ 5 MCQs دیں۔",roman:"Main BSN entry test ke liye English parh raha hoon. Important grammar aur vocabulary practice ke sath 5 MCQs dein."}
 };
+
+const ui={
+en:{dashboard:"Dashboard",workspace:"Workspace",subjects:"Subjects",home:"Home",assistant:"AI Study Assistant",mock:"Mock Tests",mcqs:"MCQs",notes:"Notes",resources:"Study Resources",system:"System",settings:"Settings",help:"Help & Support",eyebrow:"BSN ENTRY TEST PREPARATION",hero:"Your AI Study Partner",success:"for BSN Success.",start:"Start Learning →",mockBtn:"▶ Start Mock Test",online:"● Online",tools:"Study Tools",recent:"Recent Activity",today:"Today",lang:"EN ▾",ai:"AI Study Assistant",placeholder:"Ask Biology, Chemistry, Physics, English..."},
+ur:{dashboard:"ڈیش بورڈ",workspace:"ورک اسپیس",subjects:"مضامین",home:"ہوم",assistant:"AI اسٹڈی اسسٹنٹ",mock:"موک ٹیسٹس",mcqs:"MCQs",notes:"نوٹس",resources:"اسٹڈی ریسورسز",system:"سسٹم",settings:"سیٹنگز",help:"مدد",eyebrow:"BSN انٹری ٹیسٹ کی تیاری",hero:"آپ کا AI اسٹڈی پارٹنر",success:"BSN کامیابی کے لیے",start:"پڑھنا شروع کریں →",mockBtn:"▶ موک ٹیسٹ شروع کریں",online:"● آن لائن",tools:"اسٹڈی ٹولز",recent:"حالیہ سرگرمی",today:"آج",lang:"اردو ▾",ai:"AI اسٹڈی اسسٹنٹ",placeholder:"Biology، Chemistry، Physics یا English کے بارے میں پوچھیں..."},
+roman:{dashboard:"Dashboard",workspace:"Workspace",subjects:"Subjects",home:"Home",assistant:"AI Study Assistant",mock:"Mock Tests",mcqs:"MCQs",notes:"Notes",resources:"Study Resources",system:"System",settings:"Settings",help:"Help & Support",eyebrow:"BSN ENTRY TEST KI TAYYARI",hero:"Aap ka AI Study Partner",success:"BSN Success ke liye",start:"Parhna Shuru Karein →",mockBtn:"▶ Mock Test Shuru Karein",online:"● Online",tools:"Study Tools",recent:"Recent Activity",today:"Aaj",lang:"Roman ▾",ai:"AI Study Assistant",placeholder:"Biology, Chemistry, Physics ya English ke bare mein poochein..."}
+};
+
 function openAI(prompt=""){
- document.getElementById("aiModal").style.display="flex";
- if(!document.getElementById("aiMessages").children.length)addAI("assistant","Assalamu Alaikum! 👋 I’m your BSN PREP SINDH AI tutor. Ask me anything.");
- if(prompt){document.getElementById("aiInput").value=prompt;sendAI();}
+  const modal=document.getElementById("aiModal");
+  modal.style.display="flex";
+  if(!document.getElementById("aiMessages").children.length) addAI("assistant",currentLang==="ur"?"السلام علیکم! 👋 میں آپ کا AI اسٹڈی اسسٹنٹ ہوں۔":"Assalamu Alaikum! 👋 I’m your BSN PREP SINDH AI tutor.");
+  if(prompt){document.getElementById("aiInput").value=prompt;sendAI();}
 }
 function closeAI(){document.getElementById("aiModal").style.display="none";}
 function addAI(role,text){
- const box=document.createElement("div");
- box.style.cssText="margin:8px 0;padding:11px 13px;border-radius:10px;line-height:1.55;font-size:13px;max-width:88%;white-space:pre-wrap;background:"+(role==="user"?"#6d35c9":"#151d31")+";margin-left:"+(role==="user"?"auto":"0");
- box.textContent=text;document.getElementById("aiMessages").appendChild(box);document.getElementById("aiMessages").scrollTop=999999;
+  const box=document.createElement("div");
+  box.style.cssText="margin:8px 0;padding:11px 13px;border-radius:10px;line-height:1.55;font-size:13px;max-width:88%;white-space:pre-wrap;background:"+(role==="user"?"#6d35c9":"#151d31")+";margin-left:"+(role==="user"?"auto":"0");
+  box.textContent=text;document.getElementById("aiMessages").appendChild(box);
+  document.getElementById("aiMessages").scrollTop=999999;
 }
 async function sendAI(){
- const input=document.getElementById("aiInput"),text=input.value.trim();if(!text||busy)return;
- input.value="";addAI("user",text);busy=true;addAI("assistant","Thinking…");
- try{
-  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,conversation:[...history,{role:"user",content:text}].slice(-20)})});
-  const d=await r.json().catch(()=>({}));document.getElementById("aiMessages").lastElementChild.remove();
-  if(!r.ok||!d.reply)throw new Error();
-  addAI("assistant",d.reply);history.push({role:"user",content:text},{role:"assistant",content:d.reply});history=history.slice(-40);localStorage.setItem("bsn_ai_history",JSON.stringify(history));
- }catch(e){document.getElementById("aiMessages").lastElementChild.remove();addAI("assistant","AI service is temporarily unavailable. Please try again.");}
- finally{busy=false;}
+  const input=document.getElementById("aiInput"),text=input.value.trim();
+  if(!text||busy)return;
+  input.value="";addAI("user",text);busy=true;addAI("assistant",currentLang==="ur"?"سوچ رہا ہوں…":"Thinking…");
+  try{
+    const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message:text,conversation:[...history,{role:"user",content:text}].slice(-20)})});
+    const d=await r.json().catch(()=>({}));
+    document.getElementById("aiMessages").lastElementChild?.remove();
+    if(!r.ok||!d.reply)throw new Error();
+    addAI("assistant",d.reply);
+    history.push({role:"user",content:text},{role:"assistant",content:d.reply});
+    history=history.slice(-40);localStorage.setItem("bsn_ai_history",JSON.stringify(history));
+  }catch(e){
+    document.getElementById("aiMessages").lastElementChild?.remove();
+    addAI("assistant",currentLang==="ur"?"AI سروس عارضی طور پر دستیاب نہیں۔ دوبارہ کوشش کریں۔":"AI service is temporarily unavailable. Please try again.");
+  }finally{busy=false;}
 }
-document.getElementById("aiInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendAI();});
 function ask(q){openAI(q);}
 function startMock(){openAI("Create a 10-question BSN entry-test mock test covering Biology, Chemistry, Physics and English. Use 4 options per question, give the correct answer and a short explanation.");}
-document.querySelectorAll(".tab-btn").forEach(btn=>btn.addEventListener("click",()=>{
- document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");openAI(tabPrompts[btn.dataset.tab]);
-}));
-document.querySelectorAll(".nav button").forEach(btn=>btn.addEventListener("click",()=>{
- document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
-}));
+
+document.getElementById("aiInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendAI();});
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    openAI(tabPrompts[btn.dataset.tab][currentLang]);
+  });
+});
+document.querySelectorAll(".nav button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const label=btn.textContent.trim();
+    if(label.includes("AI")||label.includes("Study Assistant"))openAI();
+    else if(label.includes("Mock"))startMock();
+    else if(label.includes("MCQ"))ask(currentLang==="ur"?"20 اہم BSN MCQs دیں۔":"Give me 20 important BSN entry-test MCQs.");
+    else if(label.includes("Notes"))ask(currentLang==="ur"?"BSN انٹری ٹیسٹ کے لیے اہم topic کے exam-focused notes دیں۔":"Give me exam-focused notes for an important BSN topic.");
+  });
+});
+
+const themeBtn=document.getElementById("themeBtn");
+let light=localStorage.getItem("bsn_theme")==="light";
+function applyTheme(){
+  document.body.classList.toggle("light",light);
+  themeBtn.textContent=light?"☾":"☼";
+  themeBtn.title=light?"Switch to dark mode":"Switch to light mode";
+}
+themeBtn.addEventListener("click",()=>{light=!light;localStorage.setItem("bsn_theme",light?"light":"dark");applyTheme();});
+applyTheme();
+
+const langBtn=document.getElementById("langBtn"),langPanel=document.getElementById("langPanel");
+langBtn.addEventListener("click",()=>langPanel.classList.toggle("show"));
+document.addEventListener("click",e=>{if(!e.target.closest(".lang-menu"))langPanel.classList.remove("show");});
+
+function setText(selector,key){
+  const el=document.querySelector(selector);if(el&&ui[currentLang][key])el.textContent=ui[currentLang][key];
+}
+function applyLanguage(){
+  langBtn.textContent=ui[currentLang].lang;
+  document.querySelector(".crumb b").textContent=ui[currentLang].dashboard;
+  document.querySelectorAll(".section")[0].textContent=ui[currentLang].workspace;
+  document.querySelectorAll(".section")[1].textContent=ui[currentLang].subjects;
+  document.querySelectorAll(".section")[2].textContent=ui[currentLang].system;
+  const nav=document.querySelectorAll(".nav");
+  const n1=nav[0].querySelectorAll("button"),n2=nav[1].querySelectorAll("button");
+  [ui[currentLang].home,ui[currentLang].assistant,ui[currentLang].mock,ui[currentLang].mcqs,ui[currentLang].notes,ui[currentLang].resources].forEach((t,i)=>{if(n1[i])n1[i].childNodes[n1[i].childNodes.length-1].textContent=" "+t;});
+  [ui[currentLang].settings,ui[currentLang].help].forEach((t,i)=>{if(n2[i])n2[i].childNodes[n2[i].childNodes.length-1].textContent=" "+t;});
+  document.querySelector(".eyebrow").textContent=ui[currentLang].eyebrow;
+  const h=document.querySelector(".hero h1");h.childNodes[0].textContent=ui[currentLang].hero+" ";
+  h.querySelector("span").textContent=ui[currentLang].success;
+  document.querySelector(".hero-actions .primary").textContent=ui[currentLang].start;
+  document.querySelector(".hero-actions .ghost").textContent=ui[currentLang].mockBtn;
+  document.querySelector(".ai-head b").textContent="✦ "+ui[currentLang].ai;
+  document.querySelector(".online").textContent=ui[currentLang].online;
+  document.getElementById("aiInput").placeholder=ui[currentLang].placeholder;
+  document.querySelectorAll(".title h2")[0].textContent=ui[currentLang].tools;
+  document.querySelectorAll(".title h2")[1].textContent=ui[currentLang].recent;
+  document.querySelectorAll(".title span")[1].textContent=ui[currentLang].today;
+  localStorage.setItem("bsn_lang",currentLang);
+}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{currentLang=b.dataset.lang;applyLanguage();langPanel.classList.remove("show");}));
+applyLanguage();
 </script>
 </body>
 </html>
