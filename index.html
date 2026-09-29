@@ -660,9 +660,9 @@
       const themeIcon = document.getElementById('themeIcon');
 
       // ---------- Config ----------
-      const BASE_URL = 'https://bsn-prep-sindh-production.up.railway.app';
-      const API = BASE_URL + '/api/chat';
-      const HEALTH = BASE_URL + '/api/health';
+      // Netlify Functions: same-origin API (no Railway dependency)
+      const API = '/api/chat';
+      const HEALTH = '/api/chat';
       const REQUEST_TIMEOUT_MS = 60000;
 
       let conversation = [];
