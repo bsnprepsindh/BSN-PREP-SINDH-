@@ -5,12 +5,15 @@ export const config = {
 
 export default async (req) => {
   try {
-    const apiKey = process.env.OPENAI_API_KEY;
-    const model = process.env.OPENAI_MODEL || "gpt-5.6-luna";
+    const apiKey = process.env.GEMINI_API_KEY;
+    const model = process.env.GEMINI_MODEL || "gemini-3.6-flash";
 
     if (!apiKey) {
       return Response.json(
-        { reply: "AI service is not configured yet.", mockTest: null },
+        {
+          reply: "AI service is not configured yet.",
+          mockTest: null
+        },
         { status: 503 }
       );
     }
@@ -20,64 +23,102 @@ export default async (req) => {
 
     if (!message) {
       return Response.json(
-        { reply: "Please enter a question.", mockTest: null },
+        {
+          reply: "Please enter a question.",
+          mockTest: null
+        },
         { status: 400 }
       );
     }
 
     const languageInstruction = String(
       body?.languageInstruction || ""
-    );
+    ).trim();
 
     const conversation = Array.isArray(body?.conversation)
       ? body.conversation
           .slice(-20)
-          .map((x) => `${x.role || "user"}: ${x.content || ""}`)
-          .join("\n")
-      : "";
+          .map((x) => ({
+            role: x.role === "assistant" ? "model" : "user",
+            parts: [
+              {
+                text: String(x.content || "")
+              }
+            ]
+          }))
+      : [];
 
-    const prompt = `You are BSN PREP SINDH AI, an educational assistant for nursing-entry-test students in Sindh, Pakistan.
+    const systemInstruction = `You are BSN PREP SINDH AI, an educational assistant for nursing-entry-test students in Sindh, Pakistan.
 
-Give accurate, exam-focused explanations. Be clear and concise unless the student asks for detail. Never claim you checked a source you did not check. If uncertain, say so.
+Give accurate, exam-focused explanations.
+Be clear and helpful.
+Use simple language unless the student asks for detail.
+Never pretend you checked a source when you did not.
+If you are uncertain, clearly say so.
 
-${languageInstruction}
+Language instruction:
+${languageInstruction || "Automatically reply in the same language/style as the student's question."}`;
 
-Previous conversation:
-${conversation || "(none)"}
+    const contents = [
+      ...conversation,
+      {
+        role: "user",
+        parts: [
+          {
+            text: message
+          }
+        ]
+      }
+    ];
 
-Student question:
-${message}`;
-
-    const response = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        input: prompt,
-        max_output_tokens: 1200
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey
+        },
+        body: JSON.stringify({
+          system_instruction: {
+            parts: [
+              {
+                text: systemInstruction
+              }
+            ]
+          },
+          contents,
+          generationConfig: {
+            temperature: 0.4,
+            maxOutputTokens: 1200
+          }
+        })
+      }
+    );
 
     const data = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      console.error("OpenAI API error:", response.status, data);
+      console.error("Gemini API error:", response.status, data);
 
       return Response.json(
         {
-          reply: "AI service is temporarily unavailable. Please try again.",
+          reply:
+            "AI service is temporarily unavailable. Please try again.",
           mockTest: null
         },
         { status: 502 }
       );
     }
 
-    const reply = String(data?.output_text || "").trim();
+    const reply = data?.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text || "")
+      .join("")
+      .trim();
 
     if (!reply) {
+      console.error("Gemini returned no text:", data);
+
       return Response.json(
         {
           reply: "AI service returned no answer. Please try again.",
@@ -96,7 +137,8 @@ ${message}`;
 
     return Response.json(
       {
-        reply: "AI service is temporarily unavailable. Please try again.",
+        reply:
+          "AI service is temporarily unavailable. Please try again.",
         mockTest: null
       },
       { status: 500 }
