@@ -1,228 +1,666 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080b14">
-<title>BSN PREP SINDH AI</title>
-<style>
-:root{--bg:#080b14;--panel:#101522;--panel2:#141a29;--line:#252d40;--text:#f5f7ff;--muted:#8993aa;--purple:#8b5cf6;--violet:#a855f7;--blue:#3b82f6;--pink:#ec4899;--green:#22c55e;--yellow:#facc15}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:#090d17;border-right:1px solid var(--line);padding:18px 14px;overflow:auto}.brand{display:flex;align-items:center;gap:11px;padding:7px 8px 22px}.logo{width:42px;height:42px;border:2px solid #a855f7;border-radius:11px;display:grid;place-items:center;color:#c084fc;font-weight:900;font-size:16px;box-shadow:0 0 18px #7c3aed55}.brand b{font-size:15px}.brand small{display:block;color:var(--muted);margin-top:3px;font-size:10px}.ai{color:#c084fc;background:#7c3aed22;padding:2px 5px;border-radius:5px;font-size:10px;margin-left:3px}.section{margin:13px 5px 7px;color:#626d84;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.1px}.nav button{width:100%;border:0;background:transparent;color:#b8c0d1;text-align:left;padding:11px 12px;border-radius:9px;margin:2px 0}.nav button:hover,.nav button.active{background:#211943;color:#fff}.nav button.active{box-shadow:inset 3px 0 #a855f7}.nav i{font-style:normal;width:27px;display:inline-block}.subject{width:100%;display:flex;align-items:center;gap:9px;padding:9px 11px;color:#aeb7c9;font-size:13px;background:transparent;border:0;border-radius:8px;text-align:left}.subject:hover{background:#151c2c;color:#fff}.subject.tab-btn.active{background:#211943;color:#fff;box-shadow:inset 3px 0 #a855f7}.subject span{width:10px;height:10px;border-radius:3px;flex:none}.bio{background:#22c55e}.chem{background:#ec4899}.phy{background:#facc15}.eng{background:#3b82f6}.tab-btn{cursor:pointer!important;transition:.18s ease}
-.tab-btn:active{transform:translateY(1px)}
-.mobile-menu{display:none}
-.lang-menu{position:relative}
-.lang-panel{display:none;position:absolute;right:0;top:44px;background:#101522;border:1px solid #303a52;border-radius:10px;padding:6px;min-width:145px;z-index:30;box-shadow:0 15px 40px #0008}
-.lang-panel.show{display:block}
-.lang-panel button{width:100%;text-align:left;border:0;background:transparent;color:#d8deeb;padding:9px;border-radius:7px}
-.lang-panel button:hover{background:#211943}
-body.light{--bg:#f4f6fb;--panel:#fff;--panel2:#f7f8fc;--line:#dfe4ee;--text:#182033;--muted:#657087}
-body.light .sidebar,body.light .top{background:#fff}
-body.light .card,body.light .ai-card{background:#fff}
-body.light .ai-msg,.light #aiMessages>div{background:#f4f6fb!important;color:#33405a!important}
-body.light .top button,body.light .ghost{background:#fff!important;color:#263147!important}
-.profile{position:absolute;left:14px;right:14px;bottom:14px;border-top:1px solid var(--line);padding-top:13px;color:#aeb7c9;font-size:12px}
-.main{grid-column:2;min-width:0}.top{height:66px;border-bottom:1px solid var(--line);background:#0b0f1a;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}.crumb{color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.top button{border:1px solid var(--line);background:#111727;color:#dbe1ef;border-radius:8px;padding:8px 11px}.content{max-width:1320px;margin:auto;padding:22px}
-.hero{border:1px solid #34275a;background:radial-gradient(circle at 75% 20%,#5422a633,transparent 35%),linear-gradient(135deg,#12172a,#0d1220 55%,#151026);border-radius:16px;padding:34px 36px;display:flex;justify-content:space-between;gap:25px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #a855f722;border-radius:50%;right:-100px;top:-150px}.eyebrow{color:#a78bfa;font-size:11px;font-weight:900;letter-spacing:1.6px}.hero h1{font-size:clamp(30px,4vw,51px);line-height:1.02;margin:12px 0;letter-spacing:-1.8px}.hero h1 span{background:linear-gradient(90deg,#a78bfa,#ec4899);-webkit-background-clip:text;color:transparent}.hero p{max-width:680px;color:#9ba6bb;line-height:1.7;margin:0 0 20px}.hero-actions{display:flex;gap:9px;flex-wrap:wrap}.primary{border:0!important;background:linear-gradient(90deg,#7c3aed,#a855f7)!important;color:white!important;font-weight:800;padding:11px 17px!important;border-radius:9px!important;box-shadow:0 8px 25px #7c3aed33}.ghost{border:1px solid #39435a!important;background:#121827!important}.ai-card{min-width:280px;max-width:330px;background:#0c1120dd;border:1px solid #2d3650;border-radius:12px;padding:17px;align-self:stretch}.ai-head{display:flex;justify-content:space-between;font-weight:800}.online{color:#4ade80;font-size:11px}.ai-msg{margin:16px 0;background:#151d31;border:1px solid #29344d;border-radius:11px;padding:13px;color:#bdc6d8;font-size:12px;line-height:1.55}.ai-actions{display:flex;gap:6px;flex-wrap:wrap}.ai-actions button{border:1px solid #303b55;background:#101727;color:#c9d2e4;border-radius:7px;padding:7px 9px;font-size:11px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}.card:hover{border-color:#3c4760}.subcard{height:145px;position:relative;overflow:hidden}.subcard:after{content:"";position:absolute;right:-35px;bottom:-45px;width:145px;height:145px;border-radius:50%;opacity:.14}.subcard.bio:after{background:#22c55e}.subcard.chem:after{background:#ec4899}.subcard.phy:after{background:#facc15}.subcard.eng:after{background:#3b82f6}.subicon{font-size:25px}.card h3{margin:9px 0 5px;font-size:17px}.card p{margin:0;color:#7f8ba3;font-size:11px;line-height:1.5}.explore{position:absolute;bottom:13px;color:#a78bfa;font-size:11px;font-weight:800}.lower{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:14px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.title h2{font-size:15px;margin:0}.title span{color:#7e899f;font-size:11px}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.tool{background:#0d1220;border:1px solid #20293b;border-radius:10px;padding:13px}.tool .ico{font-size:21px}.tool b{display:block;font-size:12px;margin:8px 0 4px}.tool span{font-size:10px;color:#7f8aa0;line-height:1.4}.progress{height:5px;background:#20283a;border-radius:10px;margin-top:10px;overflow:hidden}.progress i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#7c3aed,#ec4899)}.activity{display:grid;gap:9px}.row{display:flex;align-items:center;gap:10px;background:#0d1220;border:1px solid #20293b;padding:10px;border-radius:9px}.row .r-icon{width:31px;height:31px;border-radius:8px;display:grid;place-items:center;background:#1b2335}.row b{font-size:11px}.row span{display:block;color:#748097;font-size:10px;margin-top:2px}.row time{margin-left:auto;color:#626e83;font-size:9px}.footer{border-top:1px solid var(--line);margin-top:30px;padding:18px 0;color:#68748b;font-size:10px;display:flex;justify-content:space-between}
-@media(max-width:950px){.app{display:block}.sidebar{position:relative;width:100%;height:auto;display:none}.main{grid-column:auto}.grid4{grid-template-columns:repeat(2,1fr)}.lower{grid-template-columns:1fr}.hero{flex-direction:column}.ai-card{max-width:none}}
-@media(max-width:560px){.content{padding:12px}.top{padding:0 12px}.grid4{grid-template-columns:1fr 1fr}.tools{grid-template-columns:1fr}.hero{padding:24px 20px}.hero h1{font-size:33px}.hero p{font-size:12px}.footer{display:block;line-height:1.8}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>BSN PREP SINDH · AI</title>
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---------- THEME TOKENS (DARK default) ---------- */
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-raised: #1a1a24;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-soft: rgba(255, 255, 255, 0.1);
+      --text-primary: #f2f2f7;
+      --text-secondary: #9a9aa8;
+      --text-tertiary: #5e5e6e;
+      --accent-glow: rgba(120, 140, 255, 0.25);
+      --accent: #6b7aff;
+      --accent-soft: #3d4270;
+      --user-bubble: #1e1e2e;
+      --ai-bubble: #16161f;
+      --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ---------- LIGHT THEME ---------- */
+    [data-theme="light"] {
+      --bg: #f7f7fc;
+      --surface: #ffffff;
+      --surface-raised: #f0f0f6;
+      --border: rgba(0, 0, 0, 0.06);
+      --border-soft: rgba(0, 0, 0, 0.08);
+      --text-primary: #111118;
+      --text-secondary: #5a5a6e;
+      --text-tertiary: #8e8e9e;
+      --accent-glow: rgba(100, 115, 255, 0.15);
+      --accent: #5b6aff;
+      --accent-soft: #d6d9ff;
+      --user-bubble: #e8eaff;
+      --ai-bubble: #ffffff;
+      --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+      transition: background 0.4s ease, color 0.3s ease;
+      overflow: hidden;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    /* ---------- APP CONTAINER ---------- */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    /* ---------- BRAND & THEME TOGGLE ---------- */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0 8px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .brand:hover {
+      opacity: 1;
+    }
+
+    .theme-toggle {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      font-size: 1.2rem;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface);
+      border-color: var(--border-soft);
+      color: var(--text-primary);
+    }
+
+    /* ---------- AVATAR SECTION (centerpiece) ---------- */
+    .avatar-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1 0 auto;
+      min-height: 0;
+      padding: 8px 0 0;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Soft glowing effect */
+    .avatar-glow {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, var(--accent-glow), transparent 70%);
+      filter: blur(20px);
+      animation: pulseGlow 4s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.6; transform: scale(0.96); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+
+    .avatar-ring {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(255, 255, 255, 0.02);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* AI profile — elegant, modern, abstract */
+    .avatar-core {
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2a2a3a, #15151f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="light"] .avatar-core {
+      background: linear-gradient(145deg, #ffffff, #e8e8f0);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Minimal geometric neural pattern */
+    .avatar-core::before {
+      content: '';
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      border: 1.5px solid rgba(107, 122, 255, 0.5);
+      animation: rotateSlow 12s linear infinite;
+    }
+
+    .avatar-core::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(107, 122, 255, 0.3);
+      animation: rotateSlow 8s linear infinite reverse;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Inner dot / eye */
+    .avatar-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px var(--accent), 0 0 32px rgba(107, 122, 255, 0.4);
+      animation: pulseDot 2.5s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* Brand name under avatar */
+    .brand-name {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0.95;
+    }
+
+    /* ---------- CHAT AREA ---------- */
+    .chat-area {
+      flex: 0 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 8px 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-soft) transparent;
+    }
+
+    .chat-area.visible {
+      opacity: 1;
+    }
+
+    .chat-area::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chat-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-area::-webkit-scrollbar-thumb {
+      background: var(--accent-soft);
+      border-radius: 10px;
+    }
+
+    /* Message bubbles */
+    .message {
+      max-width: 85%;
+      padding: 14px 20px;
+      border-radius: var(--radius-lg);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      word-break: break-word;
+      animation: fadeSlide 0.3s ease forwards;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    @keyframes fadeSlide {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: var(--user-bubble);
+      border-bottom-right-radius: var(--radius-sm);
+      color: var(--text-primary);
+      border-color: transparent;
+    }
+
+    .message.ai {
+      align-self: flex-start;
+      background: var(--ai-bubble);
+      border-bottom-left-radius: var(--radius-sm);
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+
+    .message.ai .ai-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    /* ---------- INPUT BAR (bottom) ---------- */
+    .input-bar {
+      flex-shrink: 0;
+      padding: 8px 0 24px;
+      width: 100%;
+      background: transparent;
+      transition: padding 0.3s;
+      z-index: 10;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 4px 4px 4px 20px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .input-container:focus-within {
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow);
+    }
+
+    .chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 14px 8px 14px 0;
+      font-size: 1rem;
+      color: var(--text-primary);
+      min-width: 0;
+      letter-spacing: -0.01em;
+      font-weight: 400;
+    }
+
+    .chat-input::placeholder {
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    .send-btn {
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      transition: var(--transition);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(107, 122, 255, 0.3);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .send-btn:hover {
+      background: #7b88ff;
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(107, 122, 255, 0.5);
+    }
+
+    .send-btn:active {
+      transform: scale(0.96);
+    }
+
+    .send-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform 0.2s;
+    }
+
+    .send-btn:hover svg {
+      transform: translateX(2px);
+    }
+
+    /* ---------- RESPONSIVE / MOBILE FIRST ---------- */
+    @media (min-width: 480px) {
+      .app { padding: 0 24px; }
+      .avatar-wrapper { width: 140px; height: 140px; }
+      .brand-name { font-size: 1.7rem; }
+      .message { max-width: 75%; }
+    }
+
+    @media (min-width: 768px) {
+      .app { padding: 0 32px; }
+      .avatar-wrapper { width: 160px; height: 160px; }
+      .brand-name { font-size: 2rem; }
+      .message { max-width: 65%; }
+      .input-bar { padding: 12px 0 32px; }
+    }
+
+    /* When chat is active (avatar shrinks) */
+    .app.chat-active .avatar-section {
+      flex: 0 0 auto;
+      padding: 4px 0 0;
+    }
+
+    .app.chat-active .avatar-wrapper {
+      width: 64px;
+      height: 64px;
+    }
+
+    .app.chat-active .brand-name {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .app.chat-active .avatar-glow {
+      inset: -6px;
+      filter: blur(12px);
+    }
+
+    /* Smooth transition for avatar size */
+    .avatar-wrapper,
+    .brand-name,
+    .avatar-section {
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Hide scroll on avatar when chatting */
+    .app.chat-active .chat-area {
+      flex: 1 1 auto;
+    }
+
+    /* Utility */
+    .hidden {
+      display: none !important;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
-<div class="app">
-<aside class="sidebar">
-  <div class="brand"><div class="logo">BP</div><div><b>BSN PREP SINDH <span class="ai">AI</span></b><small>Study • Practice • Pass</small></div></div>
-  <div class="section">Workspace</div>
-  <div class="nav">
-    <button class="active">🏠 <i></i>Home</button>
-    <button onclick="openAI()">💬 <i></i>AI Study Assistant</button>
-    <button onclick="startMock()">📝 <i></i>Mock Tests</button>
-    <button onclick="ask('Give me 20 important BSN entry test MCQs.')">☑️ <i></i>MCQs</button>
-    <button onclick="ask('Give me complete exam-focused notes on an important BSN topic.')">📄 <i></i>Notes</button>
-    <button>📚 <i></i>Study Resources</button>
+  <div class="app" id="app">
+    <!-- TOP BAR: brand + theme -->
+    <div class="top-bar">
+      <div class="brand">BSN PREP SINDH</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+
+    <!-- AVATAR SECTION (centerpiece) -->
+    <div class="avatar-section" id="avatarSection">
+      <div class="avatar-wrapper">
+        <div class="avatar-glow"></div>
+        <div class="avatar-ring">
+          <div class="avatar-core">
+            <div class="avatar-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-name">BSN PREP SINDH</div>
+    </div>
+
+    <!-- CHAT AREA -->
+    <div class="chat-area" id="chatArea">
+      <!-- Messages injected here -->
+    </div>
+
+    <!-- INPUT BAR -->
+    <div class="input-bar">
+      <div class="input-container">
+        <input
+          type="text"
+          class="chat-input"
+          id="chatInput"
+          placeholder="Ask anything…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Message input"
+        />
+        <button class="send-btn" id="sendBtn" aria-label="Send message">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="section">Subjects</div>
-  <button class="subject tab-btn" data-tab="biology"><span class="bio"></span>Biology</button>
-<button class="subject tab-btn" data-tab="chemistry"><span class="chem"></span>Chemistry</button>
-<button class="subject tab-btn" data-tab="physics"><span class="phy"></span>Physics</button>
-<button class="subject tab-btn" data-tab="english"><span class="eng"></span>English</button>
-  <div class="section">System</div><div class="nav"><button>⚙️ <i></i>Settings</button><button>❓ <i></i>Help & Support</button></div>
-  <div class="profile">🎓 BSN Student Workspace<br><span style="color:#58647a">AI-powered preparation</span></div>
-</aside>
 
-<main class="main">
-<header class="top"><div class="crumb">BSN PREP SINDH AI / <b style="color:#dce2ee">Dashboard</b></div><div class="top-actions">
-<button id="themeBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">☼</button>
-<div class="lang-menu">
-<button id="langBtn" title="Change language">EN ▾</button>
-<div class="lang-panel" id="langPanel">
-<button data-lang="en">English</button>
-<button data-lang="ur">اردو</button>
-<button data-lang="roman">Roman Urdu</button>
-</div></div>
-<button title="AI status" aria-label="AI status">●</button></div></header>
-<div class="content">
-<section class="hero">
-  <div>
-    <div class="eyebrow">BSN ENTRY TEST PREPARATION</div>
-    <h1>Your AI Study Partner<br>for <span>BSN Success.</span></h1>
-    <p>Get instant help with Biology, Chemistry, Physics and English. Ask questions, create notes, practice MCQs and take mock tests with a real AI tutor.</p>
-    <div class="hero-actions"><button class="primary" onclick="openAI()">Start Learning →</button><button class="ghost" onclick="startMock()">▶ Start Mock Test</button></div>
-  </div>
-  <div class="ai-card">
-    <div class="ai-head"><span>✦ AI Study Assistant</span><span class="online">● Online</span></div>
-    <div class="ai-msg"><b style="color:#fff">Assalamu Alaikum! 👋</b><br>I’m your BSN PREP SINDH AI tutor. Ask me about Biology, Chemistry, Physics, English, notes, MCQs or mock tests.</div>
-    <div class="ai-actions"><button onclick="ask('Explain a topic in simple English.')">Explain a topic</button><button onclick="ask('Give me 10 important MCQs.')">Give MCQs</button><button onclick="ask('Summarize important BSN revision points.')">Summarize notes</button><button onclick="startMock()">Start mock test</button></div>
-  </div>
-</section>
+  <script>
+    (function() {
+      // ---------- DOM refs ----------
+      const app = document.getElementById('app');
+      const avatarSection = document.getElementById('avatarSection');
+      const chatArea = document.getElementById('chatArea');
+      const chatInput = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('sendBtn');
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
 
-<section class="grid4">
-<div class="card subcard bio"><div class="subicon">🧬</div><h3>Biology</h3><p>Cells, Genetics, Anatomy, Physiology & more</p><div class="explore">Explore →</div></div>
-<div class="card subcard chem"><div class="subicon">⚗️</div><h3>Chemistry</h3><p>Organic, Inorganic, Physical & more</p><div class="explore">Explore →</div></div>
-<div class="card subcard phy"><div class="subicon">⚡</div><h3>Physics</h3><p>Mechanics, Electricity, Modern Physics & more</p><div class="explore">Explore →</div></div>
-<div class="card subcard eng"><div class="subicon">📘</div><h3>English</h3><p>Grammar, Vocabulary, Comprehension & more</p><div class="explore">Explore →</div></div>
-</section>
+      // ---------- State ----------
+      let isChatActive = false;
+      let messages = []; // { role: 'user' | 'ai', text: string }
 
-<section class="lower">
-<div class="card"><div class="title"><h2>Study Tools</h2><span>AI powered</span></div><div class="tools">
-<div class="tool" onclick="ask('Create concise exam-focused Biology notes for an important BSN topic.')"><div class="ico">📄</div><b>AI Notes</b><span>Concise exam-focused notes</span><div class="progress"><i></i></div></div>
-<div class="tool" onclick="startMock()"><div class="ico">📝</div><b>Mock Tests</b><span>Timer, score & detailed review</span></div>
-<div class="tool" onclick="ask('Give me 20 high-yield mixed BSN entry test MCQs with answers.')"><div class="ico">🎯</div><b>MCQs Practice</b><span>Instant practice & feedback</span></div>
-<div class="tool" onclick="ask('Give me a quick revision sheet for BSN entry test Biology.')"><div class="ico">⚡</div><b>Quick Revision</b><span>High-yield points before test</span></div>
-<div class="tool" onclick="ask('Explain a difficult BSN entry test question step by step.')"><div class="ico">🧠</div><b>Question Solver</b><span>Step-by-step explanations</span></div>
-<div class="tool" onclick="ask('Give me 10 English grammar questions for BSN entry test.')"><div class="ico">🌐</div><b>Language Practice</b><span>English, Urdu & Roman Urdu</span></div>
-</div></div>
-<div class="card"><div class="title"><h2>Recent Activity</h2><span>Today</span></div><div class="activity">
-<div class="row"><div class="r-icon">🧬</div><div><b>Biology Revision</b><span>Enzymes & cell biology</span></div><time>Now</time></div>
-<div class="row"><div class="r-icon">📝</div><div><b>Mock Test</b><span>BSN Mixed Practice</span></div><time>—</time></div>
-<div class="row"><div class="r-icon">🎯</div><div><b>MCQ Practice</b><span>Entry test questions</span></div><time>—</time></div>
-<div class="row"><div class="r-icon">📚</div><div><b>Study Resources</b><span>STB preparation</span></div><time>—</time></div>
-</div></div>
-</section>
-<div class="footer"><span>© 2026 BSN PREP SINDH AI • Study Smart • Prepare Better • Achieve Your Dream</span><span>AI-powered • Secure & private</span></div>
-</div></main></div>
+      // ---------- Theme handling ----------
+      const getPreferredTheme = () => {
+        const stored = localStorage.getItem('bsn-theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
 
-<div id="aiModal" style="display:none;position:fixed;inset:0;background:#0009;z-index:100;align-items:center;justify-content:center;padding:16px">
-<div style="width:min(720px,100%);max-height:90vh;background:#101522;border:1px solid #303a52;border-radius:16px;box-shadow:0 30px 90px #0008;display:flex;flex-direction:column;overflow:hidden">
-<div style="padding:14px 16px;border-bottom:1px solid #252d40;display:flex;justify-content:space-between;align-items:center"><b>✦ AI Study Assistant</b><button onclick="closeAI()" style="background:#151c2c;color:#fff;border:1px solid #303a52;border-radius:8px;padding:7px 11px">✕</button></div>
-<div id="aiMessages" style="padding:16px;overflow:auto;min-height:260px;max-height:55vh"></div>
-<div style="padding:12px;border-top:1px solid #252d40;display:flex;gap:8px"><input id="aiInput" placeholder="Ask Biology, Chemistry, Physics, English..." style="flex:1;background:#0b101b;color:#fff;border:1px solid #303a52;border-radius:9px;padding:12px;outline:none"><button onclick="sendAI()" class="primary">Send</button></div>
-</div></div>
-<script>
-const API="/api/chat";
-let history=JSON.parse(localStorage.getItem("bsn_ai_history")||"[]");
-let busy=false;
-let currentLang=localStorage.getItem("bsn_lang")||"en";
-const tabPrompts={
-  biology:{en:"I am studying Biology for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Biology پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Biology parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
-  chemistry:{en:"I am studying Chemistry for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Chemistry پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Chemistry parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
-  physics:{en:"I am studying Physics for the BSN entry test. Give me an important topic with concise notes, key points and 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے Physics پڑھ رہا ہوں۔ ایک اہم topic کے آسان notes، key points اور 5 MCQs دیں۔",roman:"Main BSN entry test ke liye Physics parh raha hoon. Ek important topic ke simple notes, key points aur 5 MCQs dein."},
-  english:{en:"I am studying English for the BSN entry test. Give me important grammar and vocabulary practice with 5 MCQs.",ur:"میں BSN انٹری ٹیسٹ کے لیے English پڑھ رہا ہوں۔ اہم grammar اور vocabulary practice کے ساتھ 5 MCQs دیں۔",roman:"Main BSN entry test ke liye English parh raha hoon. Important grammar aur vocabulary practice ke sath 5 MCQs dein."}
-};
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        localStorage.setItem('bsn-theme', theme);
+      };
 
-const ui={
-en:{dashboard:"Dashboard",workspace:"Workspace",subjects:"Subjects",home:"Home",assistant:"AI Study Assistant",mock:"Mock Tests",mcqs:"MCQs",notes:"Notes",resources:"Study Resources",system:"System",settings:"Settings",help:"Help & Support",eyebrow:"BSN ENTRY TEST PREPARATION",hero:"Your AI Study Partner",success:"for BSN Success.",start:"Start Learning →",mockBtn:"▶ Start Mock Test",online:"● Online",tools:"Study Tools",recent:"Recent Activity",today:"Today",lang:"EN ▾",ai:"AI Study Assistant",placeholder:"Ask Biology, Chemistry, Physics, English..."},
-ur:{dashboard:"ڈیش بورڈ",workspace:"ورک اسپیس",subjects:"مضامین",home:"ہوم",assistant:"AI اسٹڈی اسسٹنٹ",mock:"موک ٹیسٹس",mcqs:"MCQs",notes:"نوٹس",resources:"اسٹڈی ریسورسز",system:"سسٹم",settings:"سیٹنگز",help:"مدد",eyebrow:"BSN انٹری ٹیسٹ کی تیاری",hero:"آپ کا AI اسٹڈی پارٹنر",success:"BSN کامیابی کے لیے",start:"پڑھنا شروع کریں →",mockBtn:"▶ موک ٹیسٹ شروع کریں",online:"● آن لائن",tools:"اسٹڈی ٹولز",recent:"حالیہ سرگرمی",today:"آج",lang:"اردو ▾",ai:"AI اسٹڈی اسسٹنٹ",placeholder:"Biology، Chemistry، Physics یا English کے بارے میں پوچھیں..."},
-roman:{dashboard:"Dashboard",workspace:"Workspace",subjects:"Subjects",home:"Home",assistant:"AI Study Assistant",mock:"Mock Tests",mcqs:"MCQs",notes:"Notes",resources:"Study Resources",system:"System",settings:"Settings",help:"Help & Support",eyebrow:"BSN ENTRY TEST KI TAYYARI",hero:"Aap ka AI Study Partner",success:"BSN Success ke liye",start:"Parhna Shuru Karein →",mockBtn:"▶ Mock Test Shuru Karein",online:"● Online",tools:"Study Tools",recent:"Recent Activity",today:"Aaj",lang:"Roman ▾",ai:"AI Study Assistant",placeholder:"Biology, Chemistry, Physics ya English ke bare mein poochein..."}
-};
+      // Init theme
+      setTheme(getPreferredTheme());
 
-function openAI(prompt=""){
-  const modal=document.getElementById("aiModal");
-  modal.style.display="flex";
-  if(!document.getElementById("aiMessages").children.length) addAI("assistant",currentLang==="ur"?"السلام علیکم! 👋 میں آپ کا AI اسٹڈی اسسٹنٹ ہوں۔":"Assalamu Alaikum! 👋 I’m your BSN PREP SINDH AI tutor.");
-  if(prompt){document.getElementById("aiInput").value=prompt;sendAI();}
-}
-function closeAI(){document.getElementById("aiModal").style.display="none";}
-function addAI(role,text){
-  const box=document.createElement("div");
-  box.style.cssText="margin:8px 0;padding:11px 13px;border-radius:10px;line-height:1.55;font-size:13px;max-width:88%;white-space:pre-wrap;background:"+(role==="user"?"#6d35c9":"#151d31")+";margin-left:"+(role==="user"?"auto":"0");
-  box.textContent=text;document.getElementById("aiMessages").appendChild(box);
-  document.getElementById("aiMessages").scrollTop=999999;
-}
-async function sendAI(){
-  const input=document.getElementById("aiInput"),text=input.value.trim();
-  if(!text||busy)return;
-  input.value="";addAI("user",text);busy=true;addAI("assistant",currentLang==="ur"?"سوچ رہا ہوں…":"Thinking…");
-  try{
-    const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({message:text,conversation:[...history,{role:"user",content:text}].slice(-20)})});
-    const d=await r.json().catch(()=>({}));
-    document.getElementById("aiMessages").lastElementChild?.remove();
-    if(!r.ok||!d.reply)throw new Error();
-    addAI("assistant",d.reply);
-    history.push({role:"user",content:text},{role:"assistant",content:d.reply});
-    history=history.slice(-40);localStorage.setItem("bsn_ai_history",JSON.stringify(history));
-  }catch(e){
-    document.getElementById("aiMessages").lastElementChild?.remove();
-    addAI("assistant",currentLang==="ur"?"AI سروس عارضی طور پر دستیاب نہیں۔ دوبارہ کوشش کریں۔":"AI service is temporarily unavailable. Please try again.");
-  }finally{busy=false;}
-}
-function ask(q){openAI(q);}
-function startMock(){openAI("Create a 10-question BSN entry-test mock test covering Biology, Chemistry, Physics and English. Use 4 options per question, give the correct answer and a short explanation.");}
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
 
-document.getElementById("aiInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendAI();});
-document.querySelectorAll(".tab-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    openAI(tabPrompts[btn.dataset.tab][currentLang]);
-  });
-});
-document.querySelectorAll(".nav button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const label=btn.textContent.trim();
-    if(label.includes("AI")||label.includes("Study Assistant"))openAI();
-    else if(label.includes("Mock"))startMock();
-    else if(label.includes("MCQ"))ask(currentLang==="ur"?"20 اہم BSN MCQs دیں۔":"Give me 20 important BSN entry-test MCQs.");
-    else if(label.includes("Notes"))ask(currentLang==="ur"?"BSN انٹری ٹیسٹ کے لیے اہم topic کے exam-focused notes دیں۔":"Give me exam-focused notes for an important BSN topic.");
-  });
-});
+      // ---------- Chat activation (shrink avatar) ----------
+      const activateChat = () => {
+        if (!isChatActive) {
+          isChatActive = true;
+          app.classList.add('chat-active');
+          chatArea.classList.add('visible');
+        }
+      };
 
-const themeBtn=document.getElementById("themeBtn");
-let light=localStorage.getItem("bsn_theme")==="light";
-function applyTheme(){
-  document.body.classList.toggle("light",light);
-  themeBtn.textContent=light?"☾":"☼";
-  themeBtn.title=light?"Switch to dark mode":"Switch to light mode";
-}
-themeBtn.addEventListener("click",()=>{light=!light;localStorage.setItem("bsn_theme",light?"light":"dark");applyTheme();});
-applyTheme();
+      // ---------- Render messages ----------
+      const renderMessages = () => {
+        chatArea.innerHTML = '';
+        messages.forEach((msg) => {
+          const el = document.createElement('div');
+          el.classList.add('message', msg.role);
+          if (msg.role === 'ai') {
+            const tag = document.createElement('div');
+            tag.classList.add('ai-tag');
+            tag.textContent = 'BSN AI';
+            el.appendChild(tag);
+          }
+          const textNode = document.createElement('div');
+          textNode.textContent = msg.text;
+          el.appendChild(textNode);
+          chatArea.appendChild(el);
+        });
+        // Scroll to bottom
+        requestAnimationFrame(() => {
+          chatArea.scrollTop = chatArea.scrollHeight;
+        });
+      };
 
-const langBtn=document.getElementById("langBtn"),langPanel=document.getElementById("langPanel");
-langBtn.addEventListener("click",()=>langPanel.classList.toggle("show"));
-document.addEventListener("click",e=>{if(!e.target.closest(".lang-menu"))langPanel.classList.remove("show");});
+      // ---------- Add message ----------
+      const addMessage = (role, text) => {
+        messages.push({ role, text });
+        renderMessages();
+        activateChat();
+      };
 
-function setText(selector,key){
-  const el=document.querySelector(selector);if(el&&ui[currentLang][key])el.textContent=ui[currentLang][key];
-}
-function applyLanguage(){
-  langBtn.textContent=ui[currentLang].lang;
-  document.querySelector(".crumb b").textContent=ui[currentLang].dashboard;
-  document.querySelectorAll(".section")[0].textContent=ui[currentLang].workspace;
-  document.querySelectorAll(".section")[1].textContent=ui[currentLang].subjects;
-  document.querySelectorAll(".section")[2].textContent=ui[currentLang].system;
-  const nav=document.querySelectorAll(".nav");
-  const n1=nav[0].querySelectorAll("button"),n2=nav[1].querySelectorAll("button");
-  [ui[currentLang].home,ui[currentLang].assistant,ui[currentLang].mock,ui[currentLang].mcqs,ui[currentLang].notes,ui[currentLang].resources].forEach((t,i)=>{if(n1[i])n1[i].childNodes[n1[i].childNodes.length-1].textContent=" "+t;});
-  [ui[currentLang].settings,ui[currentLang].help].forEach((t,i)=>{if(n2[i])n2[i].childNodes[n2[i].childNodes.length-1].textContent=" "+t;});
-  document.querySelector(".eyebrow").textContent=ui[currentLang].eyebrow;
-  const h=document.querySelector(".hero h1");h.childNodes[0].textContent=ui[currentLang].hero+" ";
-  h.querySelector("span").textContent=ui[currentLang].success;
-  document.querySelector(".hero-actions .primary").textContent=ui[currentLang].start;
-  document.querySelector(".hero-actions .ghost").textContent=ui[currentLang].mockBtn;
-  document.querySelector(".ai-head b").textContent="✦ "+ui[currentLang].ai;
-  document.querySelector(".online").textContent=ui[currentLang].online;
-  document.getElementById("aiInput").placeholder=ui[currentLang].placeholder;
-  document.querySelectorAll(".title h2")[0].textContent=ui[currentLang].tools;
-  document.querySelectorAll(".title h2")[1].textContent=ui[currentLang].recent;
-  document.querySelectorAll(".title span")[1].textContent=ui[currentLang].today;
-  localStorage.setItem("bsn_lang",currentLang);
-}
-document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{currentLang=b.dataset.lang;applyLanguage();langPanel.classList.remove("show");}));
-applyLanguage();
-</script>
+      // ---------- Handle send ----------
+      const handleSend = () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        // Add user message
+        addMessage('user', text);
+        chatInput.value = '';
+        chatInput.focus();
+
+        // Simulate AI response (minimal, professional)
+        setTimeout(() => {
+          const aiResponses = [
+            "I'm here to help with your BSN prep. What topic would you like to explore?",
+            "That's a great question. Let's break it down step by step.",
+            "I understand. Could you share more details so I can assist better?",
+            "Focus on understanding core concepts. I can guide you through them.",
+            "Let's review that together. What specific area needs clarification?",
+          ];
+          const randomReply = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+          addMessage('ai', randomReply);
+        }, 600);
+      };
+
+      sendBtn.addEventListener('click', handleSend);
+
+      chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+
+      // ---------- Initial focus (optional, subtle) ----------
+      // Keep focus on input after load for quick typing
+      window.addEventListener('load', () => {
+        chatInput.focus({ preventScroll: true });
+      });
+
+      // ---------- Responsive: ensure chat area scroll works ----------
+      // No extra logic needed; flex handles it.
+
+      // ---------- Prevent zoom on double-tap (mobile) ----------
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+
+    })();
+  </script>
 </body>
 </html>
