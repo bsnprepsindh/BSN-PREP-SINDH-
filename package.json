@@ -1,0 +1,18 @@
+{
+  "name": "bsn-prep-sindh-ai",
+  "version": "1.0.0",
+  "description": "BSN PREP SINDH AI backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0"
+  }
+}
