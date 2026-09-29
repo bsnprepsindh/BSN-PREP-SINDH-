@@ -544,9 +544,14 @@
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
 
+      // ---------- Config ----------
+      const API = 'https://bsn-prep-sindh-production.up.railway.app/api/chat';
+      let conversation = [];
+
       // ---------- State ----------
       let isChatActive = false;
       let messages = []; // { role: 'user' | 'ai', text: string }
+      let isSending = false;
 
       // ---------- Theme handling ----------
       const getPreferredTheme = () => {
@@ -608,28 +613,71 @@
         activateChat();
       };
 
-      // ---------- Handle send ----------
-      const handleSend = () => {
+      // ---------- Handle send (REAL API INTEGRATION) ----------
+      const handleSend = async () => {
+        if (isSending) return;
+
         const text = chatInput.value.trim();
         if (!text) return;
 
-        // Add user message
+        isSending = true;
+
+        // Add user message immediately
         addMessage('user', text);
         chatInput.value = '';
         chatInput.focus();
 
-        // Simulate AI response (minimal, professional)
-        setTimeout(() => {
-          const aiResponses = [
-            "I'm here to help with your BSN prep. What topic would you like to explore?",
-            "That's a great question. Let's break it down step by step.",
-            "I understand. Could you share more details so I can assist better?",
-            "Focus on understanding core concepts. I can guide you through them.",
-            "Let's review that together. What specific area needs clarification?",
-          ];
-          const randomReply = aiResponses[Math.floor(Math.random() * aiResponses.length)];
-          addMessage('ai', randomReply);
-        }, 600);
+        // Keep last 12 messages of previous conversation for context
+        const previousConversation = conversation.slice(-12);
+
+        // Push current user message to full conversation state
+        conversation.push({
+          role: 'user',
+          content: text
+        });
+
+        // Show thinking indicator
+        addMessage('ai', 'Thinking...');
+        const thinkingIndex = messages.length - 1;
+
+        try {
+          const response = await fetch(API, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              message: text,
+              conversation: previousConversation,
+              languageInstruction:
+                'Student jis zaban mein sawal kare, jawab usi zaban mein dein. English sawal ka jawab English mein, Urdu sawal ka jawab Urdu mein, aur Roman Urdu sawal ka jawab Roman Urdu mein dein. Agar student mixed language use kare to naturally usi style mein jawab dein. Zaban khud se change na karein.'
+            })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data?.reply || 'Request failed');
+          }
+
+          const reply = data.reply || 'No response received.';
+
+          messages[thinkingIndex].text = reply;
+
+          conversation.push({
+            role: 'assistant',
+            content: reply
+          });
+
+          renderMessages();
+
+        } catch (error) {
+          messages[thinkingIndex].text =
+            'AI service temporarily unavailable. Please try again.';
+          renderMessages();
+        } finally {
+          isSending = false;
+        }
       };
 
       sendBtn.addEventListener('click', handleSend);
@@ -642,13 +690,9 @@
       });
 
       // ---------- Initial focus (optional, subtle) ----------
-      // Keep focus on input after load for quick typing
       window.addEventListener('load', () => {
         chatInput.focus({ preventScroll: true });
       });
-
-      // ---------- Responsive: ensure chat area scroll works ----------
-      // No extra logic needed; flex handles it.
 
       // ---------- Prevent zoom on double-tap (mobile) ----------
       let lastTouchEnd = 0;
