@@ -5,11 +5,8 @@ export const config = {
 
 export default async (req) => {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    const model = process.env.GEMINI_MODEL || "gemini-3.6-flash";
-    const baseUrl =
-      process.env.GEMINI_BASE_URL ||
-      "https://generativelanguage.googleapis.com/v1beta";
+    const apiKey = process.env.OPENAI_API_KEY;
+    const model = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 
     if (!apiKey) {
       return Response.json(
@@ -51,32 +48,24 @@ ${conversation || "(none)"}
 Student question:
 ${message}`;
 
-    const response = await fetch(
-      `${baseUrl}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: prompt }]
-            }
-          ],
-          generationConfig: {
-            temperature: 0.4,
-            maxOutputTokens: 1200
-          }
-        })
-      }
-    );
+    const response = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model,
+        input: prompt,
+        max_output_tokens: 1200
+      })
+    });
 
     const data = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      console.error("Gemini API error:", response.status, data);
+      console.error("OpenAI API error:", response.status, data);
+
       return Response.json(
         {
           reply: "AI service is temporarily unavailable. Please try again.",
@@ -86,10 +75,7 @@ ${message}`;
       );
     }
 
-    const reply = data?.candidates?.[0]?.content?.parts
-      ?.map((part) => part.text || "")
-      .join("")
-      .trim();
+    const reply = String(data?.output_text || "").trim();
 
     if (!reply) {
       return Response.json(
@@ -106,7 +92,7 @@ ${message}`;
       mockTest: null
     });
   } catch (error) {
-    console.error(error);
+    console.error("Server error:", error);
 
     return Response.json(
       {
