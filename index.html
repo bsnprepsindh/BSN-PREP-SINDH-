@@ -598,6 +598,31 @@
       .app { height: -webkit-fill-available; }
     }
 
+
+    /* ---------- RECENT CHATS ---------- */
+    .recent-panel { position: fixed; inset: 0; z-index: 100; display: none; }
+    .recent-panel.visible { display: block; }
+    .recent-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.58); backdrop-filter: blur(4px); }
+    .recent-sheet {
+      position: absolute; top: 0; right: 0; width: min(420px,92vw); height: 100%;
+      background: var(--surface); border-left: 1px solid var(--border-soft);
+      box-shadow: -20px 0 50px rgba(0,0,0,.35); padding: 20px;
+      display: flex; flex-direction: column; animation: recentSlideIn .24s ease-out;
+    }
+    @keyframes recentSlideIn { from { transform: translateX(100%); opacity:.7; } to { transform: translateX(0); opacity:1; } }
+    .recent-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+    .recent-title { font-size:1.15rem; font-weight:700; color:var(--text-primary); }
+    .recent-subtitle { margin-top:4px; font-size:.78rem; color:var(--text-secondary); }
+    .recent-close { width:38px; height:38px; border-radius:50%; border:1px solid var(--border-soft); background:var(--surface-raised); color:var(--text-primary); font-size:1.45rem; cursor:pointer; }
+    .recent-list { flex:1; min-height:0; overflow-y:auto; padding:12px 0; }
+    .recent-empty { color:var(--text-secondary); text-align:center; padding:36px 16px; font-size:.9rem; }
+    .recent-item { width:100%; text-align:left; background:transparent; border:1px solid var(--border); border-radius:14px; padding:13px 14px; margin-bottom:9px; color:var(--text-primary); cursor:pointer; }
+    .recent-item:hover, .recent-item:active { background:var(--surface-raised); border-color:var(--border-soft); }
+    .recent-item-title { font-size:.92rem; font-weight:600; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .recent-item-meta { margin-top:6px; font-size:.72rem; color:var(--text-tertiary); }
+    .recent-clear { width:100%; min-height:44px; border-radius:12px; border:1px solid var(--border-soft); background:transparent; color:var(--text-secondary); cursor:pointer; font-family:inherit; font-weight:600; }
+    .recent-clear:hover { color:var(--text-primary); background:var(--surface-raised); }
+
     .hidden { display: none !important; }
   </style>
 </head>
@@ -607,9 +632,14 @@
     <!-- TOP BAR (initial only) -->
     <div class="top-bar" id="topBar">
       <div class="brand">BSN PREP SINDH</div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span id="themeIcon">🌙</span>
-      </button>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="theme-toggle" id="recentToggle" aria-label="Recent chats" title="Recent chats">
+          <span>🕘</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
     </div>
 
     <!-- HERO (initial only) -->
@@ -627,6 +657,22 @@
 
     <!-- CHAT AREA -->
     <div class="chat-area" id="chatArea"></div>
+
+    <!-- RECENT CHATS PANEL -->
+    <div class="recent-panel" id="recentPanel" aria-hidden="true">
+      <div class="recent-backdrop" id="recentBackdrop"></div>
+      <div class="recent-sheet" role="dialog" aria-modal="true" aria-label="Recent chats">
+        <div class="recent-header">
+          <div>
+            <div class="recent-title">Recent Chats</div>
+            <div class="recent-subtitle">Your recent conversations on this device</div>
+          </div>
+          <button class="recent-close" id="recentClose" aria-label="Close">×</button>
+        </div>
+        <div class="recent-list" id="recentList"></div>
+        <button class="recent-clear" id="recentClear">Clear recent chats</button>
+      </div>
+    </div>
 
     <!-- INPUT BAR -->
     <div class="input-bar">
@@ -658,6 +704,12 @@
       const sendBtn = document.getElementById('sendBtn');
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
+      const recentToggle = document.getElementById('recentToggle');
+      const recentPanel = document.getElementById('recentPanel');
+      const recentBackdrop = document.getElementById('recentBackdrop');
+      const recentClose = document.getElementById('recentClose');
+      const recentList = document.getElementById('recentList');
+      const recentClear = document.getElementById('recentClear');
 
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
@@ -909,6 +961,117 @@
         return btn;
       };
 
+
+      // ---------- Recent Chats ----------
+      const RECENT_KEY = 'bsn-recent-chats-v1';
+      const MAX_RECENT = 20;
+
+      const readRecentChats = () => {
+        try {
+          const raw = localStorage.getItem(RECENT_KEY);
+          const value = raw ? JSON.parse(raw) : [];
+          return Array.isArray(value) ? value : [];
+        } catch { return []; }
+      };
+
+      const saveRecentChats = (items) => {
+        try { localStorage.setItem(RECENT_KEY, JSON.stringify(items.slice(0, MAX_RECENT))); } catch {}
+      };
+
+      const makeRecentTitle = (text) => {
+        const clean = String(text || '').replace(/\s+/g, ' ').trim();
+        return clean.length > 70 ? clean.slice(0,70) + '…' : (clean || 'New chat');
+      };
+
+      const saveCurrentChatToRecent = () => {
+        if (!conversation.length) return;
+        const firstUser = conversation.find(x => x.role === 'user');
+        if (!firstUser) return;
+
+        const item = {
+          id: Date.now().toString(),
+          title: makeRecentTitle(firstUser.content),
+          updatedAt: new Date().toISOString(),
+          conversation: conversation.slice(-24),
+          messages: messages.slice(-48)
+        };
+
+        const old = readRecentChats();
+        const filtered = old.filter(x => x.title !== item.title);
+        saveRecentChats([item, ...filtered]);
+      };
+
+      const formatRecentDate = (iso) => {
+        try {
+          return new Date(iso).toLocaleString(undefined, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
+        } catch { return ''; }
+      };
+
+      const renderRecentList = () => {
+        const items = readRecentChats();
+        recentList.innerHTML = '';
+
+        if (!items.length) {
+          const empty = document.createElement('div');
+          empty.className = 'recent-empty';
+          empty.textContent = 'No recent chats yet.';
+          recentList.appendChild(empty);
+          return;
+        }
+
+        items.forEach((item) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'recent-item';
+
+          const title = document.createElement('div');
+          title.className = 'recent-item-title';
+          title.textContent = item.title || 'Chat';
+
+          const meta = document.createElement('div');
+          meta.className = 'recent-item-meta';
+          meta.textContent = formatRecentDate(item.updatedAt);
+
+          button.append(title, meta);
+
+          button.addEventListener('click', () => {
+            conversation = Array.isArray(item.conversation) ? item.conversation : [];
+            messages = Array.isArray(item.messages) ? item.messages : [];
+            isChatActive = messages.length > 0;
+            app.classList.toggle('chat-active', isChatActive);
+            chatArea.classList.toggle('visible', isChatActive);
+            renderMessages();
+            recentPanel.classList.remove('visible');
+            recentPanel.setAttribute('aria-hidden', 'true');
+            chatInput.focus({preventScroll:true});
+          });
+
+          recentList.appendChild(button);
+        });
+      };
+
+      const openRecent = () => {
+        renderRecentList();
+        recentPanel.classList.add('visible');
+        recentPanel.setAttribute('aria-hidden', 'false');
+      };
+
+      const closeRecent = () => {
+        recentPanel.classList.remove('visible');
+        recentPanel.setAttribute('aria-hidden', 'true');
+      };
+
+      recentToggle.addEventListener('click', openRecent);
+      recentClose.addEventListener('click', closeRecent);
+      recentBackdrop.addEventListener('click', closeRecent);
+
+      recentClear.addEventListener('click', () => {
+        localStorage.removeItem(RECENT_KEY);
+        renderRecentList();
+      });
+
+      window.addEventListener('beforeunload', saveCurrentChatToRecent);
+
       // ---------- Theme ----------
       const getPreferredTheme = () => {
         const stored = localStorage.getItem('bsn-theme');
@@ -1061,6 +1224,7 @@
           const reply = data.reply || 'No response received.';
           messages[thinkingIndex].text = reply;
           conversation.push({ role: 'assistant', content: reply });
+          saveCurrentChatToRecent();
           renderMessages();
 
         } catch (error) {
