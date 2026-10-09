@@ -519,6 +519,18 @@
     }
 
     /* ---------- INPUT BAR ---------- */
+    .top-actions{display:flex;align-items:center;gap:8px}
+    .recent-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:12px;padding:9px 12px;font-weight:700;cursor:pointer}
+    .recent-btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+    .recent-panel{position:fixed;top:70px;right:18px;width:min(360px,calc(100vw - 36px));max-height:70vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.22);z-index:50;padding:14px;display:none}
+    .recent-panel.open{display:block}
+    .recent-head{display:flex;justify-content:space-between;align-items:center;font-weight:800;margin-bottom:10px}
+    .recent-close{border:0;background:transparent;color:var(--text-secondary);font-size:20px;cursor:pointer}
+    .recent-item{padding:11px 12px;border:1px solid var(--border);border-radius:12px;margin:7px 0;cursor:pointer;background:var(--surface-2)}
+    .recent-item:hover{border-color:var(--accent)}
+    .recent-title{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .recent-time{font-size:11px;color:var(--text-secondary);margin-top:4px}
+    .recent-empty{color:var(--text-secondary);padding:16px 4px;text-align:center}
     .pdf-btn {
       width:42px; height:42px; flex:0 0 42px; border:1px solid var(--border-soft);
       border-radius:13px; background:var(--surface-raised); color:var(--text-primary);
@@ -654,9 +666,15 @@
     <!-- TOP BAR (initial only) -->
     <div class="top-bar" id="topBar">
       <div class="brand">BSN PREP SINDH</div>
+      <div class="top-actions"><button class="recent-btn" id="recentBtn" type="button">🕘 Recent</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span id="themeIcon">🌙</span>
-      </button>
+      </button></div>
+    </div>
+
+    <div class="recent-panel" id="recentPanel">
+      <div class="recent-head"><span>Recent Chats</span><button class="recent-close" id="recentClose" type="button">×</button></div>
+      <div id="recentList"></div>
     </div>
 
     <!-- HERO (initial only) -->
@@ -703,6 +721,10 @@
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
       const pdfBtn = document.getElementById('pdfBtn');
+      const recentBtn = document.getElementById('recentBtn');
+      const recentPanel = document.getElementById('recentPanel');
+      const recentList = document.getElementById('recentList');
+      const recentClose = document.getElementById('recentClose');
 
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
@@ -1052,6 +1074,38 @@
       };
       checkHealth();
 
+      const RECENT_KEY = 'bsn-recent-chats';
+      let currentChatTitle = '';
+
+      const loadRecent = () => {
+        try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); } catch { return []; }
+      };
+      const saveRecent = () => {
+        if (!messages.length) return;
+        const first = messages.find(m => m.role === 'user');
+        if (!first) return;
+        const items = loadRecent().filter(x => x.id !== currentChatTitle);
+        const item = { id: currentChatTitle || Date.now().toString(), title: String(first.text).slice(0,70), messages, conversation, time: new Date().toLocaleString() };
+        items.unshift(item);
+        localStorage.setItem(RECENT_KEY, JSON.stringify(items.slice(0,20)));
+        currentChatTitle = item.id;
+      };
+      const renderRecent = () => {
+        const items = loadRecent();
+        if (!items.length) { recentList.innerHTML = '<div class="recent-empty">Abhi koi recent chat nahi hai.</div>'; return; }
+        recentList.innerHTML = items.map((x,i) => `<div class="recent-item" data-index="${i}"><div class="recent-title">${escapeHtml(x.title || 'Chat')}</div><div class="recent-time">${escapeHtml(x.time || '')}</div></div>`).join('');
+        recentList.querySelectorAll('.recent-item').forEach(el => el.addEventListener('click', () => {
+          const x = items[Number(el.dataset.index)];
+          messages = Array.isArray(x.messages) ? x.messages : [];
+          conversation = Array.isArray(x.conversation) ? x.conversation : [];
+          isChatActive = true; app.classList.add('chat-active'); chatArea.classList.add('visible');
+          renderMessages(); recentPanel.classList.remove('open');
+        }));
+      };
+      recentBtn.addEventListener('click', () => { renderRecent(); recentPanel.classList.toggle('open'); });
+      recentClose.addEventListener('click', () => recentPanel.classList.remove('open'));
+      document.addEventListener('click', (e) => { if (!recentPanel.contains(e.target) && e.target !== recentBtn) recentPanel.classList.remove('open'); });
+
       // ---------- Handle send ----------
       const handleSend = async () => {
         if (isSending) return;
@@ -1104,6 +1158,7 @@
           const reply = data.reply || 'No response received.';
           messages[thinkingIndex].text = reply;
           conversation.push({ role: 'assistant', content: reply });
+          saveRecent();
           renderMessages();
 
         } catch (error) {
