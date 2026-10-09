@@ -120,6 +120,31 @@
       color: var(--text-primary);
     }
 
+    /* ---------- BSN PREP SINDH LOGO ---------- */
+    .bsn-logo {
+      width: 112px; height: 112px; border-radius: 32px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+      background: linear-gradient(145deg, #1d2348, #0e1020);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 45px rgba(72,84,255,.28), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .bsn-logo::before {
+      content:''; position:absolute; inset:10px; border-radius:25px;
+      border:1px solid rgba(125,140,255,.35);
+    }
+    .bsn-cross {
+      width:48px; height:48px; position:relative;
+      filter: drop-shadow(0 0 12px rgba(120,140,255,.5));
+    }
+    .bsn-cross::before,.bsn-cross::after {
+      content:''; position:absolute; left:15px; top:4px; width:18px; height:40px;
+      border-radius:5px; background:linear-gradient(180deg,#aab4ff,#6474ff);
+    }
+    .bsn-cross::after { transform:rotate(90deg); }
+    .logo-title { margin-top:20px; font-size:1.55rem; font-weight:800; letter-spacing:-.04em; }
+    .logo-subtitle { margin-top:7px; color:var(--text-secondary); font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; }
+
     /* ---------- INITIAL (HERO) SCREEN ---------- */
     .hero {
       display: flex;
@@ -263,6 +288,12 @@
       background: var(--accent-soft);
       border-radius: 10px;
     }
+
+
+    .app.chat-active .top-bar,
+    .app.chat-active .hero { display:none; }
+    .app.chat-active .chat-area { display:flex; }
+    .app.chat-active .input-bar { margin-top:auto; }
 
     /* ---------- MESSAGES ---------- */
     .message {
@@ -488,6 +519,14 @@
     }
 
     /* ---------- INPUT BAR ---------- */
+    .pdf-btn {
+      width:42px; height:42px; flex:0 0 42px; border:1px solid var(--border-soft);
+      border-radius:13px; background:var(--surface-raised); color:var(--text-primary);
+      cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;
+      transition:var(--transition);
+    }
+    .pdf-btn:hover { transform:translateY(-1px); border-color:var(--accent); box-shadow:0 8px 22px var(--accent-glow); }
+
     .input-bar {
       flex-shrink: 0;
       padding: 8px 16px calc(14px + env(safe-area-inset-bottom, 0px));
@@ -590,7 +629,15 @@
       .chat-area { padding: 24px 32px 8px; gap: 20px; }
       .message { max-width: 80%; }
       .message.ai { max-width: 82%; }
-      .input-bar { padding: 12px 32px calc(20px + env(safe-area-inset-bottom, 0px)); }
+      .pdf-btn {
+      width:42px; height:42px; flex:0 0 42px; border:1px solid var(--border-soft);
+      border-radius:13px; background:var(--surface-raised); color:var(--text-primary);
+      cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;
+      transition:var(--transition);
+    }
+    .pdf-btn:hover { transform:translateY(-1px); border-color:var(--accent); box-shadow:0 8px 22px var(--accent-glow); }
+
+    .input-bar { padding: 12px 32px calc(20px + env(safe-area-inset-bottom, 0px)); }
     }
 
     /* iOS keyboard fix */
@@ -598,70 +645,52 @@
       .app { height: -webkit-fill-available; }
     }
 
-
-    /* ===== MODERN UI OVERRIDE ===== */
-    .app{flex-direction:row;background:var(--bg)}
-    .side-panel{width:250px;flex:0 0 250px;height:100%;padding:22px 16px;background:linear-gradient(180deg,#0d1733,#10182e 60%,#0b1020);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:30;color:#fff}
-    .side-brand{display:flex;align-items:center;gap:11px;padding:5px 8px 17px}.brand-mark{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#6674ff,#7f55ff);font-size:1.45rem}.side-brand-title{font-size:1.03rem;font-weight:800}.side-brand-sub{font-size:.9rem;color:#aab8ff;font-weight:700;letter-spacing:.08em}
-    .online-pill{font-size:.72rem;color:#aeb9d8;padding:9px 11px;margin:0 5px 18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);border-radius:12px}.online-pill span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#38d98a;margin-right:7px}
-    .side-nav{display:flex;flex-direction:column;gap:6px}.side-nav-item{border:0;background:transparent;color:#aeb9d8;padding:13px;border-radius:13px;display:flex;align-items:center;gap:13px;font-size:.91rem;cursor:pointer;text-align:left}.side-nav-item span{width:23px;text-align:center}.side-nav-item.active,.side-nav-item:hover{background:linear-gradient(90deg,rgba(101,91,255,.9),rgba(81,113,255,.72));color:#fff}.side-card{margin-top:auto;padding:15px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.045);border-radius:17px;display:flex;flex-direction:column;gap:5px}.side-card-icon{font-size:1.25rem}.side-card strong{font-size:.82rem}.side-card span{font-size:.7rem;color:#8290b6}.side-bottom{padding-top:15px;display:flex;justify-content:center}
-    .main-panel{min-width:0;flex:1;height:100%;display:flex;flex-direction:column;position:relative}.top-bar{height:72px;padding:0 28px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;justify-content:space-between;align-items:center;z-index:10}.top-title{display:flex;flex-direction:column;gap:3px}.top-title span{font-size:.68rem;color:var(--text-secondary)}.top-title i{display:inline-block;width:7px;height:7px;background:#32cc80;border-radius:50%;margin-right:5px}.top-actions{display:flex;gap:8px}.top-icon,.mobile-menu{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);cursor:pointer}.mobile-menu{display:none}
-    .welcome-card{margin:22px 28px 8px;padding:27px 28px;border-radius:25px;background:linear-gradient(115deg,rgba(112,128,255,.15),rgba(157,100,255,.07),rgba(255,255,255,.025));border:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:190px}.welcome-copy{max-width:730px}.welcome-eyebrow{font-size:.67rem;letter-spacing:.13em;color:var(--accent);font-weight:800;margin-bottom:8px}.welcome-card h1{font-size:clamp(1.45rem,3vw,2.15rem);letter-spacing:-.04em;margin-bottom:9px}.welcome-card p{color:var(--text-secondary);line-height:1.55;font-size:.88rem}.quick-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.quick-action{border:1px solid var(--border-soft);background:var(--surface);color:var(--text-primary);padding:10px 13px;border-radius:13px;font-size:.76rem;cursor:pointer}.welcome-avatar{width:150px;height:150px;position:relative;display:grid;place-items:center}.avatar-orbit{position:absolute;inset:4px;border:1px dashed rgba(120,140,255,.45);border-radius:50%;animation:spin 12s linear infinite}.robot-face{width:92px;height:75px;border-radius:28px;background:linear-gradient(145deg,#edf1ff,#bfcaff);border:3px solid #6d7eff;box-shadow:0 15px 35px rgba(81,103,255,.25);position:relative;display:flex;justify-content:center;gap:21px;padding-top:25px}.robot-face span{width:12px;height:12px;background:#526aff;border-radius:50%}.robot-face b{position:absolute;bottom:9px;color:#526aff}@keyframes spin{to{transform:rotate(360deg)}}
-    .chat-area{flex:1;min-height:0;padding:20px 28px 10px;gap:15px}.message{max-width:min(760px,88%);border-radius:20px;padding:13px 16px}.message.user{margin-left:auto;background:linear-gradient(135deg,#5868ff,#7154ed);color:#fff}.message.ai{background:var(--ai-bubble);border:1px solid var(--border)}
-    .input-bar{padding:12px 28px 20px;background:linear-gradient(transparent,var(--bg) 18%);z-index:5}.input-container{position:relative;display:flex;align-items:center;gap:8px;max-width:980px;margin:auto;padding:9px 10px 9px 15px;border:1px solid var(--border-soft);background:var(--surface);border-radius:21px;box-shadow:0 12px 35px rgba(0,0,0,.13)}.chat-input{flex:1;min-width:0;border:0!important;background:transparent!important;padding:10px 3px!important}.chat-input:focus{outline:0}.input-tools{display:flex;gap:5px}.tool-btn{border:1px solid var(--border);background:var(--surface-raised);color:var(--text-secondary);border-radius:12px;padding:8px 9px;font-size:.7rem;cursor:pointer;white-space:nowrap}.voice-tool{color:#a97cff}.image-tool{color:#42c89a}.pdf-tool{color:#ff7777}.send-btn{width:43px!important;height:43px!important;flex:0 0 43px!important;border-radius:14px!important;background:linear-gradient(135deg,#596bff,#754df0)!important}.input-hint{text-align:center;color:var(--text-tertiary);font-size:.62rem;padding-top:7px}
-    .recent-panel{position:fixed;inset:0;z-index:100;display:none}.recent-panel.visible{display:block}.recent-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(5px)}.recent-sheet{position:absolute;right:0;top:0;height:100%;width:min(410px,92vw);background:var(--surface);padding:20px;display:flex;flex-direction:column;border-left:1px solid var(--border-soft)}.recent-header{display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--border)}.recent-title{font-weight:800}.recent-subtitle{font-size:.72rem;color:var(--text-secondary);margin-top:3px}.recent-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);font-size:1.4rem}.recent-list{flex:1;overflow:auto;padding:12px 0}.recent-empty{text-align:center;color:var(--text-secondary);padding:35px 10px}.recent-item{display:block;width:100%;text-align:left;padding:13px;margin-bottom:8px;border:1px solid var(--border);background:transparent;border-radius:13px;color:var(--text-primary);cursor:pointer}.recent-item-title{font-size:.84rem}.recent-item-meta{font-size:.66rem;color:var(--text-tertiary);margin-top:4px}.recent-clear{min-height:43px;border-radius:12px;border:1px solid var(--border-soft);background:transparent;color:var(--text-secondary)}.image-preview{max-width:230px;max-height:170px;border-radius:14px;margin-top:8px;border:1px solid var(--border-soft);object-fit:cover}.pdf-print-btn{margin-top:9px;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);padding:8px 12px;border-radius:10px;cursor:pointer}
-    .app.chat-active .top-bar{display:flex!important}.app.chat-active .hero{display:none!important}
-    .app.chat-active .side-panel{display:none!important}
-    .app.chat-active .main-panel{width:100%;}
-    @media(max-width:760px){.side-panel{position:fixed;left:-270px;top:0;bottom:0;transition:.25s;box-shadow:20px 0 40px rgba(0,0,0,.25)}.app.menu-open .side-panel{left:0}.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:25}.app.menu-open .mobile-overlay{display:block}.mobile-menu{display:block}.top-bar{height:62px;padding:0 12px}.welcome-card{margin:12px 12px 4px;padding:19px;min-height:0}.welcome-avatar{display:none}.welcome-card p{font-size:.8rem}.quick-action{font-size:.67rem;padding:9px 10px}.chat-area{padding:12px}.input-bar{padding:8px 9px calc(12px + env(safe-area-inset-bottom,0px))}.input-container{border-radius:18px;flex-wrap:wrap}.chat-input{width:100%;flex-basis:calc(100% - 52px)}.input-tools{order:3;width:100%;overflow-x:auto}.tool-btn{flex:1}.input-hint{display:none}}
-
     .hidden { display: none !important; }
-  
-/* Final chat mode: welcome screen disappears permanently after first message */
-html.chat-mode, body.chat-mode { overflow: hidden !important; }
-#app.chat-mode #hero, #app.chat-mode .hero, #app.chat-mode .welcome-card, #app.chat-mode .side-panel, #app.chat-mode .quick-actions { display:none !important; }
-#app.chat-mode .main-panel, #app.chat-mode .chat-panel { width:100% !important; max-width:none !important; flex:1 1 100% !important; }
-#app.chat-mode .chat-area { display:block !important; visibility:visible !important; opacity:1 !important; }
-#app.chat-mode .welcome-card, #app.chat-mode #hero, #app.chat-mode .quick-actions { display:none !important; }
-#app.chat-mode .chat-area { min-height:calc(100vh - 150px) !important; }
-</style>
-
-<style id="fixed-chat-footer">
-  #chatInputBar, .input-bar, .composer, .chat-composer {
-    position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-    z-index: 9999 !important;
-    transform: none !important;
-  }
-  #chatArea, .chat-area, .messages, .chat-messages {
-    padding-bottom: 110px !important;
-  }
-</style>
+  </style>
 </head>
 <body>
   <div class="app" id="app">
-    <aside class="side-panel" id="sidePanel">
-      <div class="side-brand"><div class="brand-mark">✦</div><div><div class="side-brand-title">BSN PREP</div><div class="side-brand-sub">SINDH AI</div></div></div>
-      <div class="online-pill"><span></span> AI Assistant Online</div>
-      <nav class="side-nav">
-        <button class="side-nav-item active" type="button" data-action="chat"><span>💬</span><b>Chat</b></button>
-        <button class="side-nav-item" type="button" data-action="recent"><span>🕘</span><b>Recent Tabs</b></button>
-        
-        
-      </nav>
-      <div class="side-card"><div class="side-card-icon">🎓</div><strong>Built for BSN Students</strong><span>Learn • Practice • Prepare</span></div>
-      <div class="side-bottom"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button></div>
-    </aside>
-    <main class="main-panel">
-      <header class="top-bar" id="topBar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="top-title"><strong>BSN PREP SINDH AI</strong><span><i></i> Online</span></div><div class="top-actions"><button class="top-icon" id="recentTopBtn" aria-label="Recent tabs">🕘</button><button class="top-icon" id="profileBtn" aria-label="Profile">◉</button></div></header>
-      <div class="chat-area" id="chatArea"></div>
-      <div class="input-bar"><div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Ask your question..." autocomplete="off" spellcheck="false" aria-label="Message input"><div class="input-tools"><button type="button" class="tool-btn voice-tool" id="voiceBtn">🎙️</button><button type="button" class="tool-btn image-tool" id="imageBtn">🖼️</button></div><button class="send-btn" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24"><path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/></svg></button></div><input type="file" id="imageInput" accept="image/*" hidden><div class="input-hint">Ask naturally • Voice • Image</div></div>
-    </main>
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <div class="recent-panel" id="recentPanel" aria-hidden="true"><div class="recent-backdrop" id="recentBackdrop"></div><div class="recent-sheet"><div class="recent-header"><div><div class="recent-title">Recent Tabs</div><div class="recent-subtitle">Saved on this device</div></div><button class="recent-close" id="recentClose">×</button></div><div class="recent-list" id="recentList"></div><button class="recent-clear" id="recentClear">Clear Recent</button></div></div>
+
+    <!-- TOP BAR (initial only) -->
+    <div class="top-bar" id="topBar">
+      <div class="brand">BSN PREP SINDH</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+
+    <!-- HERO (initial only) -->
+    <div class="hero" id="hero">
+      <div class="bsn-logo" aria-label="BSN PREP SINDH logo">
+        <div class="bsn-cross"></div>
+      </div>
+      <div class="logo-title">BSN PREP SINDH</div>
+      <div class="logo-subtitle">AI Nursing Entry Test Preparation</div>
+    </div>
+
+    <!-- CHAT AREA -->
+    <div class="chat-area" id="chatArea"></div>
+
+    <!-- INPUT BAR -->
+    <div class="input-bar">
+      <div class="input-container">
+        <button class="pdf-btn" id="pdfBtn" type="button" aria-label="Make PDF" title="Make PDF">📄</button>
+        <input
+          type="text"
+          class="chat-input"
+          id="chatInput"
+          placeholder="Ask anything…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Message input"
+        />
+        <button class="send-btn" id="sendBtn" aria-label="Send message">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -673,28 +702,8 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
       const sendBtn = document.getElementById('sendBtn');
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
-      const voiceBtn = document.getElementById('voiceBtn');
-      const imageBtn = document.getElementById('imageBtn');
-      const imageInput = document.getElementById('imageInput');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileOverlay = document.getElementById('mobileOverlay');
-      const recentTopBtn = document.getElementById('recentTopBtn');
-      const recentPanel = document.getElementById('recentPanel');
-      const recentBackdrop = document.getElementById('recentBackdrop');
-      const recentClose = document.getElementById('recentClose');
-      const recentList = document.getElementById('recentList');
-      const recentClear = document.getElementById('recentClear');
+      const pdfBtn = document.getElementById('pdfBtn');
 
-
-
-      // ===== New UI tools =====
-      const RECENT_KEY='bsn-recent-chats-v2';
-      const saveRecent=()=>{if(!conversation.length)return;const first=conversation.find(x=>x.role==='user');if(!first)return;try{const a=JSON.parse(localStorage.getItem(RECENT_KEY)||'[]');const title=String(first.content||'New chat').replace(/\s+/g,' ').trim().slice(0,80);const item={title,updatedAt:new Date().toISOString(),conversation:conversation.slice(-24),messages:messages.slice(-48)};localStorage.setItem(RECENT_KEY,JSON.stringify([item,...a.filter(x=>x.title!==title)].slice(0,20)));}catch(e){}};
-      const renderRecent=()=>{recentList.innerHTML='';let a=[];try{a=JSON.parse(localStorage.getItem(RECENT_KEY)||'[]')}catch(e){}if(!a.length){recentList.innerHTML='<div class="recent-empty">No recent chats yet.</div>';return;}a.forEach(item=>{const b=document.createElement('button');b.className='recent-item';const t=document.createElement('div');t.className='recent-item-title';t.textContent=item.title||'Chat';const m=document.createElement('div');m.className='recent-item-meta';m.textContent=new Date(item.updatedAt).toLocaleString();b.append(t,m);b.onclick=()=>{conversation=item.conversation||[];messages=item.messages||[];renderMessages();activateChat();recentPanel.classList.remove('visible')};recentList.appendChild(b)})};
-      const openRecent=()=>{renderRecent();recentPanel.classList.add('visible')};
-      recentTopBtn.addEventListener('click',openRecent);recentClose.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentBackdrop.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentClear.addEventListener('click',()=>{localStorage.removeItem(RECENT_KEY);renderRecent()});
-      mobileMenu.addEventListener('click',()=>app.classList.toggle('menu-open'));mobileOverlay.addEventListener('click',()=>app.classList.remove('menu-open'));
-      document.querySelectorAll('.side-nav-item').forEach(b=>b.addEventListener('click',()=>{app.classList.remove('menu-open');if(b.dataset.action==='recent')openRecent();if(b.dataset.action==='chat')chatInput.focus()}));
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
       const API = '/api/chat';
@@ -967,12 +976,9 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
 
       // ---------- Chat activation ----------
       const activateChat = () => {
-        if (!isChatActive) {
-          isChatActive = true;
-          app.classList.add('chat-active');
-          chatArea.classList.add('visible');
-          document.body.classList.add('full-chat-mode');
-        }
+        isChatActive = true;
+        app.classList.add('chat-active');
+        chatArea.classList.add('visible');
       };
 
       // ---------- Render ----------
@@ -1018,7 +1024,6 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
             const textNode = document.createElement('div');
             textNode.textContent = msg.text;
             el.appendChild(textNode);
-            if (msg.imageUrl) { const img=document.createElement('img'); img.className='image-preview'; img.src=msg.imageUrl; img.alt='Uploaded image'; el.appendChild(img); }
           }
 
           chatArea.appendChild(el);
@@ -1047,30 +1052,12 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
       };
       checkHealth();
 
-      // ---------- Permanent full-screen chat mode ----------
-      const enterChatMode = () => {
-        isChatActive = true;
-        document.documentElement.classList.add('chat-mode');
-        document.body.classList.add('chat-mode');
-        const app = document.getElementById('app');
-        if (app) app.classList.add('chat-mode');
-        ['hero','welcome-card','side-panel','quick-actions'].forEach(cls => {
-          document.querySelectorAll('.' + cls).forEach(el => {
-            el.style.setProperty('display','none','important');
-          });
-        });
-        if (typeof renderMessages === 'function') renderMessages();
-        setTimeout(() => chatInput.focus({preventScroll:true}), 0);
-      };
-
       // ---------- Handle send ----------
       const handleSend = async () => {
         if (isSending) return;
 
         const text = chatInput.value.trim();
         if (!text) return;
-
-        enterChatMode();
 
         isSending = true;
         sendBtn.disabled = true;
@@ -1117,7 +1104,6 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
           const reply = data.reply || 'No response received.';
           messages[thinkingIndex].text = reply;
           conversation.push({ role: 'assistant', content: reply });
-          saveRecent();
           renderMessages();
 
         } catch (error) {
@@ -1139,6 +1125,19 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
           sendBtn.disabled = false;
         }
       };
+
+      const makePdf = () => {
+        if (!messages.length) { alert('Pehle AI se kuch notes ya answer banwa lein.'); return; }
+        const rows = messages.map(m => {
+          const role = m.role === 'user' ? 'Student' : 'BSN PREP SINDH AI';
+          return `<div class="msg"><div class="role">${role}</div><div>${renderMarkdown(m.text)}</div></div>`;
+        }).join('');
+        const w = window.open('', '_blank');
+        if (!w) { alert('PDF window open nahi hui. Browser popup allow karein.'); return; }
+        w.document.write(`<!doctype html><html><head><title>BSN PREP SINDH Notes</title><style>body{font-family:Arial,sans-serif;padding:28px;color:#111;line-height:1.6}h1{font-size:24px;margin-bottom:4px}.sub{color:#666;margin-bottom:24px}.msg{margin:0 0 18px;padding:14px 16px;border:1px solid #ddd;border-radius:12px}.role{font-weight:700;margin-bottom:7px;color:#3949ab}p{margin:0 0 9px}h2,h3{margin:14px 0 7px}ul,ol{padding-left:24px}code{background:#f2f2f2;padding:2px 4px;border-radius:4px}</style></head><body><h1>BSN PREP SINDH</h1><div class="sub">AI Nursing Entry Test Preparation</div>${rows}<script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+        w.document.close();
+      };
+      pdfBtn.addEventListener('click', makePdf);
 
       sendBtn.addEventListener('click', handleSend);
 
