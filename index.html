@@ -621,7 +621,7 @@
 html.chat-mode, body.chat-mode { overflow: hidden !important; }
 #app.chat-mode #hero, #app.chat-mode .hero, #app.chat-mode .welcome-card, #app.chat-mode .side-panel, #app.chat-mode .quick-actions { display:none !important; }
 #app.chat-mode .main-panel, #app.chat-mode .chat-panel, #app.chat-mode .chat-area { width:100% !important; max-width:none !important; flex:1 1 100% !important; }
-#app.chat-mode .chat-area { min-height:calc(100vh - 150px) !important; }
+#app.chat-mode .chat-area { min-height:0 !important; height:auto !important; padding-bottom:130px !important; }
 </style>
 
 <style id="fixed-chat-footer">
@@ -633,6 +633,8 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
     top: auto !important;
     z-index: 9999 !important;
     transform: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   #chatArea, .chat-area, .messages, .chat-messages {
     padding-bottom: 110px !important;
@@ -1056,7 +1058,8 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
         isChatActive = true;
         document.documentElement.classList.add('chat-mode');
         document.body.classList.add('chat-mode');
-        const app = document.getElementById('app');
+        chatArea.classList.add('visible');
+        app = document.getElementById('app');
         if (app) app.classList.add('chat-mode');
         ['hero','welcome-card','side-panel','quick-actions'].forEach(cls => {
           document.querySelectorAll('.' + cls).forEach(el => {
