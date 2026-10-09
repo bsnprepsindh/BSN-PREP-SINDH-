@@ -599,100 +599,45 @@
     }
 
 
-    /* ---------- RECENT CHATS ---------- */
-    .recent-panel { position: fixed; inset: 0; z-index: 100; display: none; }
-    .recent-panel.visible { display: block; }
-    .recent-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.58); backdrop-filter: blur(4px); }
-    .recent-sheet {
-      position: absolute; top: 0; right: 0; width: min(420px,92vw); height: 100%;
-      background: var(--surface); border-left: 1px solid var(--border-soft);
-      box-shadow: -20px 0 50px rgba(0,0,0,.35); padding: 20px;
-      display: flex; flex-direction: column; animation: recentSlideIn .24s ease-out;
-    }
-    @keyframes recentSlideIn { from { transform: translateX(100%); opacity:.7; } to { transform: translateX(0); opacity:1; } }
-    .recent-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding-bottom:16px; border-bottom:1px solid var(--border); }
-    .recent-title { font-size:1.15rem; font-weight:700; color:var(--text-primary); }
-    .recent-subtitle { margin-top:4px; font-size:.78rem; color:var(--text-secondary); }
-    .recent-close { width:38px; height:38px; border-radius:50%; border:1px solid var(--border-soft); background:var(--surface-raised); color:var(--text-primary); font-size:1.45rem; cursor:pointer; }
-    .recent-list { flex:1; min-height:0; overflow-y:auto; padding:12px 0; }
-    .recent-empty { color:var(--text-secondary); text-align:center; padding:36px 16px; font-size:.9rem; }
-    .recent-item { width:100%; text-align:left; background:transparent; border:1px solid var(--border); border-radius:14px; padding:13px 14px; margin-bottom:9px; color:var(--text-primary); cursor:pointer; }
-    .recent-item:hover, .recent-item:active { background:var(--surface-raised); border-color:var(--border-soft); }
-    .recent-item-title { font-size:.92rem; font-weight:600; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .recent-item-meta { margin-top:6px; font-size:.72rem; color:var(--text-tertiary); }
-    .recent-clear { width:100%; min-height:44px; border-radius:12px; border:1px solid var(--border-soft); background:transparent; color:var(--text-secondary); cursor:pointer; font-family:inherit; font-weight:600; }
-    .recent-clear:hover { color:var(--text-primary); background:var(--surface-raised); }
+    /* ===== MODERN UI OVERRIDE ===== */
+    .app{flex-direction:row;background:var(--bg)}
+    .side-panel{width:250px;flex:0 0 250px;height:100%;padding:22px 16px;background:linear-gradient(180deg,#0d1733,#10182e 60%,#0b1020);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:30;color:#fff}
+    .side-brand{display:flex;align-items:center;gap:11px;padding:5px 8px 17px}.brand-mark{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#6674ff,#7f55ff);font-size:1.45rem}.side-brand-title{font-size:1.03rem;font-weight:800}.side-brand-sub{font-size:.9rem;color:#aab8ff;font-weight:700;letter-spacing:.08em}
+    .online-pill{font-size:.72rem;color:#aeb9d8;padding:9px 11px;margin:0 5px 18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);border-radius:12px}.online-pill span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#38d98a;margin-right:7px}
+    .side-nav{display:flex;flex-direction:column;gap:6px}.side-nav-item{border:0;background:transparent;color:#aeb9d8;padding:13px;border-radius:13px;display:flex;align-items:center;gap:13px;font-size:.91rem;cursor:pointer;text-align:left}.side-nav-item span{width:23px;text-align:center}.side-nav-item.active,.side-nav-item:hover{background:linear-gradient(90deg,rgba(101,91,255,.9),rgba(81,113,255,.72));color:#fff}.side-card{margin-top:auto;padding:15px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.045);border-radius:17px;display:flex;flex-direction:column;gap:5px}.side-card-icon{font-size:1.25rem}.side-card strong{font-size:.82rem}.side-card span{font-size:.7rem;color:#8290b6}.side-bottom{padding-top:15px;display:flex;justify-content:center}
+    .main-panel{min-width:0;flex:1;height:100%;display:flex;flex-direction:column;position:relative}.top-bar{height:72px;padding:0 28px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;justify-content:space-between;align-items:center;z-index:10}.top-title{display:flex;flex-direction:column;gap:3px}.top-title span{font-size:.68rem;color:var(--text-secondary)}.top-title i{display:inline-block;width:7px;height:7px;background:#32cc80;border-radius:50%;margin-right:5px}.top-actions{display:flex;gap:8px}.top-icon,.mobile-menu{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);cursor:pointer}.mobile-menu{display:none}
+    .welcome-card{margin:22px 28px 8px;padding:27px 28px;border-radius:25px;background:linear-gradient(115deg,rgba(112,128,255,.15),rgba(157,100,255,.07),rgba(255,255,255,.025));border:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:190px}.welcome-copy{max-width:730px}.welcome-eyebrow{font-size:.67rem;letter-spacing:.13em;color:var(--accent);font-weight:800;margin-bottom:8px}.welcome-card h1{font-size:clamp(1.45rem,3vw,2.15rem);letter-spacing:-.04em;margin-bottom:9px}.welcome-card p{color:var(--text-secondary);line-height:1.55;font-size:.88rem}.quick-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.quick-action{border:1px solid var(--border-soft);background:var(--surface);color:var(--text-primary);padding:10px 13px;border-radius:13px;font-size:.76rem;cursor:pointer}.welcome-avatar{width:150px;height:150px;position:relative;display:grid;place-items:center}.avatar-orbit{position:absolute;inset:4px;border:1px dashed rgba(120,140,255,.45);border-radius:50%;animation:spin 12s linear infinite}.robot-face{width:92px;height:75px;border-radius:28px;background:linear-gradient(145deg,#edf1ff,#bfcaff);border:3px solid #6d7eff;box-shadow:0 15px 35px rgba(81,103,255,.25);position:relative;display:flex;justify-content:center;gap:21px;padding-top:25px}.robot-face span{width:12px;height:12px;background:#526aff;border-radius:50%}.robot-face b{position:absolute;bottom:9px;color:#526aff}@keyframes spin{to{transform:rotate(360deg)}}
+    .chat-area{flex:1;min-height:0;padding:20px 28px 10px;gap:15px}.message{max-width:min(760px,88%);border-radius:20px;padding:13px 16px}.message.user{margin-left:auto;background:linear-gradient(135deg,#5868ff,#7154ed);color:#fff}.message.ai{background:var(--ai-bubble);border:1px solid var(--border)}
+    .input-bar{padding:12px 28px 20px;background:linear-gradient(transparent,var(--bg) 18%);z-index:5}.input-container{position:relative;display:flex;align-items:center;gap:8px;max-width:980px;margin:auto;padding:9px 10px 9px 15px;border:1px solid var(--border-soft);background:var(--surface);border-radius:21px;box-shadow:0 12px 35px rgba(0,0,0,.13)}.chat-input{flex:1;min-width:0;border:0!important;background:transparent!important;padding:10px 3px!important}.chat-input:focus{outline:0}.input-tools{display:flex;gap:5px}.tool-btn{border:1px solid var(--border);background:var(--surface-raised);color:var(--text-secondary);border-radius:12px;padding:8px 9px;font-size:.7rem;cursor:pointer;white-space:nowrap}.voice-tool{color:#a97cff}.image-tool{color:#42c89a}.pdf-tool{color:#ff7777}.send-btn{width:43px!important;height:43px!important;flex:0 0 43px!important;border-radius:14px!important;background:linear-gradient(135deg,#596bff,#754df0)!important}.input-hint{text-align:center;color:var(--text-tertiary);font-size:.62rem;padding-top:7px}
+    .recent-panel{position:fixed;inset:0;z-index:100;display:none}.recent-panel.visible{display:block}.recent-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(5px)}.recent-sheet{position:absolute;right:0;top:0;height:100%;width:min(410px,92vw);background:var(--surface);padding:20px;display:flex;flex-direction:column;border-left:1px solid var(--border-soft)}.recent-header{display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--border)}.recent-title{font-weight:800}.recent-subtitle{font-size:.72rem;color:var(--text-secondary);margin-top:3px}.recent-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);font-size:1.4rem}.recent-list{flex:1;overflow:auto;padding:12px 0}.recent-empty{text-align:center;color:var(--text-secondary);padding:35px 10px}.recent-item{display:block;width:100%;text-align:left;padding:13px;margin-bottom:8px;border:1px solid var(--border);background:transparent;border-radius:13px;color:var(--text-primary);cursor:pointer}.recent-item-title{font-size:.84rem}.recent-item-meta{font-size:.66rem;color:var(--text-tertiary);margin-top:4px}.recent-clear{min-height:43px;border-radius:12px;border:1px solid var(--border-soft);background:transparent;color:var(--text-secondary)}.image-preview{max-width:230px;max-height:170px;border-radius:14px;margin-top:8px;border:1px solid var(--border-soft);object-fit:cover}.pdf-print-btn{margin-top:9px;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);padding:8px 12px;border-radius:10px;cursor:pointer}
+    .app.chat-active .top-bar,.app.chat-active .hero{display:flex}.app.chat-active .hero{display:none}
+    @media(max-width:760px){.side-panel{position:fixed;left:-270px;top:0;bottom:0;transition:.25s;box-shadow:20px 0 40px rgba(0,0,0,.25)}.app.menu-open .side-panel{left:0}.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:25}.app.menu-open .mobile-overlay{display:block}.mobile-menu{display:block}.top-bar{height:62px;padding:0 12px}.welcome-card{margin:12px 12px 4px;padding:19px;min-height:0}.welcome-avatar{display:none}.welcome-card p{font-size:.8rem}.quick-action{font-size:.67rem;padding:9px 10px}.chat-area{padding:12px}.input-bar{padding:8px 9px calc(12px + env(safe-area-inset-bottom,0px))}.input-container{border-radius:18px;flex-wrap:wrap}.chat-input{width:100%;flex-basis:calc(100% - 52px)}.input-tools{order:3;width:100%;overflow-x:auto}.tool-btn{flex:1}.input-hint{display:none}}
 
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
   <div class="app" id="app">
-
-    <!-- TOP BAR (initial only) -->
-    <div class="top-bar" id="topBar">
-      <div class="brand">BSN PREP SINDH</div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button class="theme-toggle" id="recentToggle" aria-label="Recent chats" title="Recent chats">
-          <span>🕘</span>
-        </button>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <span id="themeIcon">🌙</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- HERO (initial only) -->
-    <div class="hero" id="hero">
-      <div class="avatar-wrapper">
-        <div class="avatar-glow"></div>
-        <div class="avatar-ring">
-          <div class="avatar-core">
-            <div class="avatar-dot"></div>
-          </div>
-        </div>
-      </div>
-      <div class="brand-name">BSN PREP SINDH</div>
-    </div>
-
-    <!-- CHAT AREA -->
-    <div class="chat-area" id="chatArea"></div>
-
-    <!-- RECENT CHATS PANEL -->
-    <div class="recent-panel" id="recentPanel" aria-hidden="true">
-      <div class="recent-backdrop" id="recentBackdrop"></div>
-      <div class="recent-sheet" role="dialog" aria-modal="true" aria-label="Recent chats">
-        <div class="recent-header">
-          <div>
-            <div class="recent-title">Recent Chats</div>
-            <div class="recent-subtitle">Your recent conversations on this device</div>
-          </div>
-          <button class="recent-close" id="recentClose" aria-label="Close">×</button>
-        </div>
-        <div class="recent-list" id="recentList"></div>
-        <button class="recent-clear" id="recentClear">Clear recent chats</button>
-      </div>
-    </div>
-
-    <!-- INPUT BAR -->
-    <div class="input-bar">
-      <div class="input-container">
-        <input
-          type="text"
-          class="chat-input"
-          id="chatInput"
-          placeholder="Ask anything…"
-          autocomplete="off"
-          spellcheck="false"
-          aria-label="Message input"
-        />
-        <button class="send-btn" id="sendBtn" aria-label="Send message">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+    <aside class="side-panel" id="sidePanel">
+      <div class="side-brand"><div class="brand-mark">✦</div><div><div class="side-brand-title">BSN PREP</div><div class="side-brand-sub">SINDH AI</div></div></div>
+      <div class="online-pill"><span></span> AI Assistant Online</div>
+      <nav class="side-nav">
+        <button class="side-nav-item active" type="button" data-action="chat"><span>💬</span><b>Chat</b></button>
+        <button class="side-nav-item" type="button" data-action="recent"><span>🕘</span><b>Recent Tabs</b></button>
+        <button class="side-nav-item" type="button" data-action="mock"><span>📝</span><b>Mock Test</b></button>
+        <button class="side-nav-item" type="button" data-action="pdf"><span>📄</span><b>PDF Notes</b></button>
+      </nav>
+      <div class="side-card"><div class="side-card-icon">🎓</div><strong>Built for BSN Students</strong><span>Learn • Practice • Prepare</span></div>
+      <div class="side-bottom"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button></div>
+    </aside>
+    <main class="main-panel">
+      <header class="top-bar" id="topBar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="top-title"><strong>BSN PREP SINDH AI</strong><span><i></i> Online</span></div><div class="top-actions"><button class="top-icon" id="recentTopBtn" aria-label="Recent tabs">🕘</button><button class="top-icon" id="profileBtn" aria-label="Profile">◉</button></div></header>
+      <section class="welcome-card" id="hero"><div class="welcome-copy"><div class="welcome-eyebrow">YOUR AI STUDY ASSISTANT</div><h1>Hello, Future Nurse! <span>🩺</span></h1><p>Ask anything about BSN entry-test preparation. Get explanations, MCQs, mock tests and printable PDF notes.</p><div class="quick-actions"><button type="button" class="quick-action" data-prompt="Explain a BSN entry-test topic in simple words.">🧠 Study Help</button><button type="button" class="quick-action" data-prompt="Create 25 exam-focused MCQs for BSN entry-test preparation with answers and brief explanations.">📝 MCQs</button><button type="button" class="quick-action" id="quickPdf">📄 Notes PDF</button><button type="button" class="quick-action" data-prompt="Create a 25-question BSN entry-test mock test with four options and an answer key.">🎯 Mock Test</button></div></div><div class="welcome-avatar"><div class="avatar-orbit"></div><div class="robot-face"><span></span><span></span><b>⌣</b></div></div></section>
+      <div class="chat-area" id="chatArea"></div>
+      <div class="input-bar"><div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Ask your question..." autocomplete="off" spellcheck="false" aria-label="Message input"><div class="input-tools"><button type="button" class="tool-btn voice-tool" id="voiceBtn">🎙️ <span>Voice</span></button><button type="button" class="tool-btn image-tool" id="imageBtn">🖼️ <span>Image</span></button><button type="button" class="tool-btn pdf-tool" id="pdfBtn">📄 <span>PDF Notes</span></button></div><button class="send-btn" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24"><path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/></svg></button></div><input type="file" id="imageInput" accept="image/*" hidden><div class="input-hint">🎙️ Voice • 🖼️ Image • 📄 PDF Notes</div></div>
+    </main>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="recent-panel" id="recentPanel" aria-hidden="true"><div class="recent-backdrop" id="recentBackdrop"></div><div class="recent-sheet"><div class="recent-header"><div><div class="recent-title">Recent Tabs</div><div class="recent-subtitle">Saved on this device</div></div><button class="recent-close" id="recentClose">×</button></div><div class="recent-list" id="recentList"></div><button class="recent-clear" id="recentClear">Clear Recent</button></div></div>
   </div>
 
   <script>
@@ -704,12 +649,35 @@
       const sendBtn = document.getElementById('sendBtn');
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
-      const recentToggle = document.getElementById('recentToggle');
+      const voiceBtn = document.getElementById('voiceBtn');
+      const imageBtn = document.getElementById('imageBtn');
+      const imageInput = document.getElementById('imageInput');
+      const pdfBtn = document.getElementById('pdfBtn');
+      const quickPdf = document.getElementById('quickPdf');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const recentTopBtn = document.getElementById('recentTopBtn');
       const recentPanel = document.getElementById('recentPanel');
       const recentBackdrop = document.getElementById('recentBackdrop');
       const recentClose = document.getElementById('recentClose');
       const recentList = document.getElementById('recentList');
       const recentClear = document.getElementById('recentClear');
+
+
+
+      // ===== New UI tools =====
+      const RECENT_KEY='bsn-recent-chats-v2';
+      const saveRecent=()=>{if(!conversation.length)return;const first=conversation.find(x=>x.role==='user');if(!first)return;try{const a=JSON.parse(localStorage.getItem(RECENT_KEY)||'[]');const title=String(first.content||'New chat').replace(/\s+/g,' ').trim().slice(0,80);const item={title,updatedAt:new Date().toISOString(),conversation:conversation.slice(-24),messages:messages.slice(-48)};localStorage.setItem(RECENT_KEY,JSON.stringify([item,...a.filter(x=>x.title!==title)].slice(0,20)));}catch(e){}};
+      const renderRecent=()=>{recentList.innerHTML='';let a=[];try{a=JSON.parse(localStorage.getItem(RECENT_KEY)||'[]')}catch(e){}if(!a.length){recentList.innerHTML='<div class="recent-empty">No recent chats yet.</div>';return;}a.forEach(item=>{const b=document.createElement('button');b.className='recent-item';const t=document.createElement('div');t.className='recent-item-title';t.textContent=item.title||'Chat';const m=document.createElement('div');m.className='recent-item-meta';m.textContent=new Date(item.updatedAt).toLocaleString();b.append(t,m);b.onclick=()=>{conversation=item.conversation||[];messages=item.messages||[];renderMessages();activateChat();recentPanel.classList.remove('visible')};recentList.appendChild(b)})};
+      const openRecent=()=>{renderRecent();recentPanel.classList.add('visible')};
+      recentTopBtn.addEventListener('click',openRecent);recentClose.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentBackdrop.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentClear.addEventListener('click',()=>{localStorage.removeItem(RECENT_KEY);renderRecent()});
+      mobileMenu.addEventListener('click',()=>app.classList.toggle('menu-open'));mobileOverlay.addEventListener('click',()=>app.classList.remove('menu-open'));
+      document.querySelectorAll('.side-nav-item').forEach(b=>b.addEventListener('click',()=>{app.classList.remove('menu-open');if(b.dataset.action==='recent')openRecent();if(b.dataset.action==='mock'){chatInput.value='Create a 25-question BSN entry-test mock test with four options, correct answers and brief explanations.';chatInput.focus()}if(b.dataset.action==='pdf'){chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and MCQs.';chatInput.focus()}if(b.dataset.action==='chat')chatInput.focus()}));
+      document.querySelectorAll('.quick-action[data-prompt]').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.dataset.prompt;handleSend()}));
+      let recognition=null,listening=false;const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(SR){recognition=new SR();recognition.lang='en-US';recognition.interimResults=false;recognition.continuous=false;recognition.onstart=()=>{listening=true;voiceBtn.innerHTML='⏹️ <span>Stop</span>'};recognition.onend=()=>{listening=false;voiceBtn.innerHTML='🎙️ <span>Voice</span>'};recognition.onresult=e=>{chatInput.value=e.results[0][0].transcript||'';chatInput.focus()};recognition.onerror=()=>{listening=false;voiceBtn.innerHTML='🎙️ <span>Voice</span>'};voiceBtn.addEventListener('click',()=>listening?recognition.stop():recognition.start())}else voiceBtn.addEventListener('click',()=>alert('Voice input is not supported. Please use Chrome on Android.'));
+      imageBtn.addEventListener('click',()=>imageInput.click());imageInput.addEventListener('change',()=>{const f=imageInput.files&&imageInput.files[0];if(!f)return;const u=URL.createObjectURL(f);activateChat();messages.push({role:'user',text:'🖼️ Image uploaded: '+f.name,imageUrl:u});renderMessages();chatInput.value='Please help me understand this image.';chatInput.focus();imageInput.value=''});
+      const printPdf=(title,body)=>{const w=window.open('','_blank');if(!w){alert('Please allow pop-ups to create the PDF.');return}const safe=String(body||'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');w.document.write('<!doctype html><html><head><title>BSN PREP SINDH AI PDF</title><style>body{font-family:Arial,sans-serif;max-width:820px;margin:35px auto;padding:20px;line-height:1.65;color:#17203a}h1{color:#5367df;border-bottom:2px solid #5367df;padding-bottom:10px}@media print{body{margin:0}}</style></head><body><h1>'+String(title).replace(/</g,'')+'</h1><p><b>BSN PREP SINDH AI</b> • Exam-Focused Notes</p><hr><div>'+safe+'</div></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),400)};
+      pdfBtn.addEventListener('click',()=>{const ai=[...messages].reverse().find(x=>x.role==='ai'&&x.text&&x.text!=='Thinking...');if(ai)printPdf('BSN PREP SINDH AI — PDF Notes',ai.text);else{chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and 20 MCQs.';chatInput.focus()}});quickPdf.addEventListener('click',()=>{chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and 20 MCQs.';handleSend()});window.addEventListener('beforeunload',saveRecent);
 
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
@@ -961,117 +929,6 @@
         return btn;
       };
 
-
-      // ---------- Recent Chats ----------
-      const RECENT_KEY = 'bsn-recent-chats-v1';
-      const MAX_RECENT = 20;
-
-      const readRecentChats = () => {
-        try {
-          const raw = localStorage.getItem(RECENT_KEY);
-          const value = raw ? JSON.parse(raw) : [];
-          return Array.isArray(value) ? value : [];
-        } catch { return []; }
-      };
-
-      const saveRecentChats = (items) => {
-        try { localStorage.setItem(RECENT_KEY, JSON.stringify(items.slice(0, MAX_RECENT))); } catch {}
-      };
-
-      const makeRecentTitle = (text) => {
-        const clean = String(text || '').replace(/\s+/g, ' ').trim();
-        return clean.length > 70 ? clean.slice(0,70) + '…' : (clean || 'New chat');
-      };
-
-      const saveCurrentChatToRecent = () => {
-        if (!conversation.length) return;
-        const firstUser = conversation.find(x => x.role === 'user');
-        if (!firstUser) return;
-
-        const item = {
-          id: Date.now().toString(),
-          title: makeRecentTitle(firstUser.content),
-          updatedAt: new Date().toISOString(),
-          conversation: conversation.slice(-24),
-          messages: messages.slice(-48)
-        };
-
-        const old = readRecentChats();
-        const filtered = old.filter(x => x.title !== item.title);
-        saveRecentChats([item, ...filtered]);
-      };
-
-      const formatRecentDate = (iso) => {
-        try {
-          return new Date(iso).toLocaleString(undefined, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
-        } catch { return ''; }
-      };
-
-      const renderRecentList = () => {
-        const items = readRecentChats();
-        recentList.innerHTML = '';
-
-        if (!items.length) {
-          const empty = document.createElement('div');
-          empty.className = 'recent-empty';
-          empty.textContent = 'No recent chats yet.';
-          recentList.appendChild(empty);
-          return;
-        }
-
-        items.forEach((item) => {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'recent-item';
-
-          const title = document.createElement('div');
-          title.className = 'recent-item-title';
-          title.textContent = item.title || 'Chat';
-
-          const meta = document.createElement('div');
-          meta.className = 'recent-item-meta';
-          meta.textContent = formatRecentDate(item.updatedAt);
-
-          button.append(title, meta);
-
-          button.addEventListener('click', () => {
-            conversation = Array.isArray(item.conversation) ? item.conversation : [];
-            messages = Array.isArray(item.messages) ? item.messages : [];
-            isChatActive = messages.length > 0;
-            app.classList.toggle('chat-active', isChatActive);
-            chatArea.classList.toggle('visible', isChatActive);
-            renderMessages();
-            recentPanel.classList.remove('visible');
-            recentPanel.setAttribute('aria-hidden', 'true');
-            chatInput.focus({preventScroll:true});
-          });
-
-          recentList.appendChild(button);
-        });
-      };
-
-      const openRecent = () => {
-        renderRecentList();
-        recentPanel.classList.add('visible');
-        recentPanel.setAttribute('aria-hidden', 'false');
-      };
-
-      const closeRecent = () => {
-        recentPanel.classList.remove('visible');
-        recentPanel.setAttribute('aria-hidden', 'true');
-      };
-
-      recentToggle.addEventListener('click', openRecent);
-      recentClose.addEventListener('click', closeRecent);
-      recentBackdrop.addEventListener('click', closeRecent);
-
-      recentClear.addEventListener('click', () => {
-        localStorage.removeItem(RECENT_KEY);
-        renderRecentList();
-      });
-
-      window.addEventListener('beforeunload', saveCurrentChatToRecent);
-
       // ---------- Theme ----------
       const getPreferredTheme = () => {
         const stored = localStorage.getItem('bsn-theme');
@@ -1139,11 +996,16 @@
             ) {
               const copyBtn = createCopyButton(() => msg.text);
               el.appendChild(copyBtn);
+              const pdfReplyBtn=document.createElement('button');
+              pdfReplyBtn.className='pdf-print-btn'; pdfReplyBtn.type='button'; pdfReplyBtn.textContent='📄 Make PDF';
+              pdfReplyBtn.addEventListener('click',()=>printPdf('BSN PREP SINDH AI — PDF Notes',msg.text));
+              el.appendChild(pdfReplyBtn);
             }
           } else {
             const textNode = document.createElement('div');
             textNode.textContent = msg.text;
             el.appendChild(textNode);
+            if (msg.imageUrl) { const img=document.createElement('img'); img.className='image-preview'; img.src=msg.imageUrl; img.alt='Uploaded image'; el.appendChild(img); }
           }
 
           chatArea.appendChild(el);
@@ -1224,7 +1086,7 @@
           const reply = data.reply || 'No response received.';
           messages[thinkingIndex].text = reply;
           conversation.push({ role: 'assistant', content: reply });
-          saveCurrentChatToRecent();
+          saveRecent();
           renderMessages();
 
         } catch (error) {
