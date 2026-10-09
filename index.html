@@ -610,11 +610,34 @@
     .chat-area{flex:1;min-height:0;padding:20px 28px 10px;gap:15px}.message{max-width:min(760px,88%);border-radius:20px;padding:13px 16px}.message.user{margin-left:auto;background:linear-gradient(135deg,#5868ff,#7154ed);color:#fff}.message.ai{background:var(--ai-bubble);border:1px solid var(--border)}
     .input-bar{padding:12px 28px 20px;background:linear-gradient(transparent,var(--bg) 18%);z-index:5}.input-container{position:relative;display:flex;align-items:center;gap:8px;max-width:980px;margin:auto;padding:9px 10px 9px 15px;border:1px solid var(--border-soft);background:var(--surface);border-radius:21px;box-shadow:0 12px 35px rgba(0,0,0,.13)}.chat-input{flex:1;min-width:0;border:0!important;background:transparent!important;padding:10px 3px!important}.chat-input:focus{outline:0}.input-tools{display:flex;gap:5px}.tool-btn{border:1px solid var(--border);background:var(--surface-raised);color:var(--text-secondary);border-radius:12px;padding:8px 9px;font-size:.7rem;cursor:pointer;white-space:nowrap}.voice-tool{color:#a97cff}.image-tool{color:#42c89a}.pdf-tool{color:#ff7777}.send-btn{width:43px!important;height:43px!important;flex:0 0 43px!important;border-radius:14px!important;background:linear-gradient(135deg,#596bff,#754df0)!important}.input-hint{text-align:center;color:var(--text-tertiary);font-size:.62rem;padding-top:7px}
     .recent-panel{position:fixed;inset:0;z-index:100;display:none}.recent-panel.visible{display:block}.recent-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(5px)}.recent-sheet{position:absolute;right:0;top:0;height:100%;width:min(410px,92vw);background:var(--surface);padding:20px;display:flex;flex-direction:column;border-left:1px solid var(--border-soft)}.recent-header{display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--border)}.recent-title{font-weight:800}.recent-subtitle{font-size:.72rem;color:var(--text-secondary);margin-top:3px}.recent-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);font-size:1.4rem}.recent-list{flex:1;overflow:auto;padding:12px 0}.recent-empty{text-align:center;color:var(--text-secondary);padding:35px 10px}.recent-item{display:block;width:100%;text-align:left;padding:13px;margin-bottom:8px;border:1px solid var(--border);background:transparent;border-radius:13px;color:var(--text-primary);cursor:pointer}.recent-item-title{font-size:.84rem}.recent-item-meta{font-size:.66rem;color:var(--text-tertiary);margin-top:4px}.recent-clear{min-height:43px;border-radius:12px;border:1px solid var(--border-soft);background:transparent;color:var(--text-secondary)}.image-preview{max-width:230px;max-height:170px;border-radius:14px;margin-top:8px;border:1px solid var(--border-soft);object-fit:cover}.pdf-print-btn{margin-top:9px;border:1px solid var(--border-soft);background:var(--surface-raised);color:var(--text-primary);padding:8px 12px;border-radius:10px;cursor:pointer}
-    .app.chat-active .top-bar,.app.chat-active .hero{display:flex}.app.chat-active .hero{display:none}
+    .app.chat-active .top-bar{display:flex!important}.app.chat-active .hero{display:none!important}
+    .app.chat-active .side-panel{display:none!important}
+    .app.chat-active .main-panel{width:100%;}
     @media(max-width:760px){.side-panel{position:fixed;left:-270px;top:0;bottom:0;transition:.25s;box-shadow:20px 0 40px rgba(0,0,0,.25)}.app.menu-open .side-panel{left:0}.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:25}.app.menu-open .mobile-overlay{display:block}.mobile-menu{display:block}.top-bar{height:62px;padding:0 12px}.welcome-card{margin:12px 12px 4px;padding:19px;min-height:0}.welcome-avatar{display:none}.welcome-card p{font-size:.8rem}.quick-action{font-size:.67rem;padding:9px 10px}.chat-area{padding:12px}.input-bar{padding:8px 9px calc(12px + env(safe-area-inset-bottom,0px))}.input-container{border-radius:18px;flex-wrap:wrap}.chat-input{width:100%;flex-basis:calc(100% - 52px)}.input-tools{order:3;width:100%;overflow-x:auto}.tool-btn{flex:1}.input-hint{display:none}}
 
     .hidden { display: none !important; }
-  </style>
+  
+/* Final chat mode: welcome screen disappears permanently after first message */
+html.chat-mode, body.chat-mode { overflow: hidden !important; }
+#app.chat-mode #hero, #app.chat-mode .hero, #app.chat-mode .welcome-card, #app.chat-mode .side-panel, #app.chat-mode .quick-actions { display:none !important; }
+#app.chat-mode .main-panel, #app.chat-mode .chat-panel, #app.chat-mode .chat-area { width:100% !important; max-width:none !important; flex:1 1 100% !important; }
+#app.chat-mode .chat-area { min-height:calc(100vh - 150px) !important; }
+</style>
+
+<style id="fixed-chat-footer">
+  #chatInputBar, .input-bar, .composer, .chat-composer {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    z-index: 9999 !important;
+    transform: none !important;
+  }
+  #chatArea, .chat-area, .messages, .chat-messages {
+    padding-bottom: 110px !important;
+  }
+</style>
 </head>
 <body>
   <div class="app" id="app">
@@ -624,17 +647,17 @@
       <nav class="side-nav">
         <button class="side-nav-item active" type="button" data-action="chat"><span>💬</span><b>Chat</b></button>
         <button class="side-nav-item" type="button" data-action="recent"><span>🕘</span><b>Recent Tabs</b></button>
-        <button class="side-nav-item" type="button" data-action="mock"><span>📝</span><b>Mock Test</b></button>
-        <button class="side-nav-item" type="button" data-action="pdf"><span>📄</span><b>PDF Notes</b></button>
+        
+        
       </nav>
       <div class="side-card"><div class="side-card-icon">🎓</div><strong>Built for BSN Students</strong><span>Learn • Practice • Prepare</span></div>
       <div class="side-bottom"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span id="themeIcon">🌙</span></button></div>
     </aside>
     <main class="main-panel">
       <header class="top-bar" id="topBar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="top-title"><strong>BSN PREP SINDH AI</strong><span><i></i> Online</span></div><div class="top-actions"><button class="top-icon" id="recentTopBtn" aria-label="Recent tabs">🕘</button><button class="top-icon" id="profileBtn" aria-label="Profile">◉</button></div></header>
-      <section class="welcome-card" id="hero"><div class="welcome-copy"><div class="welcome-eyebrow">YOUR AI STUDY ASSISTANT</div><h1>Hello, Future Nurse! <span>🩺</span></h1><p>Ask anything about BSN entry-test preparation. Get explanations, MCQs, mock tests and printable PDF notes.</p><div class="quick-actions"><button type="button" class="quick-action" data-prompt="Explain a BSN entry-test topic in simple words.">🧠 Study Help</button><button type="button" class="quick-action" data-prompt="Create 25 exam-focused MCQs for BSN entry-test preparation with answers and brief explanations.">📝 MCQs</button><button type="button" class="quick-action" id="quickPdf">📄 Notes PDF</button><button type="button" class="quick-action" data-prompt="Create a 25-question BSN entry-test mock test with four options and an answer key.">🎯 Mock Test</button></div></div><div class="welcome-avatar"><div class="avatar-orbit"></div><div class="robot-face"><span></span><span></span><b>⌣</b></div></div></section>
+      <section class="welcome-card" id="hero"><div class="welcome-copy"><div class="welcome-eyebrow">YOUR AI STUDY ASSISTANT</div><h1>Hello, Future Nurse! <span>🩺</span></h1><p>Ask anything about BSN entry-test preparation. Get explanations, MCQs, mock tests and printable PDF notes.</p></div><div class="welcome-avatar"><div class="avatar-orbit"></div><div class="robot-face"><span></span><span></span><b>⌣</b></div></div></section>
       <div class="chat-area" id="chatArea"></div>
-      <div class="input-bar"><div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Ask your question..." autocomplete="off" spellcheck="false" aria-label="Message input"><div class="input-tools"><button type="button" class="tool-btn voice-tool" id="voiceBtn">🎙️ <span>Voice</span></button><button type="button" class="tool-btn image-tool" id="imageBtn">🖼️ <span>Image</span></button><button type="button" class="tool-btn pdf-tool" id="pdfBtn">📄 <span>PDF Notes</span></button></div><button class="send-btn" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24"><path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/></svg></button></div><input type="file" id="imageInput" accept="image/*" hidden><div class="input-hint">🎙️ Voice • 🖼️ Image • 📄 PDF Notes</div></div>
+      <div class="input-bar"><div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Ask your question..." autocomplete="off" spellcheck="false" aria-label="Message input"><div class="input-tools"><button type="button" class="tool-btn voice-tool" id="voiceBtn">🎙️</button><button type="button" class="tool-btn image-tool" id="imageBtn">🖼️</button></div><button class="send-btn" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24"><path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/></svg></button></div><input type="file" id="imageInput" accept="image/*" hidden><div class="input-hint">Ask naturally • Voice • Image</div></div>
     </main>
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="recent-panel" id="recentPanel" aria-hidden="true"><div class="recent-backdrop" id="recentBackdrop"></div><div class="recent-sheet"><div class="recent-header"><div><div class="recent-title">Recent Tabs</div><div class="recent-subtitle">Saved on this device</div></div><button class="recent-close" id="recentClose">×</button></div><div class="recent-list" id="recentList"></div><button class="recent-clear" id="recentClear">Clear Recent</button></div></div>
@@ -652,8 +675,6 @@
       const voiceBtn = document.getElementById('voiceBtn');
       const imageBtn = document.getElementById('imageBtn');
       const imageInput = document.getElementById('imageInput');
-      const pdfBtn = document.getElementById('pdfBtn');
-      const quickPdf = document.getElementById('quickPdf');
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileOverlay = document.getElementById('mobileOverlay');
       const recentTopBtn = document.getElementById('recentTopBtn');
@@ -673,12 +694,6 @@
       recentTopBtn.addEventListener('click',openRecent);recentClose.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentBackdrop.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentClear.addEventListener('click',()=>{localStorage.removeItem(RECENT_KEY);renderRecent()});
       mobileMenu.addEventListener('click',()=>app.classList.toggle('menu-open'));mobileOverlay.addEventListener('click',()=>app.classList.remove('menu-open'));
       document.querySelectorAll('.side-nav-item').forEach(b=>b.addEventListener('click',()=>{app.classList.remove('menu-open');if(b.dataset.action==='recent')openRecent();if(b.dataset.action==='mock'){chatInput.value='Create a 25-question BSN entry-test mock test with four options, correct answers and brief explanations.';chatInput.focus()}if(b.dataset.action==='pdf'){chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and MCQs.';chatInput.focus()}if(b.dataset.action==='chat')chatInput.focus()}));
-      document.querySelectorAll('.quick-action[data-prompt]').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.dataset.prompt;handleSend()}));
-      let recognition=null,listening=false;const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(SR){recognition=new SR();recognition.lang='en-US';recognition.interimResults=false;recognition.continuous=false;recognition.onstart=()=>{listening=true;voiceBtn.innerHTML='⏹️ <span>Stop</span>'};recognition.onend=()=>{listening=false;voiceBtn.innerHTML='🎙️ <span>Voice</span>'};recognition.onresult=e=>{chatInput.value=e.results[0][0].transcript||'';chatInput.focus()};recognition.onerror=()=>{listening=false;voiceBtn.innerHTML='🎙️ <span>Voice</span>'};voiceBtn.addEventListener('click',()=>listening?recognition.stop():recognition.start())}else voiceBtn.addEventListener('click',()=>alert('Voice input is not supported. Please use Chrome on Android.'));
-      imageBtn.addEventListener('click',()=>imageInput.click());imageInput.addEventListener('change',()=>{const f=imageInput.files&&imageInput.files[0];if(!f)return;const u=URL.createObjectURL(f);activateChat();messages.push({role:'user',text:'🖼️ Image uploaded: '+f.name,imageUrl:u});renderMessages();chatInput.value='Please help me understand this image.';chatInput.focus();imageInput.value=''});
-      const printPdf=(title,body)=>{const w=window.open('','_blank');if(!w){alert('Please allow pop-ups to create the PDF.');return}const safe=String(body||'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');w.document.write('<!doctype html><html><head><title>BSN PREP SINDH AI PDF</title><style>body{font-family:Arial,sans-serif;max-width:820px;margin:35px auto;padding:20px;line-height:1.65;color:#17203a}h1{color:#5367df;border-bottom:2px solid #5367df;padding-bottom:10px}@media print{body{margin:0}}</style></head><body><h1>'+String(title).replace(/</g,'')+'</h1><p><b>BSN PREP SINDH AI</b> • Exam-Focused Notes</p><hr><div>'+safe+'</div></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),400)};
-      pdfBtn.addEventListener('click',()=>{const ai=[...messages].reverse().find(x=>x.role==='ai'&&x.text&&x.text!=='Thinking...');if(ai)printPdf('BSN PREP SINDH AI — PDF Notes',ai.text);else{chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and 20 MCQs.';chatInput.focus()}});quickPdf.addEventListener('click',()=>{chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and 20 MCQs.';handleSend()});window.addEventListener('beforeunload',saveRecent);
-
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
       const API = '/api/chat';
@@ -955,6 +970,7 @@
           isChatActive = true;
           app.classList.add('chat-active');
           chatArea.classList.add('visible');
+          document.body.classList.add('full-chat-mode');
         }
       };
 
@@ -1034,12 +1050,31 @@
       };
       checkHealth();
 
+      // ---------- Permanent full-screen chat mode ----------
+      const enterChatMode = () => {
+        if (isChatActive) return;
+        isChatActive = true;
+        document.documentElement.classList.add('chat-mode');
+        document.body.classList.add('chat-mode');
+        const app = document.getElementById('app');
+        if (app) app.classList.add('chat-mode');
+        ['hero','welcome-card','side-panel','quick-actions'].forEach(cls => {
+          document.querySelectorAll('.' + cls).forEach(el => {
+            el.style.setProperty('display','none','important');
+          });
+        });
+        if (typeof renderMessages === 'function') renderMessages();
+        setTimeout(() => chatInput.focus({preventScroll:true}), 0);
+      };
+
       // ---------- Handle send ----------
       const handleSend = async () => {
         if (isSending) return;
 
         const text = chatInput.value.trim();
         if (!text) return;
+
+        enterChatMode();
 
         isSending = true;
         sendBtn.disabled = true;
