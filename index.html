@@ -620,8 +620,10 @@
 /* Final chat mode: welcome screen disappears permanently after first message */
 html.chat-mode, body.chat-mode { overflow: hidden !important; }
 #app.chat-mode #hero, #app.chat-mode .hero, #app.chat-mode .welcome-card, #app.chat-mode .side-panel, #app.chat-mode .quick-actions { display:none !important; }
-#app.chat-mode .main-panel, #app.chat-mode .chat-panel, #app.chat-mode .chat-area { width:100% !important; max-width:none !important; flex:1 1 100% !important; }
-#app.chat-mode .chat-area { min-height:0 !important; height:auto !important; padding-bottom:130px !important; }
+#app.chat-mode .main-panel, #app.chat-mode .chat-panel { width:100% !important; max-width:none !important; flex:1 1 100% !important; }
+#app.chat-mode .chat-area { display:block !important; visibility:visible !important; opacity:1 !important; }
+#app.chat-mode .welcome-card, #app.chat-mode #hero, #app.chat-mode .quick-actions { display:none !important; }
+#app.chat-mode .chat-area { min-height:calc(100vh - 150px) !important; }
 </style>
 
 <style id="fixed-chat-footer">
@@ -633,8 +635,6 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
     top: auto !important;
     z-index: 9999 !important;
     transform: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
   }
   #chatArea, .chat-area, .messages, .chat-messages {
     padding-bottom: 110px !important;
@@ -657,7 +657,6 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
     </aside>
     <main class="main-panel">
       <header class="top-bar" id="topBar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="top-title"><strong>BSN PREP SINDH AI</strong><span><i></i> Online</span></div><div class="top-actions"><button class="top-icon" id="recentTopBtn" aria-label="Recent tabs">🕘</button><button class="top-icon" id="profileBtn" aria-label="Profile">◉</button></div></header>
-      <section class="welcome-card" id="hero"><div class="welcome-copy"><div class="welcome-eyebrow">YOUR AI STUDY ASSISTANT</div><h1>Hello, Future Nurse! <span>🩺</span></h1><p>Ask anything about BSN entry-test preparation. Get explanations, MCQs, mock tests and printable PDF notes.</p></div><div class="welcome-avatar"><div class="avatar-orbit"></div><div class="robot-face"><span></span><span></span><b>⌣</b></div></div></section>
       <div class="chat-area" id="chatArea"></div>
       <div class="input-bar"><div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Ask your question..." autocomplete="off" spellcheck="false" aria-label="Message input"><div class="input-tools"><button type="button" class="tool-btn voice-tool" id="voiceBtn">🎙️</button><button type="button" class="tool-btn image-tool" id="imageBtn">🖼️</button></div><button class="send-btn" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24"><path d="M3.4 20.4L20.85 12.92C21.66 12.57 21.66 11.43 20.85 11.08L3.4 3.6C2.74 3.31 2.01 3.83 2.01 4.55L2 9.12C2 9.64 2.39 10.08 2.9 10.14L15 12L2.9 13.86C2.39 13.92 2 14.36 2 14.88L2.01 19.45C2.01 20.17 2.74 20.69 3.4 20.4Z"/></svg></button></div><input type="file" id="imageInput" accept="image/*" hidden><div class="input-hint">Ask naturally • Voice • Image</div></div>
     </main>
@@ -695,7 +694,7 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
       const openRecent=()=>{renderRecent();recentPanel.classList.add('visible')};
       recentTopBtn.addEventListener('click',openRecent);recentClose.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentBackdrop.addEventListener('click',()=>recentPanel.classList.remove('visible'));recentClear.addEventListener('click',()=>{localStorage.removeItem(RECENT_KEY);renderRecent()});
       mobileMenu.addEventListener('click',()=>app.classList.toggle('menu-open'));mobileOverlay.addEventListener('click',()=>app.classList.remove('menu-open'));
-      document.querySelectorAll('.side-nav-item').forEach(b=>b.addEventListener('click',()=>{app.classList.remove('menu-open');if(b.dataset.action==='recent')openRecent();if(b.dataset.action==='mock'){chatInput.value='Create a 25-question BSN entry-test mock test with four options, correct answers and brief explanations.';chatInput.focus()}if(b.dataset.action==='pdf'){chatInput.value='Create detailed exam-focused notes on the topic I ask, with definitions, key points, examples and MCQs.';chatInput.focus()}if(b.dataset.action==='chat')chatInput.focus()}));
+      document.querySelectorAll('.side-nav-item').forEach(b=>b.addEventListener('click',()=>{app.classList.remove('menu-open');if(b.dataset.action==='recent')openRecent();if(b.dataset.action==='chat')chatInput.focus()}));
       // ---------- Config ----------
       // Netlify Functions: same-origin API (no Railway dependency)
       const API = '/api/chat';
@@ -1014,10 +1013,6 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
             ) {
               const copyBtn = createCopyButton(() => msg.text);
               el.appendChild(copyBtn);
-              const pdfReplyBtn=document.createElement('button');
-              pdfReplyBtn.className='pdf-print-btn'; pdfReplyBtn.type='button'; pdfReplyBtn.textContent='📄 Make PDF';
-              pdfReplyBtn.addEventListener('click',()=>printPdf('BSN PREP SINDH AI — PDF Notes',msg.text));
-              el.appendChild(pdfReplyBtn);
             }
           } else {
             const textNode = document.createElement('div');
@@ -1054,12 +1049,10 @@ html.chat-mode, body.chat-mode { overflow: hidden !important; }
 
       // ---------- Permanent full-screen chat mode ----------
       const enterChatMode = () => {
-        if (isChatActive) return;
         isChatActive = true;
         document.documentElement.classList.add('chat-mode');
         document.body.classList.add('chat-mode');
-        chatArea.classList.add('visible');
-        app = document.getElementById('app');
+        const app = document.getElementById('app');
         if (app) app.classList.add('chat-mode');
         ['hero','welcome-card','side-panel','quick-actions'].forEach(cls => {
           document.querySelectorAll('.' + cls).forEach(el => {
